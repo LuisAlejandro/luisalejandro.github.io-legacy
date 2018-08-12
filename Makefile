@@ -22,9 +22,9 @@ serve:
 		-v $(PWD)/node_modules:/home/luisalejandro/luisalejandro.github.io/node_modules \
 		-v $(PWD)/app/_bower_components:/home/luisalejandro/luisalejandro.github.io/app/_bower_components \
 		-w /home/luisalejandro/luisalejandro.github.io \
-		luisalejandro/luisalejandro.github.io:latest npm start
+		luisalejandro/luisalejandro.github.io:latest npm serve
 
-publish:
+build_production:
 
 	@mkdir -p app/_bower_components node_modules vendor/bundle
 	@docker run -it --rm -p 3000:3000 -p 3001:3001 -u luisalejandro \
@@ -32,7 +32,7 @@ publish:
 		-v $(PWD)/node_modules:/home/luisalejandro/luisalejandro.github.io/node_modules \
 		-v $(PWD)/app/_bower_components:/home/luisalejandro/luisalejandro.github.io/app/_bower_components \
 		-w /home/luisalejandro/luisalejandro.github.io \
-		luisalejandro/luisalejandro.github.io:latest npm publish
+		luisalejandro/luisalejandro.github.io:latest npm run build_production
 
 console:
 

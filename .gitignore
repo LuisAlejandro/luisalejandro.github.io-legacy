@@ -1,7 +1,8 @@
 node_modules
+bower_components
 build
 vendor
-app/_bower_components
-.DS_Store
-*/.DS_Store
-*.log
+.bundle
+package-lock.json
+npm-debug.log
+Gemfile.lock

@@ -91,16 +91,15 @@ module.exports = {
     src:  srcAssets + '/styles/*.css',
     dest: developmentAssets + '/css',
     options: {
-      precss: {},
-      autoprefixer: {
-        browsers: [
-          'last 2 versions',
-          'ie 9',
-          'android 4'
-        ],
-        cascade: true
+      advancedVariables: {},
+      presetEnv: {
+        autoprefixer: {
+          cascade: true
+        }
       },
-      mqpacker: { sort: true }
+      nested: {},
+      mqpacker: { sort: true },
+      cssnano: {}
     }
   },
 
