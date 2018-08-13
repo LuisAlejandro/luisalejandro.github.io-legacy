@@ -5,7 +5,9 @@
   "author": "Luis Alejandro Martínez Faneyth",
   "repository": "LuisAlejandro/luisalejandro.github.io",
   "scripts": {
-    "serve": "gulp",
+    "serve_development": "gulp",
+    "serve_production": "gulp publish",
+    "build_development": "gulp build",
     "build_production": "gulp build:production",
     "postinstall": "bower install && bundle install --path vendor/bundle"
   },
