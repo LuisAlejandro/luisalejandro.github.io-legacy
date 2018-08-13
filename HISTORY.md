@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.1.2 (2018-08-13)
+
+### Fix
+
+* Fixing Travis build. [Luis Alejandro Martínez Faneyth]
+
+
 ## 0.1.1 (2018-08-13)
 
 ### Changes
