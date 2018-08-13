@@ -1,101 +1,94 @@
-# gulp-jekyll
+## Maintainer Notes
 
-Jekyll + Gulp.js + BrowserSync + PostCSS + Stylelint
+If you are reading this, you probably forgot how to release a new version. Keep
+reading.
 
-## Features
+### Making a new release
 
-- PostCSS with PreCSS, Autoprefixer, CSS MQPacker, cssnano, and of course sourcemaps for development.
-- UnCSS for production.
-- Jekyll build and rebuild with BrowserSync.
-- Browserify or just gulp-concat, as you prefer.
-- Optimization (and minification) of images, HTML, CSS, JavaScript, JSON, and XML files.
-- Linting with JSHint and Stylelint.
-- Extensive Stylelint config, based on my [code-guide](https://github.com/michaelx/code-guide).
-- Responsive image creation, or image resizing, through either GraphicsMagick or ImageMagick.
-- Image sprites.
-- Gzip compression.
-- Asset file revisions.
-- WebP image generation.
-- Deployment with rsync or [s3_website](https://github.com/laurilehmijoki/s3_website).
+1. Start your git flow workflow:
 
-### What’s Coming Next
+        git flow init
 
-- User-guide
-- Modularizing the default Jekyll theme, to make use of the new 7-1 pattern
-- s3 preview task
-- s3 publish task
-- JSON-LD generator
+2. Create a new milestone in GitHub. Plan the features of your new release. Assign
+existing bugs to your new milestone.
+3. Start a new feature:
 
-## Installation
+        git flow feature start <feature name>
 
-Clone the repository on your computer and change into the projects folder. Run:
+4. Code, code and code. More coding. Fuck it up several times. Push to feature
+branch. Watch Travis go red. Write unit tests. Watch Travis go red again. Don't
+leave uncommitted changes.
+5. Finish your feature:
 
-```sh
-$ bundle
-$ bower install
-$ npm install
-```
+        git flow feature finish <feature name>
 
-## Setup
+6. Repeat 3-5 for every other feature you have planned for this release.
+7. When you're done with the features and ready to publish, start a new release:
 
-Open `gulp/config.js` and change settings if needed.
+        git flow release start <release number>
 
-## Running Gulp.js
+8. Bump your version:
 
-Three tasks are available:
+        bumpversion --no-commit --new-version <release number> patch
 
-```sh
-$ gulp
-$ gulp publish
-$ gulp deploy
-```
+9. Update your changelog:
 
-- Running `gulp` will start a development server, build assets and the Jekyll site and start a `watch` task.
-- Running `gulp publish` will copy and optimize assets and run a production build of Jekyll.
-- Running `gulp deploy` will copy the generated files with Rsync to your server.
+        gitchangelog > HISTORY.md
 
-## CSS File Organization
+10. Commit your changes to version files and changelog:
 
-gulp-jekyll uses a 5-1 pattern, which is abstracted from the [7-1 pattern](https://sass-guidelin.es/#architecture). 5 folders, 1 file to compile them all in a single CSS file.
+        git commit -aS -m "Updating Changelog and version."
 
-```bash
-styles/
-|
-|- utilities/            # Configuration and helpers
-|   |- _variables.css    # Global variables
-|   |- _functions.css
-|   |- _mixins.css
-|   …
-|
-|- vendor/               # Third-party CSS
-|   |- _normalize.css
-|   …
-|
-|- base/                 # Boilerplate code
-|   |- _reset.css
-|   |- _base.css
-|   |- _typography.css
-|   …
-|
-|- layout/               # Global wireframe (macro)
-|   |- _header.css
-|   |- _navigation.css
-|   |- _sidebar.css
-|   |- _footer.css
-|   …
-|
-|- components/           # Modules (micro)
-|   |- _buttons.css
-|   |- _cards.css
-|   |- _tables.css
-|   …
-|
-`- main.css              # Main file to import everything
-```
+11. Delete the tag made by bumpversion:
 
----
+        git tag -d <release number>
 
-## Credits
+12. Finish your release:
 
-- gulp-jekyll started out as a fork of Stefan Imhoff’s wonderful [Gulp.js series](https://github.com/kogakure/gulp-tutorial).
-- [Michael Xander](http://michaelxander.com)
+        git flow release finish -s -p <release number>
+
+13. Push your tags:
+
+        git push --tags
+
+14. Draft a new release in GitHub (based on the new version tag) and include
+a description. Also pick a codename because it makes you cool.
+15. Close the milestone in GitHub.
+16. Write about your new version in your blog. Tweet it, post it on facebook.
+
+### Making a new hotfix
+
+1. Create a new milestone in GitHub. Assign existing bugs to your new milestone.
+2. Start a new hotfix:
+
+        git flow hotfix start <new version>
+
+3. Code your hotfix.
+4. Bump your version:
+
+        bumpversion --no-commit --new-version <new version> patch
+
+5. Update your changelog:
+
+        gitchangelog > HISTORY.md
+
+6. Commit your changes to version files and changelog:
+
+        git commit -aS -m "Updating Changelog and version."
+
+7. Delete the tag made by bumpversion:
+
+        git tag -d <new version>
+
+8. Finish your hotfix:
+
+        git flow hotfix finish -s -p <new version>
+
+9. Push your tags:
+
+        git push --tags
+
+10. Draft a new release in GitHub (based on the new version tag) and include
+a description. Don't change the codename if it is a hotfix.
+11. Close the milestone in GitHub.
+12. Write about your new version in your blog. Tweet it, post it on facebook.

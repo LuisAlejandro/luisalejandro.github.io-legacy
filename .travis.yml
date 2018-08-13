@@ -1,0 +1,30 @@
+sudo: required
+services: docker
+dist: trusty
+group: edge
+branches:
+    only:
+        - staging
+        - develop
+env:
+    global:
+        # Github personal access token ${GITHUB_TOKEN}
+        - secure: "EWJmJqwiJlZAHJT2j43WEMHfZ6r0wzdPEruQ5FmiCMW8pXAq/kyIIzkXiPhIjDpydzoocm6sCwWGFRZcjlPrG2s2B3SuYJOHrVMa9iOOpTTa3jYgljdi4AfqkyyYC6VNRUXk5IK4kwUttvVFCSzjf2XSGLmYJNHMcMR1uSE1CJk="
+before_script:
+    - mkdir -p bower_components node_modules vendor/bundle
+    - sudo chown -R 1000:1000 .
+    - make image
+    - make dependencies
+script:
+    - make build_development
+    - make build_production
+# deploy:
+#     provider: pages
+#     skip-cleanup: true
+#     github-token: ${GITHUB_TOKEN}
+#     local-dir: build/production
+#     target-branch: master
+#     committer-from-gh: true
+#     verbose: true
+#     on:
+#         branch: staging
