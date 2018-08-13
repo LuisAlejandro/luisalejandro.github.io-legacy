@@ -11,6 +11,7 @@ env:
         # Github personal access token ${GITHUB_TOKEN}
         - secure: "EWJmJqwiJlZAHJT2j43WEMHfZ6r0wzdPEruQ5FmiCMW8pXAq/kyIIzkXiPhIjDpydzoocm6sCwWGFRZcjlPrG2s2B3SuYJOHrVMa9iOOpTTa3jYgljdi4AfqkyyYC6VNRUXk5IK4kwUttvVFCSzjf2XSGLmYJNHMcMR1uSE1CJk="
 before_script:
+    - mkdir -p bower_components node_modules vendor/bundle
     - sudo chown -R 1000:1000 .
     - make image
     - make dependencies
