@@ -15,9 +15,9 @@ gulp.task('build', function(callback) {
     //'scripts:standalones',
     'scripts-browserify',
 
-    'images'
+    'images',
     //'responsive-images'
-    //'copy:fonts'
+    'copy:fonts'
   ],
   //'base64',
   [

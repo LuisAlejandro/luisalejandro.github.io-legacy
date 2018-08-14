@@ -9,12 +9,14 @@
     "serve_production": "gulp publish",
     "build_development": "gulp build",
     "build_production": "gulp build:production",
-    "postinstall": "bower install && bundle install --path vendor/bundle"
+    "postinstall": "gulp libraries && bundle install --path vendor/bundle"
   },
   "browser": {
-    "jquery": "./bower_components/jquery/dist/jquery.js"
+    "vue": "./libraries/vue/dist/vue.min.js"
   },
-  "browserify-shim": {},
+  "browserify-shim": {
+    "vue": "global:Vue"
+  },
   "browserify": {
     "transform": [
       "browserify-shim"
@@ -24,6 +26,12 @@
     "last 2 versions",
     "IE 10"
   ],
+  "dependencies": {
+    "animejs": "^2.2.0",
+    "material-design-icons-iconfont": "^3.0.3",
+    "vue": "^2.5.17",
+    "vuetify": "^1.1.11"
+  },
   "devDependencies": {
     "browser-sync": "^2.24.6",
     "browserify": "^16.2.2",
@@ -36,6 +44,7 @@
     "gulp-base64": "^0.1.3",
     "gulp-changed": "^3.2.0",
     "gulp-concat": "^2.6.1",
+    "gulp-google-webfonts": "^2.0.0",
     "gulp-gzip": "^1.4.2",
     "gulp-htmlmin": "^4.0.0",
     "gulp-image-resize": "^0.13.0",

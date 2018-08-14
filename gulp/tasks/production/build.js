@@ -17,8 +17,8 @@ gulp.task('build:production', function(callback) {
     'scripts-browserify',
 
     'images',
-    'responsive-images'
-    //'copy:fonts'
+    'responsive-images',
+    'copy:fonts'
   ],
   //'base64',
   [
@@ -27,8 +27,8 @@ gulp.task('build:production', function(callback) {
     'optimize:json',
     'optimize:xml',
     'optimize:images',
-    'optimize:html:production'
-    //'copy:fonts:production'
+    'optimize:html:production',
+    'copy:fonts:production'
   ],
 
   // After optimize:html, so that all files exist

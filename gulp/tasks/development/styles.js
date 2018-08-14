@@ -17,10 +17,15 @@ function onError(err) {
   this.emit('end');
 }
 
+gulp.task('vendor:styles', function() {
+  return gulp.src(config.vendor.src)
+    .pipe(gulp.dest(config.vendor.dest));
+});
+
 
 // Run CSS through PostCSS and it’s plugins.
 // Build sourcemaps and minimize.
-gulp.task('styles', function() {
+gulp.task('styles', ['vendor:styles'], function() {
   browsersync.notify('Transforming CSS with PostCSS');
 
   // PostCSS plugins

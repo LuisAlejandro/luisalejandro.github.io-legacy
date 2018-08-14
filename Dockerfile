@@ -3,7 +3,7 @@ MAINTAINER Luis Alejandro Martínez Faneyth <luis@luisalejandro.org>
 
 RUN apt-get update && apt-get install ruby2.5 ruby2.5-dev sudo gcc libffi-dev build-essential zlib1g-dev git
 
-RUN npm install -g bower gulp
+RUN npm install -g gulp
 
 RUN gem install bundler
 

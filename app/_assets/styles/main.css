@@ -1,12 +1,13 @@
 @charset "utf-8";
 
+/* Third-party */
+/* Fonts */
+@import "vendor/fonts";
+
 /* Configuration and helpers */
 @import "utilities/variables";
 @import "utilities/functions";
 @import "utilities/mixins";
-
-/* Third-party */
-/* e.g. @import "vendor/normalize"; */
 
 /* Base */
 @import "base/reset";

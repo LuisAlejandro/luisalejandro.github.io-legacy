@@ -9,6 +9,7 @@ var src               = 'app';
 var build             = 'build';
 var development       = build + '/development';
 var production        = build + '/production';
+var libdir = 'libraries';
 
 // Assets
 var srcAssets         = src + '/_assets';
@@ -90,6 +91,13 @@ module.exports = {
   styles: {
     src:  srcAssets + '/styles/*.css',
     dest: developmentAssets + '/css',
+    vendor: {
+      src: [
+        libdir + '/vuetify/dist/vuetify.min.css',
+        libdir + '/googlefonts/fonts.css'
+      ],
+      dest: srcAssets + '/styles/vendor'
+    },
     options: {
       advancedVariables: {},
       presetEnv: {
@@ -232,7 +240,13 @@ module.exports = {
   copyfonts: {
     development: {
       src:  srcAssets + '/fonts/*',
-      dest: developmentAssets + '/fonts'
+      dest: developmentAssets + '/fonts',
+      vendor: {
+        src: [
+          libdir + '/googlefonts/*.woff'
+        ],
+        dest: srcAssets + '/fonts'
+      }
     },
     production: {
       src:  developmentAssets + '/fonts/*',
@@ -376,6 +390,21 @@ module.exports = {
       exclude: ['.DS_Store'],
       include: []
     }
-  }
+  },
 
+  googlefonts: {
+    config: 'googlefonts.list',
+    dest: libdir + '/googlefonts',
+  },
+
+  libraries: {
+    base: "node_modules",
+    dest: libdir,
+    src: [
+      'node_modules/vue/dist/vue.min.js',
+      'node_modules/vuetify/dist/vuetify.min.js',
+      'node_modules/vuetify/dist/vuetify.min.css',
+      'node_modules/animejs/anime.min.js',
+    ]
+  }
 };

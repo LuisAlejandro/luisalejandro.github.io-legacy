@@ -1,8 +1,10 @@
 node_modules
-bower_components
+libraries
 build
 vendor
 .bundle
 package-lock.json
 npm-debug.log
 Gemfile.lock
+app/_assets/fonts
+app/_assets/styles/vendor

@@ -10,7 +10,7 @@ var sourcemaps = require('gulp-sourcemaps');
 gulp.task('scripts', function() {
   return gulp.src(config.src)
     .pipe(sourcemaps.init())
-      .pipe(concat(config.outputName))
+    .pipe(concat(config.outputName))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.dest));
 });
