@@ -10,6 +10,8 @@ var cssnano           = require('cssnano');
 var plumber           = require('gulp-plumber');
 var sourcemaps        = require('gulp-sourcemaps');
 var browsersync       = require('browser-sync');
+var replace           = require('gulp-replace');
+var filter            = require('gulp-filter');
 
 function onError(err) {
   console.log(err);
@@ -18,7 +20,11 @@ function onError(err) {
 }
 
 gulp.task('vendor:styles', function() {
+  const robotofilter = filter(['*/roboto-fontface/css/roboto/**'], {restore: true});
   return gulp.src(config.vendor.src)
+    .pipe(robotofilter)
+    .pipe(replace("url('../../fonts/roboto", "url('../fonts"))
+    .pipe(robotofilter.restore)
     .pipe(gulp.dest(config.vendor.dest));
 });
 
@@ -34,7 +40,6 @@ gulp.task('styles', ['vendor:styles'], function() {
     presetEnv(config.options.presetEnv),
     nested(config.options.nested),
     mqpacker(config.options.mqpacker),
-    cssnano(config.options.cssnano)
   ];
 
   return gulp.src(config.src)

@@ -123,35 +123,3 @@ pre {
     border: 0;
   }
 }
-
-/* Wrapper */
-.wrapper {
-  max-width: calc(800px - ($spacing-unit * 2));
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: $spacing-unit;
-  padding-left: $spacing-unit;
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  @media screen and (width <= $on-laptop) {
-    max-width: calc(800px - ($spacing-unit));
-    padding-right: calc($spacing-unit / 2);
-    padding-left: calc($spacing-unit / 2);
-  }
-}
-
-/* Icons */
-.icon {
-  > svg {
-    display: inline-block;
-    vertical-align: middle;
-    width: 16px;
-    height: 16px;
-    path {
-      fill: $grey-color;
-    }
-  }
-}

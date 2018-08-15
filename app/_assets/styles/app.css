@@ -2,7 +2,9 @@
 
 /* Third-party */
 /* Fonts */
-@import "vendor/fonts";
+@import "vendor/roboto-fontface";
+@import "vendor/materialdesignicons";
+@import "vendor/buefy";
 
 /* Configuration and helpers */
 @import "utilities/variables";

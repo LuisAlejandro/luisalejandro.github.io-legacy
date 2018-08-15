@@ -62,14 +62,21 @@ module.exports = {
     ],
     styles:  srcAssets + '/styles/**/*.css',
     scripts: srcAssets + '/javascripts/**/*.js',
+    vue: srcAssets + '/javascripts/**/*.vue',
     images:  srcAssets + '/images/**/*',
     sprites: srcAssets + '/images/**/*.png',
     svg:     srcAssets + '/images/**/*.svg',
+    package: 'package.json'
   },
 
   // Delete all files from the dev build
   delete: {
-    src: [developmentAssets]
+    src: [
+      developmentAssets,
+      srcAssets + '/styles/vendor',
+      srcAssets + '/fonts/vendor',
+      libdir
+    ]
   },
 
   // Jekyll
@@ -93,8 +100,9 @@ module.exports = {
     dest: developmentAssets + '/css',
     vendor: {
       src: [
-        libdir + '/vuetify/dist/vuetify.min.css',
-        libdir + '/googlefonts/fonts.css'
+        libdir + '/buefy/lib/buefy.css',
+        libdir + '/@mdi/font/css/materialdesignicons.css',
+        libdir + '/roboto-fontface/css/roboto/roboto-fontface.css',
       ],
       dest: srcAssets + '/styles/vendor'
     },
@@ -239,13 +247,17 @@ module.exports = {
   // Copy fonts
   copyfonts: {
     development: {
-      src:  srcAssets + '/fonts/*',
+      src:  [
+        srcAssets + '/fonts/*.{eot,ttf,woff,woff2,svg}',
+        srcAssets + '/fonts/vendor/*.{eot,ttf,woff,woff2,svg}',
+      ],
       dest: developmentAssets + '/fonts',
       vendor: {
         src: [
-          libdir + '/googlefonts/*.woff'
+          libdir + '/@mdi/font/fonts/*.{eot,ttf,woff,woff2,svg}',
+          libdir + '/roboto-fontface/fonts/roboto/*.{woff,woff2}',
         ],
-        dest: srcAssets + '/fonts'
+        dest: srcAssets + '/fonts/vendor'
       }
     },
     production: {
@@ -392,19 +404,19 @@ module.exports = {
     }
   },
 
-  googlefonts: {
-    config: 'googlefonts.list',
-    dest: libdir + '/googlefonts',
-  },
-
   libraries: {
     base: "node_modules",
     dest: libdir,
     src: [
-      'node_modules/vue/dist/vue.min.js',
-      'node_modules/vuetify/dist/vuetify.min.js',
-      'node_modules/vuetify/dist/vuetify.min.css',
-      'node_modules/animejs/anime.min.js',
+      'node_modules/animejs/anime.js',
+      'node_modules/vue/dist/vue.js',
+      'node_modules/vue-router/dist/vue-router.js',
+      'node_modules/buefy/lib/index.js',
+      'node_modules/buefy/lib/buefy.css',
+      'node_modules/@mdi/font/css/materialdesignicons.css',
+      'node_modules/@mdi/font/fonts/*.{eot,ttf,woff,woff2,svg}',
+      'node_modules/roboto-fontface/css/roboto/roboto-fontface.css',
+      'node_modules/roboto-fontface/fonts/roboto/*.{woff,woff2}',
     ]
   }
 };

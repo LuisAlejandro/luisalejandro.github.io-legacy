@@ -6,5 +6,5 @@ vendor
 package-lock.json
 npm-debug.log
 Gemfile.lock
-app/_assets/fonts
+app/_assets/fonts/vendor
 app/_assets/styles/vendor
