@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Buefy from 'buefy';
+import BootstrapVue from 'bootstrap-vue';
 
 import router from './router/router';
 import App from './components/App.vue';
 
 Vue.use(VueRouter);
-Vue.use(Buefy);
+Vue.use(BootstrapVue);
 
 const app = new Vue({
   el: '#app',

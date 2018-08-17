@@ -7,7 +7,7 @@ var changed = require('gulp-changed');
 
 
 // Copy images to build folder
-gulp.task('images:development', function() {
+gulp.task('images:production', function() {
   return gulp.src(config.src)
     .pipe(plumber({errorHandler: helpers.onError}))
     .pipe(changed(config.dest))

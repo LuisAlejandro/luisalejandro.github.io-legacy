@@ -5,11 +5,6 @@ var browsersync = require('browser-sync');
 
 
 // Run build task and start a server with BrowserSync
-gulp.task('browsersync', ['build'], function() {
+gulp.task('browsersync:development', ['build:development'], function() {
   browsersync(config);
-});
-
-// Reload task, that is used by jekyll-rebuild
-gulp.task('browsersync:reload', function() {
-  browsersync.reload();
 });

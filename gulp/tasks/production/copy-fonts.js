@@ -1,4 +1,4 @@
-var config = require('../../config').copyfonts.production;
+var config = require('../../config').fonts.production;
 
 var gulp   = require('gulp');
 

@@ -2,9 +2,9 @@
 
 /* Third-party */
 /* Fonts */
-@import "vendor/roboto-fontface";
-@import "vendor/materialdesignicons";
-@import "vendor/buefy";
+@import "vendor/roboto-fontface/css/roboto/roboto-fontface";
+@import "vendor/bootswatch/theme";
+@import "vendor/bootstrap-vue/dist/bootstrap-vue";
 
 /* Configuration and helpers */
 @import "utilities/variables";

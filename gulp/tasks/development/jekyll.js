@@ -7,14 +7,25 @@ var runSequence = require('run-sequence');
 
 
 // Build Jekyll site
-gulp.task('jekyll', function(done) {
+gulp.task('jekyll:development', function(done) {
   browsersync.notify('Compiling Jekyll');
 
-  return cp.spawn('bundle', ['exec', 'jekyll', 'build', '--source=' + config.src, '--destination=' + config.dest, '--config=' + config.config, config.option], { stdio: 'inherit' })
+  return cp.spawn(
+    'bundle',
+    [
+      'exec',
+      'jekyll',
+      'build',
+      '--source=' + config.src,
+      '--destination=' + config.dest,
+      '--config=' + config.config,
+      config.option
+    ],
+    { stdio: 'inherit' })
   .on('close', done);
 });
 
 // Rebuild Jekyll site
-gulp.task('jekyll-rebuild', function(callback) {
-  runSequence('jekyll', 'optimize:html', 'browsersync:reload', callback);
+gulp.task('jekyll:rebuild:development', function(callback) {
+  runSequence('jekyll:development', 'browsersync:reload', callback);
 });

@@ -8,13 +8,12 @@ var browserify   = require('browserify');
 var source       = require('vinyl-source-stream');
 var buffer       = require('vinyl-buffer');
 var watchify     = require('watchify');
-var sourcemaps   = require('gulp-sourcemaps');
 var plumber      = require('gulp-plumber');
 var changed      = require('gulp-changed');
 
 
 // Run JavaScript through Browserify
-gulp.task('scripts:development', function(callback) {
+gulp.task('scripts:production', function(callback) {
   var bundleQueue, bundlefy;
 
   browsersync.notify('Compiling JavaScript');
@@ -41,8 +40,6 @@ gulp.task('scripts:development', function(callback) {
         // Report compile errors
         .pipe(plumber({errorHandler: helpers.onError}))
         .pipe(changed(item.dest))
-        .pipe(sourcemaps.init())
-        .pipe(sourcemaps.write('.'))
         // Specify the output destination
         .pipe(gulp.dest(item.dest))
         .on('finish', reportFinished);

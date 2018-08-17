@@ -1,25 +1,24 @@
 <template>
-  <div>
-    <nav class="navbar is-transparent">
-      <div class="navbar-brand">
-        <router-link to="/" class="navbar-item">
-          <img src="/assets/images/logo.svg" />
-        </router-link>
-        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-
-      <div id="navbarExampleTransparentExample" class="navbar-menu">
-        <div class="navbar-start">
-          <router-link to="/portfolio" class="navbar-item">Portfolio</router-link>
-        </div>
-      </div>
-    </nav>
-    <router-view></router-view>
-  </div>
+  <b-container fluid>
+    <b-row>
+      <b-navbar variant="light" type="light" toggleable class="w-100">
+        <b-navbar-brand to="/">
+          <span class="logo"></span>
+        </b-navbar-brand>
+        <b-navbar-toggle target="nav_dropdown_collapse"></b-navbar-toggle>
+        <b-collapse is-nav id="nav_dropdown_collapse">
+          <b-navbar-nav>
+            <b-nav-item to="/work">Work</b-nav-item>
+            <b-nav-item to="/about">About</b-nav-item>
+            <b-nav-item to="/contact">Contact</b-nav-item>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
+    </b-row>
+    <b-row>
+      <router-view></router-view>
+    </b-row>
+  </b-container>
 </template>
 
 <script>

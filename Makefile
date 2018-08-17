@@ -23,7 +23,7 @@ serve_development:
 serve_production:
 
 	@mkdir -p libraries node_modules vendor/bundle
-	@docker run -it --rm -p 9999:9999 -u luisalejandro \
+	@docker run -it --rm -p 9998:9998 -u luisalejandro \
 		-v $(PWD):/home/luisalejandro/luisalejandro.github.io \
 		-w /home/luisalejandro/luisalejandro.github.io \
 		luisalejandro/luisalejandro.github.io:latest npm run serve_production
@@ -47,7 +47,7 @@ build_production:
 console:
 
 	@mkdir -p libraries node_modules vendor/bundle
-	@docker run -it --rm -p 9999:9999 -u luisalejandro \
+	@docker run -it --rm -p 9999:9999 -p 9998:9998 -u luisalejandro \
 		-v $(PWD):/home/luisalejandro/luisalejandro.github.io \
 		-w /home/luisalejandro/luisalejandro.github.io \
 		luisalejandro/luisalejandro.github.io:latest bash
