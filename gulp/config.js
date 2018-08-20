@@ -6,6 +6,7 @@
 // folder on the development build. BrowserSync watches only
 // the asset files.
 const path = require('path');
+const util = require('util');
 
 const app = 'app';
 const build = 'build';
@@ -18,11 +19,13 @@ const appAssets = path.join(app, '_assets');
 const devAssets = path.join(development, 'assets');
 const prodAssets = path.join(production, 'assets');
 
+var exports = module.exports = {};
+
 // BrowserSync
-module.browsersync = {
+exports.browsersync = {
   development: {
     server: {
-      baseDir: [development],
+      baseDir: [development]
     },
     port: 9999,
     // Watched files in the dev build. BS reloads
@@ -32,20 +35,21 @@ module.browsersync = {
       path.join(devAssets, 'js', '*.js'),
       path.join(devAssets, 'images', '**'),
       path.join(devAssets, 'fonts', '*'),
+      path.join(development, '*')
     ],
-    notify: false
+    notify: true
   },
   production: {
     server: {
-      baseDir: [production],
+      baseDir: [production]
     },
     port: 9998,
-    notify: false,
-  },
+    notify: true
+  }
 };
 
 // Watch source files
-module.watch = {
+exports.watch = {
   jekyll: [
     '_config.yml',
     '_config.build.yml',
@@ -57,91 +61,96 @@ module.watch = {
     path.join(app, '_plugins', '*.rb'),
     path.join(app, '_posts', '*.{markdown,md}'),
     path.join(app, '**', '*.{html,markdown,md,yml,json,txt,xml}'),
-    path.join(app, '*'),
+    path.join(app, '*')
   ],
   styles: path.join(appAssets, 'styles', '**', '*.{cs,scss}'),
   scripts: path.join(appAssets, 'javascripts', '**', '*.{js,vue}'),
   images: path.join(appAssets, 'images', '**', '*'),
-  sprites: path.join(appAssets, 'images', '**', '*.png'),
-  svg: path.join(appAssets, 'images', '**', '*.svg'),
+  svg: path.join(appAssets, 'images', '**', '*.svg')
 };
 
 // Delete all files from the dev build
-module.delete = {
+exports.delete = {
   development: {
     src: [
       development,
-      appAssets + '/styles/vendor',
-      appAssets + '/fonts/vendor',
-    ],
+      path.join(appAssets, 'styles', 'vendor'),
+      path.join(appAssets, 'fonts', 'vendor')
+    ]
   },
   production: {
     src: [
       production,
-      appAssets + '/styles/vendor',
-      appAssets + '/fonts/vendor',
-    ],
-  },
+      path.join(appAssets, 'styles', 'vendor'),
+      path.join(appAssets, 'fonts', 'vendor')
+    ]
+  }
 };
 
 // Jekyll
-module.jekyll = {
+exports.jekyll = {
   development: {
     src: app,
     dest: development,
-    config: '_config.yml',
-    option: '--profile',
+    config: '_config.development.yml',
+    option: '--profile'
   },
   production: {
     src: app,
     dest: production,
-    config: '_config.yml,_config.build.yml',
-    option: '--',
-  },
+    config: '_config.development.yml,_config.production.yml',
+    option: '--'
+  }
 };
 
-module.sass = {
-  src: appAssets + '/styles/bootswatch/theme.scss',
-  dest: appAssets + '/styles/vendor/bootswatch',
+exports.sass = {
+  src: path.join(appAssets, 'styles', 'bootswatch', 'theme.scss'),
+  dest: path.join(appAssets, 'styles', 'vendor', 'bootswatch')
 };
 
-  // CSS
-module.styles = {
+// CSS
+exports.styles = {
   development: {
-    src: appAssets + '/styles/*.css',
-    dest: devAssets + '/css',
+    src: path.join(appAssets, 'styles', '*.css'),
+    dest: path.join(devAssets, 'css')
   },
   production: {
-    src: appAssets + '/styles/*.css',
-    dest: prodAssets + '/css',
+    src: path.join(appAssets, 'styles', '*.css'),
+    dest: path.join(prodAssets, 'css')
   },
   vendor: {
     src: [
-      nodeModules + '/bootstrap-vue/dist/bootstrap-vue.css',
-      nodeModules + '/bootstrap/scss/**/*',
-      nodeModules + '/normalize.css/normalize.css',
-      nodeModules + '/roboto-fontface/css/roboto/roboto-fontface.css',
+      path.join(nodeModules, 'bootstrap-vue', 'dist', 'bootstrap-vue.css'),
+      path.join(nodeModules, 'bootstrap', 'scss', '**', '*'),
+      path.join(nodeModules, 'normalize.css', 'normalize.css'),
+      path.join(nodeModules, 'roboto-fontface', 'css', 'roboto', 'roboto-fontface.css')
     ],
-    dest: appAssets + '/styles/vendor',
-    base: nodeModules,
+    dest: path.join(appAssets, 'styles', 'vendor'),
+    base: nodeModules
   },
   options: {
     advancedVariables: {},
     presetEnv: {
       autoprefixer: {
-        cascade: true,
-      },
+        cascade: true
+      }
     },
     nested: {},
     mqpacker: {
-      sort: true,
+      sort: true
     },
     cssnano: {},
-  },
+    uncss: {
+      html: [
+        path.join(production, '**', '*.html')
+      ],
+      ignore: []
+    }
+  }
 };
 
 // JavaScript Modules via Browserify
-module.scripts = {
+exports.scripts = {
   // A separate bundle will be generated for each
   // bundle config in the list below.
   //
@@ -149,129 +158,137 @@ module.scripts = {
   // contains everything that needs to be loaded asap.
   // app.js is loaded at the bottom, and contains
   // everything that can be loaded after rendering.
-  options: {
-    // Required watchify args
-    cache: {},
-    packageCache: {},
-    fullPaths: false,
-    // Add file extentions to make optional in your requires
-    extensions: [],
-    // Enable source maps!
-    debug: true,
+  development: {
+    options: {
+      // Required watchify args
+      cache: {},
+      packageCache: {},
+      fullPaths: false,
+      // Disable source maps!
+      debug: false
+    },
+    bundles: [{
+      entries: path.join(appAssets, 'javascripts', 'app.js'),
+      dest: path.join(prodAssets, 'js'),
+      outputName: 'app.js'
+    }, {
+      entries: path.join(appAssets, 'javascripts', 'head.js'),
+      dest: path.join(prodAssets, 'js'),
+      outputName: 'head.js'
+    }]
+
   },
-  bundles: [{
-    entries: './' + appAssets + '/javascripts/app.js',
-    dest: devAssets + '/js',
-    outputName: 'app.js',
-  }, {
-    entries: './' + appAssets + '/javascripts/head.js',
-    dest: devAssets + '/js',
-    outputName: 'head.js',
-  }],
+  production: {
+    options: {
+      // Required watchify args
+      cache: {},
+      packageCache: {},
+      fullPaths: false,
+      // Enable source maps!
+      debug: true
+    },
+    bundles: [{
+      entries: path.join(appAssets, 'javascripts', 'app.js'),
+      dest: path.join(devAssets, 'js'),
+      outputName: 'app.js'
+    }, {
+      entries: path.join(appAssets, 'javascripts', 'head.js'),
+      dest: path.join(devAssets, 'js'),
+      outputName: 'head.js'
+    }]
+  }
 };
 
 // Copy images
-module.images = {
-  src: appAssets + '/images/**/*',
-  dest: devAssets + '/images',
+exports.images = {
+  development: {
+    src: path.join(appAssets, 'images', '**', '*'),
+    dest: path.join(devAssets, 'images')
+  },
+  production: {
+    src: path.join(appAssets, 'images', '**', '*'),
+    dest: path.join(prodAssets, 'images')
+  }
 };
 
 // Copy fonts
-module.fonts = {
+exports.fonts = {
+  vendor: {
+    src: [
+      path.join(nodeModules, 'roboto-fontface', 'fonts', 'roboto', '*.{woff,woff2}')
+    ],
+    dest: path.join(appAssets, 'fonts', 'vendor')
+  },
   development: {
     src: [
-      appAssets + '/fonts/*.{eot,ttf,woff,woff2,svg}',
-      appAssets + '/fonts/vendor/*.{eot,ttf,woff,woff2,svg}',
+      path.join(appAssets, 'fonts', '*.{eot,ttf,woff,woff2,svg}'),
+      path.join(appAssets, 'fonts', 'vendor', '*.{eot,ttf,woff,woff2,svg}')
     ],
-    dest: devAssets + '/fonts',
-    vendor: {
-      src: [
-        nodeModules + '/roboto-fontface/fonts/roboto/*.{woff,woff2}',
-      ],
-      dest: appAssets + '/fonts/vendor',
-    },
+    dest: path.join(devAssets, 'fonts')
   },
   production: {
-    src: devAssets + '/fonts/*',
-    dest: prodAssets + '/fonts',
-  },
-};
-
-// Copy CSS
-// Used to copy production ready styles.
-module.copycss = {
-  src: devAssets + '/css/*.css',
-  dest: prodAssets + '/css/',
+    src: path.join(devAssets, 'fonts', '*'),
+    dest: path.join(prodAssets, 'fonts')
+  }
 };
 
 // Base64
-module.base64 = {
-  src: devAssets + '/css/*.css',
-  dest: devAssets + '/css',
+exports.base64 = {
+  development: {
+    src: path.join(devAssets, 'css', '*.css'),
+    dest: path.join(devAssets, 'css')
+  },
+  production: {
+    src: path.join(prodAssets, 'css', '*.css'),
+    dest: path.join(prodAssets, 'css')
+  },
   options: {
     baseDir: build,
     extensions: ['svg', 'woff', 'woff2'],
     maxImageSize: 1024 * 1024 * 1, // bytes
-    debug: false,
-  },
+    debug: false
+  }
 };
 
 // Optimize CSS, JS, Images, HTML for production
-module.optimize = {
-  css: {
-    src: prodAssets + '/css/*.css',
-    dest: prodAssets + '/css/',
-    options: {
-      uncss: {
-        html: [
-          production + '/**/*.html',
-        ],
-        ignore: [],
-      },
-    },
-  },
-  js: {
-    src: devAssets + '/js/*.js',
-    dest: prodAssets + '/js/',
-    options: {},
-  },
+exports.optimize = {
   json: {
-    src: production + '/**/*.json',
-    dest: production,
+    src: path.join(production, '**', '*.json'),
+    dest: production
   },
   xml: {
-    src: production + '/**/*.xml',
+    src: path.join(production, '**', '*.xml'),
     dest: production,
     options: {
-      type: 'minify',
-    },
+      type: 'minify'
+    }
   },
   images: {
-    src: devAssets + '/images/**/*.{jpg,jpeg,png,gif,svg}',
-    dest: prodAssets + '/images/',
+    src: path.join(prodAssets, 'images', '**', '*.{jpg,jpeg,png,gif,svg}'),
+    dest: path.join(prodAssets, 'images'),
     imageminPluginOptions: {
       gifsicle: {
-        interlaced: true,
+        interlaced: true
       },
       jpegtran: {
-        progressive: true,
+        progressive: true
       },
       optipng: {
-        optimizationLevel: 3,
+        optimizationLevel: 3
       },
       svgo: {
         plugins: [{
-          removeDesc: true,
+          removeDesc: true
         }]
       }
     },
     imageminOptions: {
-      verbose: false,
-    },
+      verbose: false
+    }
   },
   html: {
     development: {
-      src: development + '/**/*.html',
+      src: path.join(development, '**', '*.html'),
       dest: development,
       options: {
         removeComments: true,
@@ -280,11 +297,11 @@ module.optimize = {
         removeAttributeQuotes: true,
         minifyJS: true,
         minifyCSS: true,
-        processScripts: ['application/ld+json'],
-      },
+        processScripts: ['application/ld+json']
+      }
     },
     production: {
-      src: production + '/**/*.html',
+      src: path.join(production, '**', '*.html'),
       dest: production,
       options: {
         removeComments: true,
@@ -293,60 +310,69 @@ module.optimize = {
         removeAttributeQuotes: true,
         minifyJS: true,
         minifyCSS: true,
-        processScripts: ['application/ld+json'],
-      },
-    },
-  },
+        processScripts: ['application/ld+json']
+      }
+    }
+  }
 };
 
 // Lint CSS files, but none in /vendor/
-module.lintStyles = {
+exports.lintStyles = {
   src: [
-    appAssets + '/styles/**/*.css',
-    '!' + appAssets + '/styles/vendor/**'
+    path.join(appAssets, 'styles', '**', '*.css'),
+    util.format('!%s', path.join(appAssets, 'styles', 'vendor', '**'))
   ],
   options: {
-    stylelint: {}, // Using .stylelintrc
+    stylelint: {},
     reporter: {
-      clearReportedMessages: true,
+      clearReportedMessages: true
     }
   }
 };
 
 // Lint JavaScript files
-module.lintJs = {
-  src: appAssets + '/javascripts/*.js',
+exports.lintJs = {
+  src: path.join(appAssets, 'javascripts', '*.js')
 };
 
-// Lint production JSON files
-module.lintJson = {
-  src: production + '/**/*.json',
+// Lint JSON files
+exports.lintJson = {
+  src: path.join(production, '**', '*.json')
+};
+
+// Lint JSON files
+exports.lintHtml = {
+  src: path.join(production, '**', '*.html')
+};
+// Lint JSON files
+exports.lintXml = {
+  src: path.join(production, '**', '*.xml')
 };
 
 // Revision asset files
-module.revision = {
+exports.revision = {
   src: {
     assets: [
-      prodAssets + '/css/*.css',
-      prodAssets + '/js/*.js',
+      path.join(prodAssets, 'css', '*.css'),
+      path.join(prodAssets, 'js', '*.js')
     ],
-    base: production,
+    base: production
   },
   dest: {
     assets: production,
     manifest: {
       name: 'manifest.json',
-      path: prodAssets,
-    },
-  },
+      path: prodAssets
+    }
+  }
 };
 
 // Replace links to asset files, with rev version
-module.collect = {
+exports.collect = {
   src: [
-    prodAssets + '/manifest.json',
-    production + '/**/*.{html,xml,txt,json,css,js}',
-    '!' + production + '/feed.xml',
+    path.join(prodAssets, 'manifest.json'),
+    path.join(production, '**', '*.{html,xml,txt,json,css,js}'),
+    util.format('!%s', path.join(production, 'feed.xml'))
   ],
   dest: production
 };

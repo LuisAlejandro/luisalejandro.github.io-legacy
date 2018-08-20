@@ -1,14 +1,13 @@
-var config      = require('../../config').jekyll.development;
+const config = require('../../config').jekyll.development;
 
-var gulp        = require('gulp');
-var cp          = require('child_process');
-var browsersync = require('browser-sync');
-var runSequence = require('run-sequence');
-
+const gulp = require('gulp');
+const cp = require('child_process');
+const browsersync = require('browser-sync');
+const util = require('util');
 
 // Build Jekyll site
-gulp.task('jekyll:development', function(done) {
-  browsersync.notify('Compiling Jekyll');
+gulp.task('jekyll:development', function (done) {
+  browsersync.notify('Compiling Jekyll (development)');
 
   return cp.spawn(
     'bundle',
@@ -16,16 +15,11 @@ gulp.task('jekyll:development', function(done) {
       'exec',
       'jekyll',
       'build',
-      '--source=' + config.src,
-      '--destination=' + config.dest,
-      '--config=' + config.config,
+      util.format('--source=%s', config.src),
+      util.format('--destination=%s', config.dest),
+      util.format('--config=%s', config.config),
       config.option
     ],
     { stdio: 'inherit' })
-  .on('close', done);
-});
-
-// Rebuild Jekyll site
-gulp.task('jekyll:rebuild:development', function(callback) {
-  runSequence('jekyll:development', 'browsersync:reload', callback);
+    .on('close', done);
 });

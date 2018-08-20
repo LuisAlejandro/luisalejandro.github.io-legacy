@@ -1,22 +1,18 @@
-var config  = require('../../config').fonts.development;
-var helpers = require('../../util/helpers');
+const config = require('../../config').fonts.development;
+const helpers = require('../../util/helpers');
 
-var gulp    = require('gulp');
-var plumber = require('gulp-plumber');
-var changed = require('gulp-changed');
-
-
-gulp.task('fonts:vendor:development', function() {
-  return gulp.src(config.vendor.src)
-    .pipe(plumber({errorHandler: helpers.onError}))
-    .pipe(changed(config.vendor.dest))
-    .pipe(gulp.dest(config.vendor.dest));
-});
+const gulp = require('gulp');
+const browsersync = require('browser-sync');
+const plumber = require('gulp-plumber');
+const changed = require('gulp-changed');
+const size = require('gulp-size');
 
 // Copy fonts to build folder
-gulp.task('fonts:development', ['fonts:vendor:development'], function() {
+gulp.task('fonts:development', ['fonts:vendor:common'], function () {
+  browsersync.notify('Copying fonts (development)');
   return gulp.src(config.src)
     .pipe(plumber({errorHandler: helpers.onError}))
     .pipe(changed(config.dest))
-    .pipe(gulp.dest(config.dest));
+    .pipe(gulp.dest(config.dest))
+    .pipe(size());
 });

@@ -1,31 +1,26 @@
-var config = require('../../config').jekyll.production;
+const config = require('../../config').jekyll.production;
 
-var gulp = require('gulp');
-var cp = require('child_process');
-var browsersync = require('browser-sync');
-var runSequence = require('run-sequence');
-
+const gulp = require('gulp');
+const cp = require('child_process');
+const browsersync = require('browser-sync');
+const util = require('util');
 
 // Build Jekyll site
 gulp.task('jekyll:production', function (done) {
-  browsersync.notify('Compiling Jekyll');
+  browsersync.notify('Compiling Jekyll (production)');
 
-  return cp.spawn(
-      'bundle', [
+  return cp
+    .spawn(
+      'bundle',
+      [
         'exec',
         'jekyll',
         'build',
-        '--source=' + config.src,
-        '--destination=' + config.dest,
-        '--config=' + config.config,
+        util.format('--source=%s', config.src),
+        util.format('--destination=%s', config.dest),
+        util.format('--config=%s', config.config),
         config.option
-      ], {
-        stdio: 'inherit'
-      })
+      ],
+      { stdio: 'inherit' })
     .on('close', done);
 });
-
-// // Rebuild Jekyll site
-// gulp.task('jekyll:rebuild:production', function(callback) {
-//   runSequence('jekyll:production', 'browsersync:reload', callback);
-// });

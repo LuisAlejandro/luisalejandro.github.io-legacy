@@ -1,31 +1,30 @@
-var gulp = require('gulp');
-var runSequence = require('run-sequence');
-
+const gulp = require('gulp');
+const runSequence = require('run-sequence');
 
 // Run all tasks needed for a build, in defined order
-gulp.task('build:production', function (callback) {
+gulp.task('build:production', function (done) {
   runSequence(
     'delete:production',
-    'libraries:common', [
+    [
       'jekyll:production',
-      'styles:production',
-      'scripts:production',
       'images:production',
-      'fonts:production'
+      'fonts:production',
+      'styles:production',
+      'scripts:production'
     ],
-    'base64:production', [
-      'copy:css',
-      'optimize:js',
+    'base64:production',
+    [
       'optimize:json',
       'optimize:xml',
       'optimize:images',
-      'optimize:html',
-      'copy:fonts:production'
-    ], [
-      'optimize:css',
-      'lint-json'
+      'optimize:html'
     ],
     'revision',
     'rev:collect',
-    callback);
+    [
+      'lint-html',
+      'lint-xml',
+      'lint-json'
+    ],
+    done);
 });

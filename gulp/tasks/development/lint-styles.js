@@ -1,19 +1,17 @@
-var config    = require('../../config').lintStyles;
-var helpers   = require('../../util/helpers');
+const config = require('../../config').lintStyles;
+const helpers = require('../../util/helpers');
 
-var gulp      = require('gulp');
-var plumber   = require('gulp-plumber');
-var postcss   = require('gulp-postcss');
-var stylelint = require('stylelint');
-var reporter  = require('postcss-reporter');
-
+const gulp = require('gulp');
+const plumber = require('gulp-plumber');
+const postcss = require('gulp-postcss');
+const stylelint = require('stylelint');
+const reporter = require('postcss-reporter');
 
 // Lint styles
 // Executed in watch.js
-gulp.task('lint:styles:development', function() {
-
+gulp.task('lint:styles:development', function () {
   // PostCSS plugins
-  var processors = [
+  const processors = [
     stylelint(config.options.stylelint),
     reporter(config.options.reporter)
   ];
