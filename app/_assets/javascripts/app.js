@@ -1,16 +1,15 @@
-// Example
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import BootstrapVue from 'bootstrap-vue';
 
-//require('jquery');
+import router from './router/router';
+import App from './components/App.vue';
 
-//$(function() {
-//  console.log('jQuery loaded');
-//});
+Vue.use(VueRouter);
+Vue.use(BootstrapVue);
 
-
-// If you want above. Don’t forget to add the following to the package.json:
-//"browserify-shim": {
-//  "jquery": "$"
-//},
-
-// And add jQuery to your dependencies in bower.json:
-//"jquery": "~2.1.1"
+const app = new Vue({
+  el: '#app',
+  router: router,
+  render: component => component(App)
+});

@@ -1,21 +1,22 @@
-var config   = require('../../config').optimize.images;
+const config = require('../../config').optimize.images;
+const helpers = require('../../util/helpers');
 
-var gulp     = require('gulp');
-var imagemin = require('gulp-imagemin');
-var size     = require('gulp-size');
-
+const gulp = require('gulp');
+const imagemin = require('gulp-imagemin');
+const plumber = require('gulp-plumber');
+const size = require('gulp-size');
 
 // Copy and minimize images
-gulp.task('optimize:images', function() {
+gulp.task('optimize:images', function () {
+  const plugins = [
+    imagemin.gifsicle(config.imageminPluginOptions.gifsicle),
+    imagemin.jpegtran(config.imageminPluginOptions.jpegtran),
+    imagemin.optipng(config.imageminPluginOptions.optipng),
+    imagemin.svgo(config.imageminPluginOptions.svgo)
+  ];
   return gulp.src(config.src)
-    .pipe(imagemin([
-        imagemin.gifsicle(config.imageminPluginOptions.gifsicle),
-        imagemin.jpegtran(config.imageminPluginOptions.jpegtran),
-        imagemin.optipng(config.imageminPluginOptions.optipng),
-        imagemin.svgo(config.imageminPluginOptions.svgo)
-      ],
-      config.imageminOptions)
-    )
+    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(imagemin(plugins, config.imageminOptions))
     .pipe(gulp.dest(config.dest))
-    .pipe(size());
+    .pipe(size({title: 'optimize:images'}));
 });

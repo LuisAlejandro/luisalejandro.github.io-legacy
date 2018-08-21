@@ -5,377 +5,384 @@
 // though. That’s why assets are served from a different
 // folder on the development build. BrowserSync watches only
 // the asset files.
-var src               = 'app';
-var build             = 'build';
-var development       = build + '/development';
-var production        = build + '/production';
+const path = require('path');
+const util = require('util');
+
+const app = 'app';
+const build = 'build';
+const nodeModules = 'node_modules';
+const development = path.join(build, 'development');
+const production = path.join(build, 'production');
 
 // Assets
-var srcAssets         = src + '/_assets';
-var developmentAssets = build + '/assets';
-var productionAssets  = build + '/production/assets';
+const appAssets = path.join(app, '_assets');
+const devAssets = path.join(development, 'assets');
+const prodAssets = path.join(production, 'assets');
 
+var exports = module.exports = {};
 
-module.exports = {
-
-  // BrowserSync
-  browsersync: {
-    development: {
-      server: {
-        baseDir: [development, build, src]
-      },
-      port: 9999,
-      // Watched files in the dev build. BS reloads
-      // website on change.
-      files: [
-        developmentAssets + '/css/*.css',
-        developmentAssets + '/js/*.js',
-        developmentAssets + '/images/**',
-        developmentAssets + '/fonts/*'
-      ],
-      notify: false
+exports.libraries = {
+  fonts: {
+    webfontslist: 'fonts.list',
+    webfontsconfig: {
+      cssFilename: 'webfonts.css',
+      relativePaths: true,
+      format: 'woff2'
     },
-    production: {
-      server: {
-        baseDir: [production]
-      },
-      port: 9998,
-      notify: false
-    }
-  },
+    dest: path.join(nodeModules, 'webfonts')
+  }
+};
 
-  // Watch source files
-  watch: {
-    jekyll: [
-      '_config.yml',
-      '_config.build.yml',
-      'stopwords.txt',
-      src + '/_data/**/*.{json,yml,csv}',
-      src + '/_includes/**/*.{html,xml}',
-      src + '/_layouts/*.html',
-      src + '/_locales/*.yml',
-      src + '/_plugins/*.rb',
-      src + '/_posts/*.{markdown,md}',
-      src + '/**/*.{html,markdown,md,yml,json,txt,xml}',
-      src + '/*'
-    ],
-    styles:  srcAssets + '/styles/**/*.css',
-    scripts: srcAssets + '/javascripts/**/*.js',
-    images:  srcAssets + '/images/**/*',
-    sprites: srcAssets + '/images/**/*.png',
-    svg:     srcAssets + '/images/**/*.svg',
-  },
-
-  // Delete all files from the dev build
-  delete: {
-    src: [developmentAssets]
-  },
-
-  // Jekyll
-  jekyll: {
-    development: {
-      src:    src,
-      dest:   development,
-      config: '_config.yml',
-      option: '--profile'
+// BrowserSync
+exports.browsersync = {
+  development: {
+    server: {
+      baseDir: [development]
     },
-    production: {
-      src:    src,
-      dest:   production,
-      config: '_config.yml,_config.build.yml'
-    }
-  },
-
-  // CSS
-  styles: {
-    src:  srcAssets + '/styles/*.css',
-    dest: developmentAssets + '/css',
-    options: {
-      advancedVariables: {},
-      presetEnv: {
-        autoprefixer: {
-          cascade: true
-        }
-      },
-      nested: {},
-      mqpacker: { sort: true },
-      cssnano: {}
-    }
-  },
-
-  // Lint CSS files, but none in /vendor/
-  lintStyles: {
-    src: [
-      srcAssets + '/styles/**/*.css',
-      '!' + srcAssets + '/styles/vendor/**'
+    port: 9999,
+    // Watched files in the dev build. BS reloads
+    // website on change.
+    files: [
+      path.join(devAssets, 'css', '*.css'),
+      path.join(devAssets, 'js', '*.js'),
+      path.join(devAssets, 'images', '**'),
+      path.join(devAssets, 'fonts', '*'),
+      path.join(development, '*')
     ],
-    options: {
-      stylelint: {}, // Using .stylelintrc
-      reporter: {
-        clearReportedMessages: true
-      }
-    }
+    notify: true,
+    open: false,
+    ui: false
   },
+  production: {
+    server: {
+      baseDir: [production]
+    },
+    port: 9998,
+    notify: true,
+    open: false,
+    ui: false
+  }
+};
 
-  // JavaScript, if Browserify is not used
-  scripts: {
+// Watch source files
+exports.watch = {
+  jekyll: [
+    '_config.yml',
+    '_config.build.yml',
+    'stopwords.txt',
+    path.join(app, '_data', '**', '*.{json,yml,csv}'),
+    path.join(app, '_includes', '**', '*.{html,xml}'),
+    path.join(app, '_layouts', '*.html'),
+    path.join(app, '_locales', '*.yml'),
+    path.join(app, '_plugins', '*.rb'),
+    path.join(app, '_posts', '*.{markdown,md}'),
+    path.join(app, '**', '*.{html,markdown,md,yml,json,txt,xml}'),
+    path.join(app, '*')
+  ],
+  styles: path.join(appAssets, 'styles', '**', '*.{css,scss}'),
+  scripts: path.join(appAssets, 'javascripts', '**', '*.{js,vue}'),
+  images: path.join(appAssets, 'images', '**', '*'),
+  svg: path.join(appAssets, 'images', '**', '*.svg')
+};
+
+// Delete all files from the dev build
+exports.delete = {
+  development: {
     src: [
-      srcAssets + '/javascripts/**/*.js'
-    ],
-    dest: developmentAssets + '/js',
-    outputName: 'main.js',
-    standaloneFiles: [
-      // srcAssets + '/javascripts/example-vendor.js'
+      development,
+      path.join(appAssets, 'styles', 'vendor'),
+      path.join(appAssets, 'fonts', 'vendor')
     ]
   },
-
-  // JavaScript Modules via Browserify
-  browserify: {
-    // Enable source maps
-    debug: true,
-    // Additional file extensions to make optional
-    extensions: ['.coffee', '.hbs'],
-    // A separate bundle will be generated for each
-    // bundle config in the list below.
-    //
-    // head.js is loaded in the head of the website, and
-    // contains everything that needs to be loaded asap.
-    // app.js is loaded at the bottom, and contains
-    // everything that can be loaded after rendering.
-    bundleConfigs: [{
-      entries:    './' + srcAssets + '/javascripts/app.js',
-      dest:       developmentAssets + '/js',
-      outputName: 'app.js'
-    }, {
-      entries:    './' + srcAssets + '/javascripts/head.js',
-      dest:       developmentAssets + '/js',
-      outputName: 'head.js'
-    }]
-  },
-
-  // Lint JavaScript files
-  lintJs: {
-    src: srcAssets + '/javascripts/*.js'
-  },
-
-  // Responsive image generation
-  responsiveImages: {
-    src:  srcAssets + '/images/example/*.jpg',
-    dest: developmentAssets + '/images/example',
-    outputSuffix: '-768',
-    options: {
-      imageMagick: false,
-      width : 768,
-      quality: 0.85,
-      filter: 'Lanczos',
-      sharpen: '2x0.5+0.5+0'
-    }
-  },
-
-  // WebP image generation
-  webp: {
-    src: productionAssets + '/images/**/*.{jpg,jpeg,png}',
-    dest: productionAssets + '/images/',
-    options: {
-      preset: 'photo',
-      quality: 90
-    }
-  },
-
-  // Sprites generation
-  // @TODO: Currently not used, might replace with gulp-svgstore!
-  sprites: {
-    src: srcAssets + '/images/sprites/icon/*.png',
-    dest: {
-      css: srcAssets + '/styles/base/',
-      image: srcAssets + '/images/sprites/'
-    },
-    options: {
-      cssName: '_sprites.css',
-      cssFormat: 'css',
-      cssOpts: {
-        cssClass: function (item) {
-          // If this is a hover sprite, name it as a hover one (e.g. 'home-hover' -> 'home:hover')
-          if (item.name.indexOf('-hover') !== -1) {
-            return '.icon-' + item.name.replace('-hover', ':hover');
-            // Otherwise, use the name as the selector (e.g. 'home' -> 'home')
-          } else {
-            return '.icon-' + item.name;
-          }
-        }
-      },
-      imgName: 'icon-sprite.png',
-      imgPath: '/assets/images/sprites/icon-sprite.png'
-    }
-  },
-
-  // Base64
-  // @NOTE: Not used.
-  base64: {
-    src: developmentAssets + '/css/*.css',
-    dest: developmentAssets + '/css',
-    options: {
-      baseDir: build,
-      extensions: ['png'],
-      maxImageSize: 20 * 1024, // bytes
-      debug: false
-    }
-  },
-
-  // Copy images
-  images: {
-    src:  srcAssets + '/images/**/*',
-    dest: developmentAssets + '/images'
-  },
-
-  // Copy fonts
-  copyfonts: {
-    development: {
-      src:  srcAssets + '/fonts/*',
-      dest: developmentAssets + '/fonts'
-    },
-    production: {
-      src:  developmentAssets + '/fonts/*',
-      dest: productionAssets + '/fonts'
-    }
-  },
-
-  // Copy CSS
-  // Used to copy production ready styles.
-  copycss: {
-    src:  developmentAssets + '/css/*.css',
-    dest: productionAssets + '/css/'
-  },
-
-  // Optimize CSS, JS, Images, HTML for production
-  optimize: {
-    css: {
-      src:  productionAssets + '/css/*.css',
-      dest: productionAssets + '/css/',
-      options: {
-        uncss: {
-          html: [
-            production + '/**/*.html'
-          ],
-          ignore: [
-          ]
-        }
-      }
-    },
-    js: {
-      src:  developmentAssets + '/js/*.js',
-      dest: productionAssets + '/js/',
-      options: {}
-    },
-    json: {
-      src:  production + '/**/*.json',
-      dest: production
-    },
-    xml: {
-      src:  production + '/**/*.xml',
-      dest: production,
-      options: { type: 'minify' }
-    },
-    images: {
-      src:  developmentAssets + '/images/**/*.{jpg,jpeg,png,gif,svg}',
-      dest: productionAssets + '/images/',
-      imageminPluginOptions: {
-        gifsicle: { interlaced: true },
-        jpegtran: { progressive: true },
-        optipng: { optimizationLevel: 3 },
-        svgo: { plugins: [{ removeDesc: true }] }
-      },
-      imageminOptions: { verbose: false }
-    },
-    html: {
-      development: {
-        src: development + '/**/*.html',
-        dest: development,
-        options: {
-          removeComments: true,
-          removeCommentsFromCDATA: true,
-          collapseWhitespace: true,
-          removeAttributeQuotes: true,
-          minifyJS: true,
-          minifyCSS: true,
-          processScripts: ['application/ld+json']
-        }
-      },
-      production: {
-        src: production + '/**/*.html',
-        dest: production,
-        options: {
-          removeComments: true,
-          removeCommentsFromCDATA: true,
-          collapseWhitespace: true,
-          removeAttributeQuotes: true,
-          minifyJS: true,
-          minifyCSS: true,
-          processScripts: ['application/ld+json']
-        }
-      }
-    }
-  },
-
-  // Lint production JSON files
-  lintJson: {
-    src:  production + '/**/*.json'
-  },
-
-  // Revision asset files
-  revision: {
-    src: {
-      assets: [
-        productionAssets + '/css/*.css',
-        productionAssets + '/js/*.js'
-        //productionAssets + '/images/**/*'
-      ],
-      base: production
-    },
-    dest: {
-      assets: production,
-      manifest: {
-        name: 'manifest.json',
-        path: productionAssets
-      }
-    }
-  },
-
-  // Replace links to asset files, with rev version
-  collect: {
+  production: {
     src: [
-      productionAssets + '/manifest.json',
-      production + '/**/*.{html,xml,txt,json,css,js}',
-      '!' + production + '/feed.xml'
+      production,
+      path.join(appAssets, 'styles', 'vendor'),
+      path.join(appAssets, 'fonts', 'vendor')
+    ]
+  }
+};
+
+// Jekyll
+exports.jekyll = {
+  development: {
+    config: '_config.common.yml,_config.development.yml',
+    option: '--profile'
+  },
+  production: {
+    config: '_config.common.yml,_config.production.yml',
+    option: '--'
+  }
+};
+
+exports.sass = {
+  src: path.join(appAssets, 'styles', 'bootswatch', 'theme.scss'),
+  dest: path.join(appAssets, 'styles', 'vendor', 'bootswatch')
+};
+
+// CSS
+exports.styles = {
+  vendor: {
+    src: [
+      path.join(nodeModules, 'bootstrap-vue', 'dist', 'bootstrap-vue.css'),
+      path.join(nodeModules, 'bootstrap', 'scss', '**', '*'),
+      path.join(nodeModules, 'normalize.css', 'normalize.css'),
+      path.join(nodeModules, 'webfonts', '*.css')
     ],
-    dest: production
+    dest: path.join(appAssets, 'styles', 'vendor'),
+    base: nodeModules
   },
-
-  // GZIP compression
-  // @NOTE: Not used, done with s3_website.
-  gzip: {
-    src: production + '/**/*.{html,xml,json,css,js}',
-    dest: production,
-    options: {}
+  development: {
+    src: path.join(appAssets, 'styles', '*.css'),
+    dest: path.join(devAssets, 'css')
   },
-
-  // rsync to staging server
-  rsync: {
-    src: production + '/**',
-    options: {
-      destination: '~/path/to/my/website/root/',
-      root: production,
-      hostname: 'mydomain.com',
-      username: 'user',
-      incremental: true,
-      progress: true,
-      relative: true,
-      emptyDirectories: true,
-      recursive: true,
-      clean: true,
-      exclude: ['.DS_Store'],
-      include: []
+  production: {
+    src: path.join(appAssets, 'styles', '*.css'),
+    dest: path.join(prodAssets, 'css')
+  },
+  options: {
+    advancedVariables: {},
+    presetEnv: {
+      autoprefixer: {
+        cascade: true
+      }
+    },
+    nested: {},
+    mqpacker: {
+      sort: true
+    },
+    cssnano: {},
+    uncss: {
+      html: [
+        path.join(production, '**', '*.html')
+      ],
+      ignore: []
     }
   }
+};
 
+// JavaScript Modules via Browserify
+exports.scripts = {
+  // A separate bundle will be generated for each
+  // bundle config in the list below.
+  //
+  // head.js is loaded in the head of the website, and
+  // contains everything that needs to be loaded asap.
+  // app.js is loaded at the bottom, and contains
+  // everything that can be loaded after rendering.
+  development: {
+    options: {
+      // Required watchify args
+      cache: {},
+      packageCache: {},
+      fullPaths: false,
+      // Enable source maps!
+      debug: true
+    },
+    bundles: [{
+      entries: path.join(appAssets, 'javascripts', 'app.js'),
+      dest: path.join(devAssets, 'js'),
+      outputName: 'app.js'
+    }, {
+      entries: path.join(appAssets, 'javascripts', 'head.js'),
+      dest: path.join(devAssets, 'js'),
+      outputName: 'head.js'
+    }]
+
+  },
+  production: {
+    options: {
+      // Required watchify args
+      cache: {},
+      packageCache: {},
+      fullPaths: false,
+      // Disable source maps!
+      debug: false
+    },
+    bundles: [{
+      entries: path.join(appAssets, 'javascripts', 'app.js'),
+      dest: path.join(prodAssets, 'js'),
+      outputName: 'app.js'
+    }, {
+      entries: path.join(appAssets, 'javascripts', 'head.js'),
+      dest: path.join(prodAssets, 'js'),
+      outputName: 'head.js'
+    }]
+  }
+};
+
+// Copy images
+exports.images = {
+  development: {
+    src: path.join(appAssets, 'images', '**', '*'),
+    dest: path.join(devAssets, 'images')
+  },
+  production: {
+    src: path.join(appAssets, 'images', '**', '*'),
+    dest: path.join(prodAssets, 'images')
+  }
+};
+
+// Copy fonts
+exports.fonts = {
+  vendor: {
+    src: path.join(nodeModules, 'webfonts', '*.{eot,ttf,woff,woff2,svg}'),
+    dest: path.join(appAssets, 'fonts', 'vendor')
+  },
+  development: {
+    src: [
+      path.join(appAssets, 'fonts', '*.{eot,ttf,woff,woff2,svg}'),
+      path.join(appAssets, 'fonts', 'vendor', '*.{eot,ttf,woff,woff2,svg}')
+    ],
+    dest: path.join(devAssets, 'fonts')
+  },
+  production: {
+    src: [
+      path.join(appAssets, 'fonts', '*.{eot,ttf,woff,woff2,svg}'),
+      path.join(appAssets, 'fonts', 'vendor', '*.{eot,ttf,woff,woff2,svg}')
+    ],
+    dest: path.join(prodAssets, 'fonts')
+  }
+};
+
+// Base64
+exports.base64 = {
+  src: path.join(prodAssets, 'css', '*.css'),
+  dest: path.join(prodAssets, 'css'),
+  options: {
+    extensions: ['svg', 'woff2'],
+    maxImageSize: 1024 * 1024 * 1, // bytes
+    debug: false
+  }
+};
+
+// Optimize CSS, JS, Images, HTML for production
+exports.optimize = {
+  css: {
+    src: path.join(prodAssets, 'css', '*.css'),
+    dest: path.join(prodAssets, 'css'),
+    options: {
+      discardComments: {},
+      cssnano: {},
+      uncss: {
+        html: [
+          path.join(production, '**', '*.html')
+        ],
+        ignore: [],
+        htmlroot: production
+      }
+    }
+  },
+  js: {
+    src: path.join(prodAssets, 'js', '*.js'),
+    dest: path.join(prodAssets, 'js')
+  },
+  json: {
+    src: path.join(production, '**', '*.json'),
+    dest: production
+  },
+  xml: {
+    src: path.join(production, '**', '*.xml'),
+    dest: production,
+    options: {
+      type: 'minify'
+    }
+  },
+  images: {
+    src: path.join(prodAssets, 'images', '**', '*.{jpg,jpeg,png,gif,svg}'),
+    dest: path.join(prodAssets, 'images'),
+    imageminPluginOptions: {
+      gifsicle: {
+        interlaced: true
+      },
+      jpegtran: {
+        progressive: true
+      },
+      optipng: {
+        optimizationLevel: 3
+      },
+      svgo: {
+        plugins: [{
+          removeDesc: true
+        }]
+      }
+    },
+    imageminOptions: {
+      verbose: false
+    }
+  },
+  html: {
+    src: path.join(production, '**', '*.html'),
+    dest: production,
+    options: {
+      removeComments: true,
+      removeCommentsFromCDATA: true,
+      collapseWhitespace: true,
+      removeAttributeQuotes: true,
+      minifyJS: true,
+      minifyCSS: true,
+      processScripts: ['application/ld+json']
+    }
+  }
+};
+
+// Lint CSS files, but none in /vendor/
+exports.lintStyles = {
+  src: [
+    path.join(appAssets, 'styles', '**', '*.css'),
+    util.format('!%s', path.join(appAssets, 'styles', 'vendor', '**'))
+  ],
+  options: {
+    stylelint: {},
+    reporter: {
+      clearReportedMessages: true
+    }
+  }
+};
+
+// Lint JavaScript files
+exports.lintJs = {
+  src: path.join(appAssets, 'javascripts', '*.js')
+};
+
+// Lint JSON files
+exports.lintJson = {
+  src: path.join(production, '**', '*.json')
+};
+
+// Lint JSON files
+exports.lintHtml = {
+  src: path.join(production, '**', '*.html')
+};
+// Lint JSON files
+exports.lintXml = {
+  src: path.join(production, '**', '*.xml')
+};
+
+// Revision asset files
+exports.revision = {
+  src: {
+    assets: [
+      path.join(prodAssets, 'css', '*.css'),
+      path.join(prodAssets, 'js', '*.js')
+    ],
+    base: production
+  },
+  dest: {
+    assets: production,
+    manifest: {
+      name: 'manifest.json',
+      path: prodAssets
+    }
+  }
+};
+
+// Replace links to asset files, with rev version
+exports.collect = {
+  src: [
+    path.join(prodAssets, 'manifest.json'),
+    path.join(production, '**', '*.{html,xml,txt,json,css,js}'),
+    util.format('!%s', path.join(production, 'feed.xml'))
+  ],
+  dest: production
 };

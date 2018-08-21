@@ -1,43 +1,32 @@
-var config            = require('../../config').styles;
+const config = require('../../config').styles;
+const helpers = require('../../util/helpers');
 
-var gulp              = require('gulp');
-var postcss           = require('gulp-postcss');
-var advancedVariables = require('postcss-advanced-variables');
-var presetEnv         = require('postcss-preset-env');
-var nested            = require('postcss-nested');
-var mqpacker          = require('css-mqpacker');
-var cssnano           = require('cssnano');
-var plumber           = require('gulp-plumber');
-var browsersync       = require('browser-sync');
-
-function onError(err) {
-  console.log(err);
-  // Keep gulp from hanging on this task
-  this.emit('end');
-}
-
+const gulp = require('gulp');
+const postcss = require('gulp-postcss');
+const advancedVariables = require('postcss-advanced-variables');
+const presetEnv = require('postcss-preset-env');
+const nested = require('postcss-nested');
+const mqpacker = require('css-mqpacker');
+const browsersync = require('browser-sync');
+const plumber = require('gulp-plumber');
+const size = require('gulp-size');
 
 // Run CSS through PostCSS and it’s plugins.
-//
-// No sourcemaps for production.
-// Switch to 'styles' task when they are needed
-// to debug on production.
-gulp.task('styles:production', function() {
-  browsersync.notify('Transforming CSS with PostCSS');
+// Build sourcemaps and minimize.
+gulp.task('styles:production', ['styles:sass:common'], function () {
+  browsersync.notify('Transforming CSS with PostCSS (production)');
 
   // PostCSS plugins
-  var processors = [
+  const processors = [
     advancedVariables(config.options.advancedVariables),
     presetEnv(config.options.presetEnv),
     nested(config.options.nested),
-    mqpacker(config.options.mqpacker),
-    cssnano(config.options.cssnano)
+    mqpacker(config.options.mqpacker)
   ];
 
-  return gulp.src(config.src)
-    .pipe(plumber({
-      errorHandler: onError
-    }))
+  return gulp.src(config.production.src)
+    .pipe(plumber({errorHandler: helpers.onError}))
     .pipe(postcss(processors))
-    .pipe(gulp.dest(config.dest));
+    .pipe(gulp.dest(config.production.dest))
+    .pipe(size({title: 'styles:production'}));
 });

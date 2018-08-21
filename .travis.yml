@@ -12,7 +12,7 @@ env:
         # Github personal access token ${GHTOKEN}
         - secure: "HlPlRD7aMngVSbeUMps+CPhiP6ax3tUtQGS3G6V072iF8eNS8kPo6jo+q5mH5i5zU8eV4uidkSCVwC9WSrgpxg/3edmUO+u+KOErs9gagzQ5mQ44PEDtQeNOnVGi4GespQknkTHKtsogQQ0srUJcALbdpzNtgnKW1Agfs8QxJ7g="
 before_script:
-    - mkdir -p bower_components node_modules vendor/bundle
+    - mkdir -p node_modules vendor/bundle
     - sudo chown -R 1000:1000 .
     - make image
     - make dependencies

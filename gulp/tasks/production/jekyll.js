@@ -1,14 +1,22 @@
-var config      = require('../../config').jekyll.production;
+const config = require('../../config').jekyll.production;
 
-var gulp        = require('gulp');
-var cp          = require('child_process');
-var browsersync = require('browser-sync');
-
+const gulp = require('gulp');
+const cp = require('child_process');
+const browsersync = require('browser-sync');
+const util = require('util');
 
 // Build Jekyll site
-gulp.task('jekyll:production', function(done) {
-  browsersync.notify('Compiling Jekyll (Production)');
-
-  return cp.spawn('bundle', ['exec', 'jekyll', 'build', '-q', '--source=' + config.src, '--destination=' + config.dest, '--config=' + config.config], { stdio: 'inherit' })
-  .on('close', done);
+gulp.task('jekyll:production', function (done) {
+  browsersync.notify('Compiling Jekyll (production)');
+  return cp.spawn(
+    'bundle',
+    [
+      'exec',
+      'jekyll',
+      'build',
+      util.format('--config=%s', config.config),
+      config.option
+    ],
+    { stdio: 'inherit' })
+    .on('close', done);
 });

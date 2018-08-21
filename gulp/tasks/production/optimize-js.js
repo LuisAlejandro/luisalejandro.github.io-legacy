@@ -1,14 +1,16 @@
-var config = require('../../config').optimize.js;
+const config = require('../../config').optimize.js;
+const helpers = require('../../util/helpers');
 
-var gulp   = require('gulp');
-var uglify = require('gulp-uglify');
-var size   = require('gulp-size');
+const gulp = require('gulp');
+const plumber = require('gulp-plumber');
+const uglify = require('gulp-uglify');
+const size = require('gulp-size');
 
-
-// Copy and minimize JavaScript files
-gulp.task('optimize:js', function() {
+// Optimize js files
+gulp.task('optimize:js', function () {
   return gulp.src(config.src)
-    .pipe(uglify(config.options))
+    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(uglify())
     .pipe(gulp.dest(config.dest))
-    .pipe(size());
+    .pipe(size({title: 'optimize:js'}));
 });

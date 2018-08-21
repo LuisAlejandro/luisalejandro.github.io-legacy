@@ -1,16 +1,14 @@
-var config  = require('../../config').images;
+const config = require('../../config').images.development;
+const helpers = require('../../util/helpers');
 
-var gulp    = require('gulp');
-var changed = require('gulp-changed');
-
+const gulp = require('gulp');
+const plumber = require('gulp-plumber');
+const size = require('gulp-size');
 
 // Copy images to build folder
-gulp.task('images', function() {
+gulp.task('images:development', function () {
   return gulp.src(config.src)
-
-    // Ignore unchanged files, so that not all images
-    // are being copied by the watch task.
-    .pipe(changed(config.dest))
-
-    .pipe(gulp.dest(config.dest));
+    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(gulp.dest(config.dest))
+    .pipe(size({title: 'images:development'}));
 });
