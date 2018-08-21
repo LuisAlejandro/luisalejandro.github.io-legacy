@@ -1,26 +1,19 @@
-var config = require('../../config').styles.vendor;
-var helpers = require('../../util/helpers');
+const config = require('../../config').styles.vendor;
+const helpers = require('../../util/helpers');
 
-var gulp = require('gulp');
-var replace = require('gulp-replace');
-var filter = require('gulp-filter');
-var plumber = require('gulp-plumber');
-var changed = require('gulp-changed');
+const gulp = require('gulp');
+const replace = require('gulp-replace');
+const filter = require('gulp-filter');
+const plumber = require('gulp-plumber');
+const size = require('gulp-size');
 
 gulp.task('styles:vendor:common', function () {
-  const robotofilter = filter(['*/roboto-fontface/css/roboto/**'], {
-    restore: true
-  });
-  return gulp
-    .src(config.src, {
-      base: config.base
-    })
-    .pipe(plumber({
-      errorHandler: helpers.onError
-    }))
-    .pipe(changed(config.dest))
-    .pipe(robotofilter)
-    .pipe(replace("url('../../fonts/roboto", "url('../fonts"))
-    .pipe(robotofilter.restore)
-    .pipe(gulp.dest(config.dest));
+  const webfontsfilter = filter(['*/webfonts/**'], {restore: true});
+  return gulp.src(config.src, {base: config.base})
+    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(webfontsfilter)
+    .pipe(replace('url(', 'url(../fonts/'))
+    .pipe(webfontsfilter.restore)
+    .pipe(gulp.dest(config.dest))
+    .pipe(size({title: 'styles:vendor:common'}));
 });

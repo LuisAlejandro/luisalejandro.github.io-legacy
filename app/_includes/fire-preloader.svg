@@ -1,9 +1,9 @@
-<svg class="lds-lava-lamp" width="128px"  height="128px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><defs>
-  <filter id="lds-lava-lamp-filterid-e55a95c41ce4a" filterUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+<svg class="fire-preloader" width="128px"  height="128px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><defs>
+  <filter id="fire-preloader-filterid-e55a95c41ce4a" filterUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
     <feGaussianBlur in="SourceGraphic" stdDeviation="3"></feGaussianBlur>
     <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 10 -5"></feColorMatrix>
   </filter>
-</defs><g filter="url(#lds-lava-lamp-filterid-e55a95c41ce4a)"><circle cx="77" cy="40.9622" r="0.836788" fill="#ff7c81">
+</defs><g filter="url(#fire-preloader-filterid-e55a95c41ce4a)"><circle cx="77" cy="40.9622" r="0.836788" fill="#ff7c81">
   <animate attributeName="cy" values="132.41179548144197;-7.072526249755107" keyTimes="0;1" dur="1s" repeatCount="indefinite" begin="-0.02229292124408122s"></animate>
   <animate attributeName="r" values="23;0;0" keyTimes="0;0.6803798705803235;1" dur="1s" repeatCount="indefinite" begin="-0.02229292124408122s"></animate>
 </circle><circle cx="77" cy="85.3096" r="7.82409" fill="#ff7c81">
@@ -93,7 +93,7 @@
 </circle><circle cx="50" cy="115.691" r="33.9746" fill="#ff7c81">
   <animate attributeName="cy" values="173.32918595993033;-35.27665516712689" keyTimes="0;1" dur="1s" repeatCount="indefinite" begin="-0.6429676883963322s"></animate>
   <animate attributeName="r" values="54;0;0" keyTimes="0;0.7450681683396517;1" dur="1s" repeatCount="indefinite" begin="-0.6429676883963322s"></animate>
-</circle></g><g filter="url(#lds-lava-lamp-filterid-e55a95c41ce4a)"><circle cx="36" cy="34.6466" r="0" fill="#fac090">
+</circle></g><g filter="url(#fire-preloader-filterid-e55a95c41ce4a)"><circle cx="36" cy="34.6466" r="0" fill="#fac090">
   <animate attributeName="cy" values="128.41067925910016;6.368164568162598" keyTimes="0;1" dur="1s" repeatCount="indefinite" begin="-0.134957304802507s"></animate>
   <animate attributeName="r" values="12;0;0" keyTimes="0;0.5369377719503381;1" dur="1s" repeatCount="indefinite" begin="-0.134957304802507s"></animate>
 </circle><circle cx="43" cy="119.129" r="22.0491" fill="#fac090">
@@ -183,7 +183,7 @@
 </circle><circle cx="38" cy="87.2463" r="18.3358" fill="#fac090">
   <animate attributeName="cy" values="150.5747659196913;-20.821663294727557" keyTimes="0;1" dur="1s" repeatCount="indefinite" begin="-0.7361520385161853s"></animate>
   <animate attributeName="r" values="34;0;0" keyTimes="0;0.8019857257078248;1" dur="1s" repeatCount="indefinite" begin="-0.7361520385161853s"></animate>
-</circle></g><g filter="url(#lds-lava-lamp-filterid-e55a95c41ce4a)"><circle cx="93" cy="60.4362" r="2.26421" fill="#ffffcb">
+</circle></g><g filter="url(#fire-preloader-filterid-e55a95c41ce4a)"><circle cx="93" cy="60.4362" r="2.26421" fill="#ffffcb">
   <animate attributeName="cy" values="108.91152413363551;10.59905685391807" keyTimes="0;1" dur="1s" repeatCount="indefinite" begin="-0.8597410665745195s"></animate>
   <animate attributeName="r" values="5;0;0" keyTimes="0;0.901154174125004;1" dur="1s" repeatCount="indefinite" begin="-0.8597410665745195s"></animate>
 </circle><circle cx="11" cy="75.8729" r="5.55701" fill="#ffffcb">

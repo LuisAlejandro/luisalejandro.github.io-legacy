@@ -17,12 +17,13 @@ gulp.task('build:production', function (done) {
       'optimize:json',
       'optimize:xml',
       'optimize:images',
-      'optimize:html'
+      'optimize:html',
+      'optimize:css',
+      'optimize:js'
     ],
     'revision',
     'rev:collect',
     [
-      'lint-html',
       'lint-xml',
       'lint-json'
     ],

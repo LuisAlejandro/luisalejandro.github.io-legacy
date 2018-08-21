@@ -1,0 +1,19 @@
+# Site settings
+title: Luis Alejandro
+email: luis@luisalejandro.org
+# this means to ignore newlines until "baseurl:"
+description: >
+  Luis Alejandro is a Full-Stack Developer with passions
+  in UI/UX design and DevOps. Also a mental/emotional health
+  advocate.
+# the subpath of your site, e.g. /blog/
+baseurl: ""
+# the base hostname & protocol for your site
+twitter_username: LuisAlejandro
+github_username: LuisAlejandro
+
+# Build settings
+markdown: kramdown
+
+keep_files:
+  - assets

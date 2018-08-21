@@ -6,12 +6,9 @@ const postcss = require('gulp-postcss');
 const advancedVariables = require('postcss-advanced-variables');
 const presetEnv = require('postcss-preset-env');
 const nested = require('postcss-nested');
-const uncss = require('postcss-uncss');
 const mqpacker = require('css-mqpacker');
-const cssnano = require('cssnano');
 const browsersync = require('browser-sync');
 const plumber = require('gulp-plumber');
-const changed = require('gulp-changed');
 const size = require('gulp-size');
 
 // Run CSS through PostCSS and it’s plugins.
@@ -24,18 +21,12 @@ gulp.task('styles:production', ['styles:sass:common'], function () {
     advancedVariables(config.options.advancedVariables),
     presetEnv(config.options.presetEnv),
     nested(config.options.nested),
-    mqpacker(config.options.mqpacker),
-    uncss(config.options.uncss),
-    cssnano(config.options.cssnano)
+    mqpacker(config.options.mqpacker)
   ];
 
-  return gulp
-    .src(config.production.src)
-    .pipe(plumber({
-      errorHandler: helpers.onError
-    }))
-    .pipe(changed(config.production.dest))
+  return gulp.src(config.production.src)
+    .pipe(plumber({errorHandler: helpers.onError}))
     .pipe(postcss(processors))
     .pipe(gulp.dest(config.production.dest))
-    .pipe(size());
+    .pipe(size({title: 'styles:production'}));
 });

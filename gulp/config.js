@@ -21,6 +21,18 @@ const prodAssets = path.join(production, 'assets');
 
 var exports = module.exports = {};
 
+exports.libraries = {
+  fonts: {
+    webfontslist: 'fonts.list',
+    webfontsconfig: {
+      cssFilename: 'webfonts.css',
+      relativePaths: true,
+      format: 'woff2'
+    },
+    dest: path.join(nodeModules, 'webfonts')
+  }
+};
+
 // BrowserSync
 exports.browsersync = {
   development: {
@@ -37,14 +49,18 @@ exports.browsersync = {
       path.join(devAssets, 'fonts', '*'),
       path.join(development, '*')
     ],
-    notify: true
+    notify: true,
+    open: false,
+    ui: false
   },
   production: {
     server: {
       baseDir: [production]
     },
     port: 9998,
-    notify: true
+    notify: true,
+    open: false,
+    ui: false
   }
 };
 
@@ -63,7 +79,7 @@ exports.watch = {
     path.join(app, '**', '*.{html,markdown,md,yml,json,txt,xml}'),
     path.join(app, '*')
   ],
-  styles: path.join(appAssets, 'styles', '**', '*.{cs,scss}'),
+  styles: path.join(appAssets, 'styles', '**', '*.{css,scss}'),
   scripts: path.join(appAssets, 'javascripts', '**', '*.{js,vue}'),
   images: path.join(appAssets, 'images', '**', '*'),
   svg: path.join(appAssets, 'images', '**', '*.svg')
@@ -90,15 +106,11 @@ exports.delete = {
 // Jekyll
 exports.jekyll = {
   development: {
-    src: app,
-    dest: development,
-    config: '_config.development.yml',
+    config: '_config.common.yml,_config.development.yml',
     option: '--profile'
   },
   production: {
-    src: app,
-    dest: production,
-    config: '_config.development.yml,_config.production.yml',
+    config: '_config.common.yml,_config.production.yml',
     option: '--'
   }
 };
@@ -110,6 +122,16 @@ exports.sass = {
 
 // CSS
 exports.styles = {
+  vendor: {
+    src: [
+      path.join(nodeModules, 'bootstrap-vue', 'dist', 'bootstrap-vue.css'),
+      path.join(nodeModules, 'bootstrap', 'scss', '**', '*'),
+      path.join(nodeModules, 'normalize.css', 'normalize.css'),
+      path.join(nodeModules, 'webfonts', '*.css')
+    ],
+    dest: path.join(appAssets, 'styles', 'vendor'),
+    base: nodeModules
+  },
   development: {
     src: path.join(appAssets, 'styles', '*.css'),
     dest: path.join(devAssets, 'css')
@@ -117,16 +139,6 @@ exports.styles = {
   production: {
     src: path.join(appAssets, 'styles', '*.css'),
     dest: path.join(prodAssets, 'css')
-  },
-  vendor: {
-    src: [
-      path.join(nodeModules, 'bootstrap-vue', 'dist', 'bootstrap-vue.css'),
-      path.join(nodeModules, 'bootstrap', 'scss', '**', '*'),
-      path.join(nodeModules, 'normalize.css', 'normalize.css'),
-      path.join(nodeModules, 'roboto-fontface', 'css', 'roboto', 'roboto-fontface.css')
-    ],
-    dest: path.join(appAssets, 'styles', 'vendor'),
-    base: nodeModules
   },
   options: {
     advancedVariables: {},
@@ -164,26 +176,6 @@ exports.scripts = {
       cache: {},
       packageCache: {},
       fullPaths: false,
-      // Disable source maps!
-      debug: false
-    },
-    bundles: [{
-      entries: path.join(appAssets, 'javascripts', 'app.js'),
-      dest: path.join(prodAssets, 'js'),
-      outputName: 'app.js'
-    }, {
-      entries: path.join(appAssets, 'javascripts', 'head.js'),
-      dest: path.join(prodAssets, 'js'),
-      outputName: 'head.js'
-    }]
-
-  },
-  production: {
-    options: {
-      // Required watchify args
-      cache: {},
-      packageCache: {},
-      fullPaths: false,
       // Enable source maps!
       debug: true
     },
@@ -194,6 +186,26 @@ exports.scripts = {
     }, {
       entries: path.join(appAssets, 'javascripts', 'head.js'),
       dest: path.join(devAssets, 'js'),
+      outputName: 'head.js'
+    }]
+
+  },
+  production: {
+    options: {
+      // Required watchify args
+      cache: {},
+      packageCache: {},
+      fullPaths: false,
+      // Disable source maps!
+      debug: false
+    },
+    bundles: [{
+      entries: path.join(appAssets, 'javascripts', 'app.js'),
+      dest: path.join(prodAssets, 'js'),
+      outputName: 'app.js'
+    }, {
+      entries: path.join(appAssets, 'javascripts', 'head.js'),
+      dest: path.join(prodAssets, 'js'),
       outputName: 'head.js'
     }]
   }
@@ -214,9 +226,7 @@ exports.images = {
 // Copy fonts
 exports.fonts = {
   vendor: {
-    src: [
-      path.join(nodeModules, 'roboto-fontface', 'fonts', 'roboto', '*.{woff,woff2}')
-    ],
+    src: path.join(nodeModules, 'webfonts', '*.{eot,ttf,woff,woff2,svg}'),
     dest: path.join(appAssets, 'fonts', 'vendor')
   },
   development: {
@@ -227,24 +237,20 @@ exports.fonts = {
     dest: path.join(devAssets, 'fonts')
   },
   production: {
-    src: path.join(devAssets, 'fonts', '*'),
+    src: [
+      path.join(appAssets, 'fonts', '*.{eot,ttf,woff,woff2,svg}'),
+      path.join(appAssets, 'fonts', 'vendor', '*.{eot,ttf,woff,woff2,svg}')
+    ],
     dest: path.join(prodAssets, 'fonts')
   }
 };
 
 // Base64
 exports.base64 = {
-  development: {
-    src: path.join(devAssets, 'css', '*.css'),
-    dest: path.join(devAssets, 'css')
-  },
-  production: {
-    src: path.join(prodAssets, 'css', '*.css'),
-    dest: path.join(prodAssets, 'css')
-  },
+  src: path.join(prodAssets, 'css', '*.css'),
+  dest: path.join(prodAssets, 'css'),
   options: {
-    baseDir: build,
-    extensions: ['svg', 'woff', 'woff2'],
+    extensions: ['svg', 'woff2'],
     maxImageSize: 1024 * 1024 * 1, // bytes
     debug: false
   }
@@ -252,6 +258,25 @@ exports.base64 = {
 
 // Optimize CSS, JS, Images, HTML for production
 exports.optimize = {
+  css: {
+    src: path.join(prodAssets, 'css', '*.css'),
+    dest: path.join(prodAssets, 'css'),
+    options: {
+      discardComments: {},
+      cssnano: {},
+      uncss: {
+        html: [
+          path.join(production, '**', '*.html')
+        ],
+        ignore: [],
+        htmlroot: production
+      }
+    }
+  },
+  js: {
+    src: path.join(prodAssets, 'js', '*.js'),
+    dest: path.join(prodAssets, 'js')
+  },
   json: {
     src: path.join(production, '**', '*.json'),
     dest: production
@@ -287,31 +312,16 @@ exports.optimize = {
     }
   },
   html: {
-    development: {
-      src: path.join(development, '**', '*.html'),
-      dest: development,
-      options: {
-        removeComments: true,
-        removeCommentsFromCDATA: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true,
-        minifyJS: true,
-        minifyCSS: true,
-        processScripts: ['application/ld+json']
-      }
-    },
-    production: {
-      src: path.join(production, '**', '*.html'),
-      dest: production,
-      options: {
-        removeComments: true,
-        removeCommentsFromCDATA: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true,
-        minifyJS: true,
-        minifyCSS: true,
-        processScripts: ['application/ld+json']
-      }
+    src: path.join(production, '**', '*.html'),
+    dest: production,
+    options: {
+      removeComments: true,
+      removeCommentsFromCDATA: true,
+      collapseWhitespace: true,
+      removeAttributeQuotes: true,
+      minifyJS: true,
+      minifyCSS: true,
+      processScripts: ['application/ld+json']
     }
   }
 };

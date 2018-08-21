@@ -9,11 +9,11 @@ const buffer = require('vinyl-buffer');
 const watchify = require('watchify');
 const sourcemaps = require('gulp-sourcemaps');
 const plumber = require('gulp-plumber');
-const changed = require('gulp-changed');
 const size = require('gulp-size');
+const util = require('util');
 
 // Run JavaScript through Browserify
-gulp.task('scripts:development', function () {
+gulp.task('scripts:development', function (done) {
   browsersync.notify('Compiling JavaScript (development)');
 
   const buildScripts = function (item) {
@@ -27,16 +27,18 @@ gulp.task('scripts:development', function () {
         .pipe(buffer())
         // Report compile errors
         .pipe(plumber({errorHandler: helpers.onError}))
-        .pipe(changed(item.dest))
         .pipe(sourcemaps.init())
         .pipe(sourcemaps.write('.'))
         // Specify the output destination
         .pipe(gulp.dest(item.dest))
-        .pipe(size());
+        .pipe(size({title: util.format('scripts:development %s', item.outputName)}));
     };
 
+    if (global.isWatching) {
+      config.options.plugin = [watchify];
+    }
+
     config.options.entries = item.entries;
-    config.options.plugin = [watchify];
     const bundler = browserify(config.options);
     bundler.on('update', function () {
       bundle(bundler);
@@ -47,4 +49,5 @@ gulp.task('scripts:development', function () {
 
   // Start bundling with Browserify for each item specified
   config.bundles.forEach(buildScripts);
+  done();
 });

@@ -10,12 +10,16 @@ const mqpacker = require('css-mqpacker');
 const sourcemaps = require('gulp-sourcemaps');
 const browsersync = require('browser-sync');
 const plumber = require('gulp-plumber');
-const changed = require('gulp-changed');
 const size = require('gulp-size');
+const runSequence = require('run-sequence');
 
 // Run CSS through PostCSS and it’s plugins.
 // Build sourcemaps and minimize.
-gulp.task('styles:development', ['styles:sass:common'], function () {
+gulp.task('styles:development', ['styles:sass:common'], function (done) {
+  runSequence('styles:rebuild:development', done);
+});
+
+gulp.task('styles:rebuild:development', function () {
   browsersync.notify('Transforming CSS with PostCSS (development)');
 
   // PostCSS plugins
@@ -26,17 +30,11 @@ gulp.task('styles:development', ['styles:sass:common'], function () {
     mqpacker(config.options.mqpacker)
   ];
 
-  return gulp
-    .src(config.development.src)
-    .pipe(
-      plumber({
-        errorHandler: helpers.onError
-      })
-    )
-    .pipe(changed(config.development.dest))
+  return gulp.src(config.development.src)
+    .pipe(plumber({errorHandler: helpers.onError}))
     .pipe(sourcemaps.init())
     .pipe(postcss(processors))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(config.development.dest))
-    .pipe(size());
+    .pipe(size({title: 'styles:development'}));
 });
