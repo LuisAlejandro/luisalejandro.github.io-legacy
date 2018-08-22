@@ -81,12 +81,12 @@ exports.watch = {
   ],
   styles: path.join(appAssets, 'styles', '**', '*.{css,scss}'),
   scripts: path.join(appAssets, 'javascripts', '**', '*.{js,vue}'),
-  images: path.join(appAssets, 'images', '**', '*'),
+  images: path.join(appAssets, 'images', '**', '*.{jpg,jpeg,png,gif}'),
   svg: path.join(appAssets, 'images', '**', '*.svg')
 };
 
 // Delete all files from the dev build
-exports.delete = {
+exports.clean = {
   development: {
     src: [
       development,
@@ -111,7 +111,7 @@ exports.jekyll = {
   },
   production: {
     config: '_config.common.yml,_config.production.yml',
-    option: '--'
+    option: '--quiet'
   }
 };
 
@@ -385,4 +385,87 @@ exports.collect = {
     util.format('!%s', path.join(production, 'feed.xml'))
   ],
   dest: production
+};
+
+exports.favicon = {
+  src: path.join(production, 'index.html'),
+  dest: production,
+  options: {
+    masterPicture: path.join(production, 'assets', 'images', 'logo.svg'),
+    dest: path.join(production, 'assets', 'images', 'icons'),
+    iconsPath: '/assets/images/icons/',
+    design: {
+      ios: {
+        pictureAspect: 'backgroundAndMargin',
+        backgroundColor: '#f8d983',
+        margin: '25%',
+        assets: {
+          ios6AndPriorIcons: true,
+          ios7AndLaterIcons: true,
+          precomposedIcons: true,
+          declareOnlyDefaultIcon: true
+        },
+        appName: 'Luis Alejandro'
+      },
+      desktopBrowser: {},
+      windows: {
+        pictureAspect: 'noChange',
+        backgroundColor: '#f8d983',
+        onConflict: 'override',
+        assets: {
+          windows80Ie10Tile: true,
+          windows10Ie11EdgeTiles: {
+            small: true,
+            medium: true,
+            big: true,
+            rectangle: true
+          }
+        },
+        appName: 'Luis Alejandro'
+      },
+      androidChrome: {
+        pictureAspect: 'backgroundAndMargin',
+        margin: '25%',
+        backgroundColor: '#f8d983',
+        themeColor: '#f8d983',
+        manifest: {
+          name: 'Luis Alejandro',
+          startUrl: 'http://luisalejandro.org',
+          display: 'standalone',
+          orientation: 'portrait',
+          onConflict: 'override',
+          declared: true
+        },
+        assets: {
+          legacyIcon: true,
+          lowResolutionIcons: true
+        }
+      },
+      safariPinnedTab: {
+        pictureAspect: 'silhouette',
+        themeColor: '#525252'
+      }
+    },
+    settings: {
+      scalingAlgorithm: 'Mitchell',
+      errorOnImageTooSmall: false,
+      readmeFile: false,
+      htmlCodeFile: false,
+      usePathAsIs: false
+    },
+    markupFile: path.join(production, 'assets', 'images', 'faviconMarkup.json')
+  }
+};
+
+exports.svgstore = {
+  development: {
+    src: path.join(development, 'index.html'),
+    dest: development,
+    svgs: path.join(devAssets, 'images', '**', '*.svg')
+  },
+  production: {
+    src: path.join(production, 'index.html'),
+    dest: production,
+    svgs: path.join(prodAssets, 'images', '**', '*.svg')
+  }
 };

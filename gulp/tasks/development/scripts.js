@@ -49,5 +49,8 @@ gulp.task('scripts:development', function (done) {
 
   // Start bundling with Browserify for each item specified
   config.bundles.forEach(buildScripts);
-  done();
+
+  if (!global.isWatching) {
+    done();
+  }
 });

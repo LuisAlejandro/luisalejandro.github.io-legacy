@@ -4,7 +4,7 @@ const runSequence = require('run-sequence');
 // Run all tasks needed for a build, in defined order
 gulp.task('build:development', function (done) {
   runSequence(
-    'delete:development',
+    'clean:development',
     [
       'jekyll:development',
       'images:development',
@@ -12,5 +12,6 @@ gulp.task('build:development', function (done) {
       'styles:development',
       'scripts:development'
     ],
+    'svgstore:development',
     done);
 });

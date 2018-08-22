@@ -5,11 +5,15 @@
 
   <body>
 
-    <div id="app">
-      {% include fire-preloader.svg %}
+    <div id="svgstore">
+      <!-- svgstore:svg -->
+      <!-- endinject -->
     </div>
-    <div id="development">
-      coming soon
+
+    <div id="app">
+      <svg class="preloader">
+        <use xlink:href="#fire-preloader" />
+      </svg>
     </div>
 
     {% include feet.html %}

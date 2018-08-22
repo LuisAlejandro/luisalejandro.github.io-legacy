@@ -6,6 +6,8 @@ const cp = require('child_process');
 const webfonts = require('gulp-google-webfonts');
 const plumber = require('gulp-plumber');
 const size = require('gulp-size');
+const path = require('path');
+const fs = require('fs');
 
 // Install gems
 gulp.task('libraries:gems:common', function (done) {
@@ -20,6 +22,18 @@ gulp.task('libraries:gems:common', function (done) {
 });
 
 gulp.task('libraries:fonts:common', function (done) {
+  const dummyJsonPath = path.join(config.dest, 'package.json');
+  const dummyJson = {
+    name: 'webfonts',
+    version: '1.0.0'
+  };
+
+  if (!fs.existsSync(config.dest)) {
+    fs.mkdirSync(config.dest, 0o755);
+  }
+
+  fs.writeFileSync(dummyJsonPath, JSON.stringify(dummyJson));
+
   return gulp.src(config.webfontslist)
     .pipe(plumber({errorHandler: helpers.onError}))
     .pipe(webfonts(config.webfontsconfig))

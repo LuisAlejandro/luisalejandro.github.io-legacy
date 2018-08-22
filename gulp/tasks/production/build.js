@@ -4,7 +4,7 @@ const runSequence = require('run-sequence');
 // Run all tasks needed for a build, in defined order
 gulp.task('build:production', function (done) {
   runSequence(
-    'delete:production',
+    'clean:production',
     [
       'jekyll:production',
       'images:production',
@@ -13,6 +13,7 @@ gulp.task('build:production', function (done) {
       'scripts:production'
     ],
     'base64:production',
+    'favicons:production',
     [
       'optimize:json',
       'optimize:xml',
@@ -23,6 +24,7 @@ gulp.task('build:production', function (done) {
     ],
     'revision',
     'rev:collect',
+    'svgstore:production',
     [
       'lint-xml',
       'lint-json'

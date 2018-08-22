@@ -15,8 +15,11 @@ const runSequence = require('run-sequence');
 
 // Run CSS through PostCSS and it’s plugins.
 // Build sourcemaps and minimize.
-gulp.task('styles:development', ['styles:sass:common'], function (done) {
-  runSequence('styles:rebuild:development', done);
+gulp.task('styles:development', function (done) {
+  runSequence(
+    'styles:sass:common',
+    'styles:rebuild:development',
+    done);
 });
 
 gulp.task('styles:rebuild:development', function () {

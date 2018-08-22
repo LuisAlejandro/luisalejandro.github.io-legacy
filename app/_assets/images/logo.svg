@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -51,9 +50,11 @@
        position="-23.075212,206.66102"
        orientation="1,0"
        id="guide4818"
-       inkscape:locked="false" /></sodipodi:namedview><g
+       inkscape:locked="false" /></sodipodi:namedview>
+       <g
      id="BASEMENT"
-     transform="translate(0,-180.25)" /><g
+     transform="translate(0,-180.25)" />
+     <g
      id="BG"
      transform="translate(0,-180.25)" /><g
      id="LAYOUT"
