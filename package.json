@@ -78,7 +78,7 @@
     "gulp-filter": "^5.1.0",
     "gulp-google-webfonts": "^2.0.0",
     "gulp-htmlmin": "^4.0.0",
-    "gulp-imagemin": "^4.1.0",
+    "gulp-imagemin": "^5.0.0",
     "gulp-inject": "^4.3.2",
     "gulp-jsonlint": "^1.2.1",
     "gulp-jsonminify": "^1.1.0",
