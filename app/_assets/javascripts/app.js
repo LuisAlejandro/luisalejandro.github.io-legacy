@@ -15,23 +15,16 @@ import anime from 'animejs';
 //   render: component => component(App)
 // });
 
+import {scenes} from './intro/scenes';
+
 var LA = window.LA || {};
-LA.tlArray = [{
-  targets: 'body',
-  backgroundColor: '#f8d983',
-  easing: 'easeOutExpo',
-  duration: 3000,
-  offset: 0
-}, {
-  targets: '#app',
-  translateX: 250,
-  easing: 'easeOutExpo',
-  duration: 1000,
-  offset: 0
-}];
+LA.intro = {};
 
-LA.tl = anime.timeline();
+LA.intro.scenes = scenes;
+LA.intro.timeline = anime.timeline();
 
-LA.tlArray.forEach(function (el) {
-  LA.tl = LA.tl.add(el);
+Object.keys(LA.intro.scenes).forEach((scene) => {
+  LA.intro.scenes[scene].forEach((step) => {
+    LA.intro.timeline = LA.intro.timeline.add(step);
+  });
 });

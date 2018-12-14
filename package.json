@@ -12,12 +12,14 @@
     "postinstall": "gulp libraries:gems:common libraries:fonts:common"
   },
   "browser": {
+    "jQuery": "./node_modules/jquery/dist/jquery.js",
     "anime": "./node_modules/animejs/anime.js",
     "vue": "./node_modules/vue/dist/vue.js",
     "vue-router": "./node_modules/vue-router/dist/vue-router.js",
     "bootstrap-vue": "./node_modules/bootstrap-vue/dist/bootstrap-vue.js"
   },
   "browserify-shim": {
+    "jQuery": "global:jQuery",
     "anime": "global:anime",
     "vue": "global:Vue",
     "vue-router": "global:VueRouter",
@@ -95,6 +97,7 @@
     "gulp-svgstore": "^6.1.1",
     "gulp-uglify": "^3.0.0",
     "gulp-xml-validator": "^0.2.2",
+    "jquery": "^3.3.1",
     "normalize.css": "^8.0.0",
     "postcss": "^7.0.2",
     "postcss-advanced-variables": "^2.3.3",

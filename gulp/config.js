@@ -469,3 +469,16 @@ exports.svgstore = {
     svgs: path.join(prodAssets, 'images', '**', '*.svg')
   }
 };
+
+exports.garbage = {
+  src: [
+    path.join(prodAssets, 'images', '*.svg'),
+    path.join(prodAssets, 'images', 'faviconMarkup.json'),
+    path.join(prodAssets, 'js', 'app.js'),
+    path.join(prodAssets, 'js', 'head.js'),
+    path.join(prodAssets, 'css', 'app.css'),
+    path.join(prodAssets, 'css', 'head.css'),
+    path.join(prodAssets, 'fonts'),
+    path.join(prodAssets, 'manifest.json')
+  ]
+};

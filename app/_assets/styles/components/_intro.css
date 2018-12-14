@@ -1,0 +1,120 @@
+@charset "utf-8";
+
+#app > .container-door-front,
+#app > .container-door-inside {
+  height: 800px;
+  width: 400px;
+  position: absolute;
+  top: -4%;
+  left: -4%;
+}
+
+#app > .container-door-inside {
+  z-index: 1;
+}
+
+#app > .container-door-front {
+  z-index: 3;
+}
+
+#app > .container-me {
+  display: none;
+  height: 450px;
+  width: 400px;
+  position: absolute;
+  top: 30%;
+  left: -8%;
+  z-index: 2;
+}
+
+#app > .container-me-alert {
+  display: none;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 20%;
+  left: 25%;
+}
+
+#right-foot-1,
+#right-foot-2,
+#right-foot-3,
+#left-foot-1,
+#left-foot-2,
+#left-foot-3,
+#left-hand-trick,
+#shirt-side,
+#crotch-side,
+#head-front {
+  display: none;
+}
+
+#head-side {
+  transform-origin: 230px 150px;
+}
+
+#head-front {
+  transform-origin: 250px 140px;
+}
+
+#torso-plus-head-arms {
+  transform-origin: center center;
+}
+
+#right-arm {
+  transform-origin: 120px 240px;
+}
+
+#lower-right-arm-plus-hand {
+  transform-origin: 120px 380px;
+}
+
+#right-hand {
+  transform-origin: 150px 480px;
+}
+
+#left-arm {
+  transform-origin: 370px 240px;
+}
+
+#lower-left-arm-plus-hand {
+  transform-origin: 370px 380px;
+}
+
+#left-hand {
+  transform-origin: 350px 480px;
+}
+
+#left-leg {
+  transform-origin: 300px 500px;
+}
+
+#lower-left-leg-plus-foot {
+  transform-origin: 300px 650px;
+}
+
+#right-leg {
+  transform-origin: 200px 500px;
+}
+
+#lower-right-leg-plus-foot {
+  transform-origin: 200px 650px;
+}
+
+#right-foot,
+#right-foot-1,
+#right-foot-2,
+#right-foot-3 {
+  transform-origin: 200px 850px;
+}
+
+#left-foot,
+#left-foot-1,
+#left-foot-2,
+#left-foot-3 {
+  transform-origin: 300px 850px;
+}
+
+#full-body {
+  transform-origin: 300px 850px;
+}

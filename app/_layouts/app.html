@@ -6,12 +6,25 @@
   <body>
 
     <div id="svgstore">
-      <!-- svgstore:svg -->
-      <!-- endinject -->
+      <!-- htmlmin:ignore -->
+<!-- svgstore:svg --><!-- endinject -->
+      <!-- htmlmin:ignore -->
     </div>
 
     <div id="app">
-      <svg class="preloader">
+      <svg class="container-door-inside">
+        <use xlink:href="#door-inside" />
+      </svg>
+      <svg class="container-door-front">
+        <use xlink:href="#door-front" />
+      </svg>
+      <svg class="container-me">
+        <use xlink:href="#me" />
+      </svg>
+      <svg class="container-me-alert">
+        <use xlink:href="#me-alert" />
+      </svg>
+      <svg class="container-fire-preloader">
         <use xlink:href="#fire-preloader" />
       </svg>
     </div>

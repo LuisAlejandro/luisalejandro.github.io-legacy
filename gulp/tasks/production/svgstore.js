@@ -17,7 +17,7 @@ gulp.task('svgstore:production', function () {
 
   return gulp.src(config.src)
     .pipe(plumber({errorHandler: helpers.onError}))
-    .pipe(inject(svgs, {transform: fileContents}))
+    .pipe(inject(svgs, {transform: fileContents, name: 'svgstore'}))
     .pipe(gulp.dest(config.dest))
     .pipe(size({title: 'svgstore:production'}));
 });

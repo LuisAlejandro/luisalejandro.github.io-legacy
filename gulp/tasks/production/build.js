@@ -25,6 +25,7 @@ gulp.task('build:production', function (done) {
     'revision',
     'rev:collect',
     'svgstore:production',
+    'garbage:production',
     [
       'lint-xml',
       'lint-json'
