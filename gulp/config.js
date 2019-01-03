@@ -166,8 +166,6 @@ exports.scripts = {
   // A separate bundle will be generated for each
   // bundle config in the list below.
   //
-  // head.js is loaded in the head of the website, and
-  // contains everything that needs to be loaded asap.
   // app.js is loaded at the bottom, and contains
   // everything that can be loaded after rendering.
   development: {
@@ -183,10 +181,6 @@ exports.scripts = {
       entries: path.join(appAssets, 'javascripts', 'app.js'),
       dest: path.join(devAssets, 'js'),
       outputName: 'app.js'
-    }, {
-      entries: path.join(appAssets, 'javascripts', 'head.js'),
-      dest: path.join(devAssets, 'js'),
-      outputName: 'head.js'
     }]
 
   },
@@ -203,10 +197,6 @@ exports.scripts = {
       entries: path.join(appAssets, 'javascripts', 'app.js'),
       dest: path.join(prodAssets, 'js'),
       outputName: 'app.js'
-    }, {
-      entries: path.join(appAssets, 'javascripts', 'head.js'),
-      dest: path.join(prodAssets, 'js'),
-      outputName: 'head.js'
     }]
   }
 };
@@ -475,9 +465,7 @@ exports.garbage = {
     path.join(prodAssets, 'images', '*.svg'),
     path.join(prodAssets, 'images', 'faviconMarkup.json'),
     path.join(prodAssets, 'js', 'app.js'),
-    path.join(prodAssets, 'js', 'head.js'),
     path.join(prodAssets, 'css', 'app.css'),
-    path.join(prodAssets, 'css', 'head.css'),
     path.join(prodAssets, 'fonts'),
     path.join(prodAssets, 'manifest.json')
   ]

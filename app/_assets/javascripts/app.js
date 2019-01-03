@@ -15,7 +15,7 @@ import anime from 'animejs';
 //   render: component => component(App)
 // });
 
-import {scenes} from './intro/scenes';
+import { scenes } from './intro/scenes';
 
 var LA = window.LA || {};
 LA.intro = {};
