@@ -3,7 +3,11 @@
     <b-row>
       <b-navbar variant="light" type="light" toggleable class="w-100">
         <b-navbar-brand to="/">
-          <span class="logo"></span>
+          <span class="logo">
+            <svg class="container-logo">
+              <use xlink:href="#logo" />
+            </svg>
+          </span>
         </b-navbar-brand>
         <b-navbar-toggle target="nav_dropdown_collapse"></b-navbar-toggle>
         <b-collapse is-nav id="nav_dropdown_collapse">
@@ -22,7 +26,5 @@
 </template>
 
 <script>
-  export default {
-    name: 'App'
-  }
+  export default { name: 'App' };
 </script>

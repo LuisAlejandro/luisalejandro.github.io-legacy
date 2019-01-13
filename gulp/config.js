@@ -46,6 +46,7 @@ exports.browsersync = {
       path.join(devAssets, 'css', '*.css'),
       path.join(devAssets, 'js', '*.js'),
       path.join(devAssets, 'images', '**'),
+      path.join(devAssets, 'sounds', '**'),
       path.join(devAssets, 'fonts', '*'),
       path.join(development, '*')
     ],
@@ -82,6 +83,7 @@ exports.watch = {
   styles: path.join(appAssets, 'styles', '**', '*.{css,scss}'),
   scripts: path.join(appAssets, 'javascripts', '**', '*.{js,vue}'),
   images: path.join(appAssets, 'images', '**', '*.{jpg,jpeg,png,gif}'),
+  sounds: path.join(appAssets, 'sounds', '**', '*.{ogg,mp3,m4a,ac3}'),
   svg: path.join(appAssets, 'images', '**', '*.svg')
 };
 
@@ -210,6 +212,18 @@ exports.images = {
   production: {
     src: path.join(appAssets, 'images', '**', '*'),
     dest: path.join(prodAssets, 'images')
+  }
+};
+
+// Copy sounds
+exports.sounds = {
+  development: {
+    src: path.join(appAssets, 'sounds', '**', '*'),
+    dest: path.join(devAssets, 'sounds')
+  },
+  production: {
+    src: path.join(appAssets, 'sounds', '**', '*'),
+    dest: path.join(prodAssets, 'sounds')
   }
 };
 
@@ -462,6 +476,7 @@ exports.svgstore = {
 
 exports.garbage = {
   src: [
+    path.join(prodAssets, 'sounds', 'parts'),
     path.join(prodAssets, 'images', '*.svg'),
     path.join(prodAssets, 'images', 'faviconMarkup.json'),
     path.join(prodAssets, 'js', 'app.js'),

@@ -1,5 +1,3 @@
-@charset "utf-8";
-
 #app > .container-scooter {
   height: 450px;
   width: 300px;
@@ -17,6 +15,20 @@
   transform: rotate(40deg);
 }
 
+#app > .container-cloud-1 {
+  width: 400px;
+  position: absolute;
+  top: 60%;
+  left: 68%;
+}
+
+#app > .container-cloud-2 {
+  width: 400px;
+  position: absolute;
+  top: 60%;
+  left: 72%;
+}
+
 #app > .container-extinguisher {
   height: 220px;
   width: 220px;
@@ -25,25 +37,7 @@
   left: 56%;
 }
 
-#app > .container-door-front,
-#app > .container-door-inside {
-  height: 800px;
-  width: 400px;
-  position: absolute;
-  top: -4%;
-  left: -4%;
-}
-
-#app > .container-door-inside {
-  z-index: 1;
-}
-
-#app > .container-door-front {
-  z-index: 3;
-}
-
 #app > .container-me {
-  display: none;
   height: 450px;
   width: 400px;
   position: absolute;
@@ -52,13 +46,35 @@
   z-index: 2;
 }
 
-#app > .container-me-alert {
-  display: none;
-  height: 100px;
-  width: 100px;
+#app > .container-water-drop {
+  height: 30px;
+  width: 30px;
   position: absolute;
-  top: 20%;
-  left: 60%;
+  top: 32%;
+  left: 61%;
+  z-index: 3;
+}
+
+#app > .container-glasses {
+  height: 100px;
+  width: 300px;
+  position: absolute;
+  top: -10%;
+  left: 10%;
+}
+
+#play-intro,
+#skip-intro {
+  position: absolute;
+  height: 120px;
+  width: 20%;
+  top: 80%;
+  left: 40%;
+  text-align: center;
+}
+
+#skip-intro {
+  top: 83%;
 }
 
 #right-foot-1,

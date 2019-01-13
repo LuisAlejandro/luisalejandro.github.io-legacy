@@ -6,9 +6,9 @@ import Contact from '../components/Contact.vue';
 
 export default new VueRouter({
   routes: [
-    {path: '/', component: Home},
-    {path: '/work', component: Work},
-    {path: '/about', component: About},
-    {path: '/contact', component: Contact},
+    { path: '/', component: Home },
+    { path: '/work', component: Work },
+    { path: '/about', component: About },
+    { path: '/contact', component: Contact }
   ]
 });

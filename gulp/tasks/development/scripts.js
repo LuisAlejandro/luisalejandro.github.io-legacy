@@ -26,12 +26,12 @@ gulp.task('scripts:development', function (done) {
         .pipe(source(item.outputName))
         .pipe(buffer())
         // Report compile errors
-        .pipe(plumber({errorHandler: helpers.onError}))
+        .pipe(plumber({ errorHandler: helpers.onError }))
         .pipe(sourcemaps.init())
         .pipe(sourcemaps.write('.'))
         // Specify the output destination
         .pipe(gulp.dest(item.dest))
-        .pipe(size({title: util.format('scripts:development %s', item.outputName)}));
+        .pipe(size({ title: util.format('scripts:development %s', item.outputName) }));
     };
 
     if (global.isWatching) {

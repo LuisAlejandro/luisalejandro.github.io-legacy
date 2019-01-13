@@ -34,13 +34,17 @@
       left: 40%;
     }
 
-    #cloud-big,
+    #play-intro,
+    #skip-intro,
     #cloud-small,
+    #app > .container-me,
     #app > .container-stream,
+    #app > .container-cloud-1,
+    #app > .container-cloud-2,
+    #app > .container-glasses,
+    #app > .container-water-drop,
     #app > .container-extinguisher,
-    #app > .container-scooter,
-    #app > .container-door-front,
-    #app > .container-door-inside {
+    #app > .container-scooter {
       display: none;
     }
 
@@ -51,6 +55,16 @@
 
   </style>
 
+  <script type="text/javascript">
+    var audiosources = [
+      "{{ '/assets/sounds/sprite.ogg' | prepend: site.baseurl }}",
+      "{{ '/assets/sounds/sprite.mp3' | prepend: site.baseurl }}",
+      "{{ '/assets/sounds/sprite.ac3' | prepend: site.baseurl }}",
+      "{{ '/assets/sounds/sprite.m4a' | prepend: site.baseurl }}"
+    ];
+  </script>
+
+  <link rel="preload" as="audio" type="audio/ogg" href="{{ '/assets/sounds/sprite.ogg' | prepend: site.baseurl }}">
   <link rel="preload" as="style" type="text/css" href="{{ '/assets/css/app.css' | prepend: site.baseurl }}">
   <link rel="preload" as="script" type="text/javascript" href="{{ '/assets/js/app.js' | prepend: site.baseurl }}">
 

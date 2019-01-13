@@ -1,9 +1,49 @@
 import jQuery from 'jquery';
-import { utils } from './utils';
+import { Howl } from 'howler';
 
 var exports = module.exports = {};
 
 exports.scenes = {};
+
+var playback = new Howl({
+  src: audiosources,
+  sprite: {
+    crash: [
+      0,
+      1005.1927437641723
+    ],
+    drop: [
+      3000,
+      169.09297052154182
+    ],
+    entrance: [
+      5000,
+      555.0113378684811
+    ],
+    extinguisher: [
+      7000,
+      250.1587301587298
+    ],
+    fire1: [
+      9000,
+      523.628117913832
+    ],
+    fire2: [
+      11000,
+      1686.0770975056685
+    ],
+    music: [
+      14000,
+      30119.183673469386
+    ],
+    scooter: [
+      46000,
+      483.106575963717
+    ]
+  }
+});
+
+exports.playback = playback;
 
 exports.scenes.start = [{
   targets: 'body',
@@ -23,8 +63,12 @@ exports.scenes.entrance = [{
   duration: 1000,
   offset: 1000,
   complete: () => {
-    jQuery('#app > .container-me, #left-foot-2, #right-foot-2').css({'display': 'block'});
-    jQuery('#left-foot, #right-foot').css({'display': 'none'});
+    jQuery('#app > .container-me, #left-foot-2, #right-foot-2').css({ 'display': 'block' });
+    jQuery('#left-foot, #right-foot').css({ 'display': 'none' });
+    const entrance = playback.play('entrance');
+    playback.volume(0.2, entrance);
+    const music = playback.play('music');
+    playback.volume(1, music);
   }
 }, {
   targets: '#torso-plus-head-arms',
@@ -201,7 +245,11 @@ exports.scenes.scooter = [{
   offset: 4000,
   // left: utils.calcLeftSpacePercentageMe(),
   left: '54%',
-  easing: 'easeOutSine'
+  easing: 'easeOutSine',
+  begin: () => {
+    const scooter = playback.play('scooter');
+    playback.volume(0.3, scooter);
+  }
 }, {
   targets: '#app > .container-scooter',
   duration: 500,
@@ -283,6 +331,8 @@ exports.scenes.extinguish = [{
   rotate: '-25deg',
   begin: () => {
     jQuery('#app > .container-extinguisher').css({ 'display': 'block' });
+    const extinguisher = playback.play('extinguisher');
+    playback.volume(0.1, extinguisher);
   }
 }, {
   targets: '#right-arm',
@@ -345,24 +395,69 @@ exports.scenes.extinguish = [{
   easing: 'linear',
   begin: () => {
     jQuery('#cloud-small').css({ 'display': 'block' });
+    const fire1 = playback.play('fire1');
+    playback.volume(0.7, fire1);
   }
 }, {
-  targets: '#app > .container-me-alert',
-  duration: 2000,
-  offset: 16000,
-  opacity: [0, 1],
-  translateY: '-20px',
+  targets: '#app > .container-water-drop',
+  duration: 3000,
+  offset: 13000,
+  translateY: '20px',
   begin: () => {
-    jQuery('#app > .container-me-alert').css({ 'display': 'block' });
+    jQuery('#app > .container-water-drop').css({ 'display': 'block' });
   }
 }, {
-  targets: '#app > .container-me-alert',
+  targets: '#app > .container-water-drop',
   duration: 500,
-  offset: 18000,
+  offset: 16000,
   opacity: [1, 0],
   complete: () => {
-    jQuery('#app > .container-me-alert').css({ 'display': 'none' });
+    jQuery('#app > .container-water-drop').css({ 'display': 'none' });
   }
+}, {
+  targets: '#lower-right-arm-plus-hand',
+  duration: 200,
+  offset: 18600,
+  easing: 'linear',
+  rotate: '-10deg'
+}, {
+  targets: '#left-arm',
+  duration: 1,
+  offset: 18600,
+  easing: 'linear',
+  rotateY: '+=0',
+  translateX: '140px',
+  translateY: '40px'
+}, {
+  targets: '#app > .container-extinguisher',
+  duration: 200,
+  offset: 18600,
+  easing: 'linear',
+  translateX: '110px',
+  translateY: '0px',
+  rotate: '30deg'
+}, {
+  targets: '#lower-right-arm-plus-hand',
+  duration: 200,
+  offset: 18800,
+  easing: 'linear',
+  rotate: '-30deg'
+}, {
+  targets: '#left-arm',
+  duration: 200,
+  offset: 18800,
+  easing: 'linear',
+  rotateY: '+=0',
+  translateX: '140px',
+  translateY: '0px'
+}, {
+  targets: '#app > .container-extinguisher',
+  duration: 200,
+  offset: 18800,
+  easing: 'linear',
+  translateX: '130px',
+  translateY: '-20px',
+  rotate: '30deg'
 }, {
   targets: '#lower-right-arm-plus-hand',
   duration: 200,
@@ -511,7 +606,11 @@ exports.scenes.outtake = [{
   duration: 3000,
   offset: 21000,
   translateX: '-=1000px',
-  translateY: '-=1000px'
+  translateY: '-=1000px',
+  complete: () => {
+    const crash = playback.play('crash');
+    playback.volume(0.1, crash);
+  }
 }, {
   targets: '#app > .container-extinguisher',
   duration: 3000,
@@ -526,8 +625,71 @@ exports.scenes.outtake = [{
   scale: 5,
   rotate: ['40deg', '40deg'],
   translateX: '-=200px',
-  // translateY: '-=200px',
   begin: () => {
     jQuery('#app > .container-stream').css({ 'display': 'block' });
+    const fire2 = playback.play('fire2');
+    playback.volume(1, fire2);
   }
+}, {
+  targets: '#app > .container-fire-preloader',
+  duration: 1000,
+  offset: 21000,
+  scale: 0.1,
+  easing: 'linear',
+  complete: () => {
+    jQuery('#app > .container-fire-preloader').css({ 'display': 'none' });
+  }
+}, {
+  targets: '#app > .container-cloud-1',
+  duration: 3000,
+  offset: 21000,
+  translateX: '100px',
+  easing: 'easeOutQuint',
+  opacity: [0.65, 0],
+  begin: () => {
+    jQuery('#app > .container-cloud-1').css({ 'display': 'block' });
+  }
+}, {
+  targets: '#app > .container-cloud-2',
+  duration: 3000,
+  offset: 21000,
+  translateX: '-100px',
+  easing: 'easeOutQuint',
+  opacity: [0.65, 0],
+  begin: () => {
+    jQuery('#app > .container-cloud-2').css({ 'display': 'block' });
+  }
+}, {
+  targets: '#app > .container-scooter',
+  duration: 1000,
+  offset: 21000,
+  easing: 'linear',
+  translateY: '700px',
+  translateX: '100px',
+  rotateX: '150deg',
+  rotateZ: '40deg',
+  complete: () => {
+    jQuery('#app > .container-scooter').css({ 'display': 'none' });
+  }
+}];
+
+exports.scenes.glasses = [{
+  targets: '#app > .container-glasses',
+  duration: 1000,
+  offset: 25000,
+  translateY: '+=700px',
+  rotate: ['0deg', '360deg'],
+  easing: 'easeInOutQuint',
+  begin: () => {
+    jQuery('#app > .container-glasses').css({ 'display': 'block' });
+  }
+}, {
+  targets: '#app > .container-glasses',
+  duration: 6000,
+  offset: 27000,
+  translateY: '-=900px',
+  translateX: '-=200px',
+  rotate: '+=30deg',
+  scale: 100,
+  easing: 'easeOutQuint'
 }];
