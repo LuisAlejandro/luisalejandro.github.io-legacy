@@ -24,10 +24,10 @@ gulp.task('scripts:production', function (done) {
       .pipe(source(item.outputName))
       .pipe(buffer())
       // Report compile errors
-      .pipe(plumber({errorHandler: helpers.onError}))
+      .pipe(plumber({ errorHandler: helpers.onError }))
       // Specify the output destination
       .pipe(gulp.dest(item.dest))
-      .pipe(size({title: util.format('scripts:production %s', item.outputName)}));
+      .pipe(size({ title: util.format('scripts:production %s', item.outputName) }));
   };
 
   // Start bundling with Browserify for each item specified

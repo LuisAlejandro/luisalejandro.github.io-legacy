@@ -8,6 +8,7 @@ gulp.task('build:production', function (done) {
     [
       'jekyll:production',
       'images:production',
+      'sounds:production',
       'fonts:production',
       'styles:production',
       'scripts:production'

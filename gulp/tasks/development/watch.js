@@ -9,6 +9,7 @@ gulp.task('watch:development', ['browsersync:development'], function (done) {
   global.isWatching = true;
   gulp.watch(config.jekyll, ['jekyll:rebuild:development']);
   gulp.watch(config.images, ['images:development']);
+  gulp.watch(config.sounds, ['sounds:development']);
   gulp.watch(config.svg, ['svgstore:rebuild:development']);
   gulp.watch(config.styles, ['styles:rebuild:development', 'lint:styles:development']);
   gulp.watch(config.scripts, ['scripts:development', 'lint:js:development']);

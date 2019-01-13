@@ -46,6 +46,7 @@ exports.browsersync = {
       path.join(devAssets, 'css', '*.css'),
       path.join(devAssets, 'js', '*.js'),
       path.join(devAssets, 'images', '**'),
+      path.join(devAssets, 'sounds', '**'),
       path.join(devAssets, 'fonts', '*'),
       path.join(development, '*')
     ],
@@ -82,6 +83,7 @@ exports.watch = {
   styles: path.join(appAssets, 'styles', '**', '*.{css,scss}'),
   scripts: path.join(appAssets, 'javascripts', '**', '*.{js,vue}'),
   images: path.join(appAssets, 'images', '**', '*.{jpg,jpeg,png,gif}'),
+  sounds: path.join(appAssets, 'sounds', '**', '*.{ogg,mp3,m4a,ac3}'),
   svg: path.join(appAssets, 'images', '**', '*.svg')
 };
 
@@ -166,8 +168,6 @@ exports.scripts = {
   // A separate bundle will be generated for each
   // bundle config in the list below.
   //
-  // head.js is loaded in the head of the website, and
-  // contains everything that needs to be loaded asap.
   // app.js is loaded at the bottom, and contains
   // everything that can be loaded after rendering.
   development: {
@@ -183,10 +183,6 @@ exports.scripts = {
       entries: path.join(appAssets, 'javascripts', 'app.js'),
       dest: path.join(devAssets, 'js'),
       outputName: 'app.js'
-    }, {
-      entries: path.join(appAssets, 'javascripts', 'head.js'),
-      dest: path.join(devAssets, 'js'),
-      outputName: 'head.js'
     }]
 
   },
@@ -203,10 +199,6 @@ exports.scripts = {
       entries: path.join(appAssets, 'javascripts', 'app.js'),
       dest: path.join(prodAssets, 'js'),
       outputName: 'app.js'
-    }, {
-      entries: path.join(appAssets, 'javascripts', 'head.js'),
-      dest: path.join(prodAssets, 'js'),
-      outputName: 'head.js'
     }]
   }
 };
@@ -220,6 +212,18 @@ exports.images = {
   production: {
     src: path.join(appAssets, 'images', '**', '*'),
     dest: path.join(prodAssets, 'images')
+  }
+};
+
+// Copy sounds
+exports.sounds = {
+  development: {
+    src: path.join(appAssets, 'sounds', '**', '*'),
+    dest: path.join(devAssets, 'sounds')
+  },
+  production: {
+    src: path.join(appAssets, 'sounds', '**', '*'),
+    dest: path.join(prodAssets, 'sounds')
   }
 };
 
@@ -472,12 +476,11 @@ exports.svgstore = {
 
 exports.garbage = {
   src: [
+    path.join(prodAssets, 'sounds', 'parts'),
     path.join(prodAssets, 'images', '*.svg'),
     path.join(prodAssets, 'images', 'faviconMarkup.json'),
     path.join(prodAssets, 'js', 'app.js'),
-    path.join(prodAssets, 'js', 'head.js'),
     path.join(prodAssets, 'css', 'app.css'),
-    path.join(prodAssets, 'css', 'head.css'),
     path.join(prodAssets, 'fonts'),
     path.join(prodAssets, 'manifest.json')
   ]

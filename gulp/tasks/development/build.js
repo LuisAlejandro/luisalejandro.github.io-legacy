@@ -8,6 +8,7 @@ gulp.task('build:development', function (done) {
     [
       'jekyll:development',
       'images:development',
+      'sounds:development',
       'fonts:development',
       'styles:development',
       'scripts:development'

@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 /* Third-party */
+@import "vendor/normalize.css/normalize.css";
 @import "vendor/webfonts/webfonts";
 @import "vendor/bootswatch/theme";
 @import "vendor/bootstrap-vue/dist/bootstrap-vue";
@@ -22,5 +23,6 @@
 @import "layout/footer";
 
 /* Components */
-@import "components/post";
 @import "components/intro";
+@import "components/home";
+@import "components/post";

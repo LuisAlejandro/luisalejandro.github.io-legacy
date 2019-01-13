@@ -6,9 +6,65 @@
   <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
-  <link rel="stylesheet" type="text/css" href="{{ '/assets/css/head.css' | prepend: site.baseurl }}">
-  <script type="text/javascript" src="{{ '/assets/js/head.js' | prepend: site.baseurl }}"></script>
+  <style type="text/css">
 
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      overflow: hidden;
+    }
+
+    #app {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 20% 0 0 0;
+    }
+
+    #app > .container-fire-preloader {
+      display: inline-block;
+      position: absolute;
+      height: 120px;
+      width: 20%;
+      top: 60%;
+      left: 40%;
+    }
+
+    #play-intro,
+    #skip-intro,
+    #cloud-small,
+    #app > .container-me,
+    #app > .container-stream,
+    #app > .container-cloud-1,
+    #app > .container-cloud-2,
+    #app > .container-glasses,
+    #app > .container-water-drop,
+    #app > .container-extinguisher,
+    #app > .container-scooter {
+      display: none;
+    }
+
+    #svgstore {
+      width: 0;
+      height: 0;
+    }
+
+  </style>
+
+  <script type="text/javascript">
+    var audiosources = [
+      "{{ '/assets/sounds/sprite.ogg' | prepend: site.baseurl }}",
+      "{{ '/assets/sounds/sprite.mp3' | prepend: site.baseurl }}",
+      "{{ '/assets/sounds/sprite.ac3' | prepend: site.baseurl }}",
+      "{{ '/assets/sounds/sprite.m4a' | prepend: site.baseurl }}"
+    ];
+  </script>
+
+  <link rel="preload" as="audio" type="audio/ogg" href="{{ '/assets/sounds/sprite.ogg' | prepend: site.baseurl }}">
   <link rel="preload" as="style" type="text/css" href="{{ '/assets/css/app.css' | prepend: site.baseurl }}">
   <link rel="preload" as="script" type="text/javascript" href="{{ '/assets/js/app.js' | prepend: site.baseurl }}">
 
