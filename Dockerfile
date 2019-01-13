@@ -9,6 +9,8 @@ RUN npm install -g gulp
 
 RUN gem install bundler
 
+RUN gem update --system
+
 RUN useradd -ms /bin/bash luisalejandro
 RUN echo "luisalejandro ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/luisalejandro
 
