@@ -1,18 +1,182 @@
 #home {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   width: 100%;
-  height: 100%;
-  padding: 20% 0 0 0;
 }
 
-#home > .container-me {
+#home > a > .container-me {
   height: 450px;
   width: 400px;
   position: absolute;
-  top: 30%;
+  top: 20%;
   left: -400px;
   z-index: 2;
 }
 
+#home > a > .container-laptop {
+  height: 500px;
+  width: 500px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  filter: grayscale(100%);
+  transition: filter 1s ease;
+  transform: rotate(0deg) translateY(100px) translateX(700px);
+}
+
+#home > a > .container-laptop:hover {
+  filter: grayscale(0%);
+}
+
+#home > a > .container-papers {
+  height: 350px;
+  width: 350px;
+  position: absolute;
+  top: 0;
+  right: -2%;
+  z-index: 2;
+  filter: grayscale(100%);
+  transition: filter 1s ease;
+  transform: rotate(50deg) translateY(-300px) translateX(500px);
+}
+
+#home > a > .container-papers:hover {
+  filter: grayscale(0%);
+}
+
+#home > a > .container-smartphone {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  bottom: 5%;
+  right: 30%;
+  z-index: 2;
+  filter: grayscale(100%);
+  transition: filter 1s ease;
+  transform: rotate(-30deg) translateY(500px) translateX(300px);
+}
+
+#home > a > .container-smartphone:hover {
+  filter: grayscale(0%);
+}
+
+#home > a > .container-calendar {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  top: 10%;
+  right: 17%;
+  z-index: 2;
+  filter: grayscale(100%);
+  transition: filter 1s ease;
+  transform: rotate(30deg) translateY(-400px) translateX(-00px);
+}
+
+#home > a > .container-calendar:hover {
+  filter: grayscale(0%);
+}
+
+#home > a > .container-coffee {
+  height: 170px;
+  width: 170px;
+  position: absolute;
+  bottom: 30%;
+  right: 30%;
+  z-index: 2;
+  filter: grayscale(100%);
+  transition: filter 1s ease;
+  transform: rotate(30deg) translateY(500px) translateX(100px);
+}
+
+#home > a > .container-coffee:hover {
+  filter: grayscale(0%);
+}
+
+#home > a > .container-pencils {
+  height: 400px;
+  width: 400px;
+  position: absolute;
+  bottom: -10%;
+  right: 40%;
+  z-index: 2;
+  filter: grayscale(100%);
+  transition: filter 1s ease;
+  transform: rotate(-50deg) translateY(500px) translateX(-100px);
+}
+
+#home > a > .container-pencils:hover {
+  filter: grayscale(0%);
+}
+
+#home > a > .container-notes {
+  height: 350px;
+  width: 350px;
+  position: absolute;
+  bottom: -10%;
+  right: 60%;
+  z-index: 2;
+  filter: grayscale(100%);
+  transition: filter 1s ease;
+  transform: rotate(50deg) translateY(500px) translateY(100px);
+}
+
+#home > a > .container-notes:hover {
+  filter: grayscale(0%);
+}
+
+#home > a > .container-calc {
+  height: 140px;
+  width: 140px;
+  position: absolute;
+  top: 5%;
+  right: 30%;
+  z-index: 2;
+  filter: grayscale(100%);
+  transition: filter 1s ease;
+  transform: rotate(50deg) translateY(-500px) translateX(100px);
+}
+
+#home > a > .container-calc:hover {
+  filter: grayscale(0%);
+}
+/*
+#home-heading {
+  display: inline-block;
+  width: 60%;
+  margin: 0 20%;
+  top: 0;
+}
+
+#home-heading > h1 {
+  position: relative;
+  font-size: 3.7em;
+}
+
+#home-heading > h1 > .text-wrapper {
+  display: inline-block;
+  position: relative;
+  margin: 240px 0 0 0;
+  overflow: hidden;
+}
+
+#home-heading > h1 > .text-wrapper > .letters {
+  display: inline-block;
+}
+
+#home-heading > h1 > .text-wrapper > .letters > .letter {
+  display: inline-block;
+  transform-origin: 0 100%;
+  line-height: 1em;
+  opacity: 0;
+}
+
+#home-subheading {
+  display: inline-block;
+  width: 60%;
+  margin: 50px 20%;
+  opacity: 0;
+}
+
+#home-subheading > h2 {
+  position: relative;
+}*/

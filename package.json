@@ -58,7 +58,7 @@
     "compact": false
   },
   "devDependencies": {
-    "animejs": "^2.2.0",
+    "animejs": "^3.0.0",
     "audiosprite": "^0.7.1",
     "babel-core": "^6.26.3",
     "babel-plugin-transform-runtime": "^6.23.0",

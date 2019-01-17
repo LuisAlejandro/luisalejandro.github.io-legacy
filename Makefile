@@ -51,3 +51,8 @@ console:
 		-v $(PWD):/home/luisalejandro/luisalejandro.github.io \
 		-w /home/luisalejandro/luisalejandro.github.io \
 		luisalejandro/luisalejandro.github.io:latest bash
+
+clean:
+
+	@rm -rf node_modules libraries build vendor .bundle package-lock.json \
+		npm-debug.log Gemfile.lock app/_assets/fonts/vendor app/_assets/styles/vendor

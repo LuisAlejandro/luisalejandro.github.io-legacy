@@ -28,15 +28,19 @@ gulp.task('libraries:fonts:common', function (done) {
     version: '1.0.0'
   };
 
-  if (!fs.existsSync(config.dest)) {
-    fs.mkdirSync(config.dest, 0o755);
+  if (fs.existsSync(dummyJsonPath)) {
+    done();
+  } else {
+    if (!fs.existsSync(config.dest)) {
+      fs.mkdirSync(config.dest, 0o755);
+    }
+
+    fs.writeFileSync(dummyJsonPath, JSON.stringify(dummyJson));
+
+    return gulp.src(config.webfontslist)
+      .pipe(plumber({errorHandler: helpers.onError}))
+      .pipe(webfonts(config.webfontsconfig))
+      .pipe(gulp.dest(config.dest))
+      .pipe(size({title: 'libraries:fonts:common'}));
   }
-
-  fs.writeFileSync(dummyJsonPath, JSON.stringify(dummyJson));
-
-  return gulp.src(config.webfontslist)
-    .pipe(plumber({errorHandler: helpers.onError}))
-    .pipe(webfonts(config.webfontsconfig))
-    .pipe(gulp.dest(config.dest))
-    .pipe(size({title: 'libraries:fonts:common'}));
 });

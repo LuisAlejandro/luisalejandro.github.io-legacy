@@ -6,9 +6,10 @@ import Contact from '../components/Contact.vue';
 
 export default new VueRouter({
   routes: [
-    { path: '/', component: Home },
-    { path: '/work', component: Work },
-    { path: '/about', component: About },
-    { path: '/contact', component: Contact }
+    { path: '/', name: 'home', component: Home },
+    { path: '/work', name: 'work', component: Work },
+    { path: '/about', name: 'about', component: About },
+    { path: '/contact', name: 'contact', component: Contact },
+    { path: '/erp', name: 'erp', beforeEnter () { window.location.href = 'http://erp.luisalejandro.org'; } }
   ]
 });
