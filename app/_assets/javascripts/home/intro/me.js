@@ -40,7 +40,7 @@ export default function () {
     duration: 1,
     rotate: '-30deg'
   }, 0).add({
-    targets: '#home > a > .container-me',
+    targets: '#home > .container-me',
     duration: 1000,
     // left: utils.calcLeftSpacePercentageMe(),
     left: ['-30%', '-15%'],
@@ -125,7 +125,7 @@ export default function () {
     rotate: '0deg',
     easing: 'easeInOutQuint'
   }, 2000).add({
-    targets: '#home > a > .container-me',
+    targets: '#home > .container-me',
     duration: 1000,
     // left: utils.calcLeftSpacePercentageMe(),
     left: ['-15%', '-5%'],
@@ -135,55 +135,55 @@ export default function () {
       jQuery('#left-foot-2,#right-foot-2').css({ 'display': 'none' });
     }
   }, 2000).add({
-    targets: '#home > a > .container-calc',
+    targets: '#home > .container-clients',
     duration: 2500,
     rotate: [50, -10],
     translateY: [-500, 0],
     translateX: [100, 0]
   }, 2000).add({
-    targets: '#home > a > .container-calendar',
+    targets: '#home > .container-calendar',
     duration: 2000,
     rotate: [30, -10],
     translateY: [-400, 0],
     translateX: [-100, 0]
   }, 2000).add({
-    targets: '#home > a > .container-papers',
+    targets: '#home > .container-about',
     duration: 2500,
     rotate: [50, 10],
     translateY: [-300, 0],
     translateX: [500, 0]
   }, 2000).add({
-    targets: '#home > a > .container-laptop',
+    targets: '#home > .container-portfolio',
     duration: 3500,
     rotate: [0, 30],
     translateY: [100, 0],
     translateX: [700, 0]
   }, 2000).add({
-    targets: '#home > a > .container-smartphone',
+    targets: '#home > .container-contact',
     duration: 2500,
     rotate: [-30, -10],
     translateY: [500, 0],
     translateX: [300, 0]
   }, 2000).add({
-    targets: '#home > a > .container-coffee',
+    targets: '#home > .container-donations',
     duration: 3000,
     rotate: [30, 0],
     translateY: [500, 0],
     translateX: [100, 0]
   }, 2000).add({
-    targets: '#home > a > .container-pencils',
+    targets: '#home > .container-easter',
     duration: 3500,
     rotate: [-50, -10],
     translateY: [500, 0],
     translateX: [-100, 0]
   }, 2000).add({
-    targets: '#home > a > .container-notes',
+    targets: '#home > .container-blog',
     duration: 1500,
     rotate: [50, -10],
     translateY: [500, 0],
     translateX: [100, 0]
   }, 2000).add({
-    targets: '#home > a > .container-me',
+    targets: '#home > .container-me',
     duration: 3000,
     rotate: '10deg',
     translateX: '20px',

@@ -1,8 +1,8 @@
-import jQuery from 'jquery';
+// import jQuery from 'jquery';
 import anime from 'animejs';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Cookies from 'cookies';
+// import Cookies from 'cookies';
 import BootstrapVue from 'bootstrap-vue';
 
 // import { scenes, playback } from './intro/scenes';

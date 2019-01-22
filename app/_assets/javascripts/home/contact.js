@@ -8,35 +8,39 @@ export default function () {
         duration: 250,
         easing: 'linear'
       }).add({
-        targets: '#home > a > .container-calc',
+        targets: [
+          '#home > .container-page-clients', '#home > .container-page-portfolio',
+          '#home > .container-page-donations', '#home > .container-page-blog',
+          '#home > .container-page-easter', '#home > .container-page-about',
+          '#home > .container-page-home'
+        ],
+        translateY: -400
+      }, 0).add({
+        targets: '#home > .container-clients',
         translateX: -20
       }, 0).add({
-        targets: '#home > a > .container-calendar',
-        translateY: 20,
-        translateX: -20
-      }, 0).add({
-        targets: '#home > a > .container-papers',
+        targets: '#home > .container-about',
         translateX: 10,
         rotate: 15
       }, 0).add({
-        targets: '#home > a > .container-laptop',
+        targets: '#home > .container-portfolio',
         translateY: 20,
         translateX: 20
       }, 0).add({
-        targets: '#home > a > .container-coffee',
+        targets: '#home > .container-donations',
         translateY: -20,
         translateX: 40
       }, 0).add({
-        targets: '#home > a > .container-smartphone',
+        targets: '#home > .container-contact',
         translateY: -40,
         rotate: -15,
         zIndex: 9999
       }, 0).add({
-        targets: '#home > a > .container-pencils',
+        targets: '#home > .container-easter',
         translateY: 5,
         translateX: -40
       }, 0).add({
-        targets: '#home > a > .container-notes',
+        targets: '#home > .container-blog',
         translateY: 5
       }, 0);
     };
@@ -46,56 +50,59 @@ export default function () {
         duration: 250,
         easing: 'linear'
       }).add({
-        targets: '#home > a > .container-calc',
+        targets: [
+          '#home > .container-page-clients', '#home > .container-page-portfolio',
+          '#home > .container-page-donations', '#home > .container-page-blog',
+          '#home > .container-page-easter', '#home > .container-page-about',
+          '#home > .container-page-home'
+        ],
+        translateY: 0
+      }, 0).add({
+        targets: '#home > .container-clients',
         translateY: 0,
         translateX: 0,
         rotate: -10,
-        zIndex: 2
+        zIndex: 20
       }, 0).add({
-        targets: '#home > a > .container-calendar',
+        targets: '#home > .container-about',
         translateY: 0,
         translateX: 0,
-        rotate: -10,
-        zIndex: 2
+        rotate: 10,
+        zIndex: 20
       }, 0).add({
-        targets: '#home > a > .container-papers',
-        translateY: 0,
-        translateX: 0,
-        rotate: 10
-      }, 0).add({
-        targets: '#home > a > .container-laptop',
+        targets: '#home > .container-portfolio',
         translateY: 0,
         translateX: 0,
         rotate: 30,
-        zIndex: 2
+        zIndex: 20
       }, 0).add({
-        targets: '#home > a > .container-coffee',
+        targets: '#home > .container-donations',
         translateY: 0,
         translateX: 0,
         rotate: 0,
-        zIndex: 2
+        zIndex: 20
       }, 0).add({
-        targets: '#home > a > .container-smartphone',
+        targets: '#home > .container-contact',
         translateY: 0,
         translateX: 0,
         rotate: -10,
-        zIndex: 2
+        zIndex: 20
       }, 0).add({
-        targets: '#home > a > .container-pencils',
+        targets: '#home > .container-easter',
         translateY: 0,
         translateX: 0,
         rotate: -10,
-        zIndex: 2
+        zIndex: 20
       }, 0).add({
-        targets: '#home > a > .container-notes',
+        targets: '#home > .container-blog',
         translateY: 0,
         translateX: 0,
         rotate: -10,
-        zIndex: 2
+        zIndex: 20
       }, 0);
     };
 
-    jQuery('#home > a > .container-smartphone').on({
+    jQuery('#home > .container-contact').on({
       mouseenter: mouseenterAnimation,
       mouseleave: mouseleaveAnimation
     }).children().on({

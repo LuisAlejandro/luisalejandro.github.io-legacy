@@ -3,141 +3,196 @@
   width: 100%;
 }
 
-#home > a > .container-me {
-  height: 450px;
-  width: 400px;
-  position: absolute;
-  top: 20%;
-  left: -400px;
-  z-index: 2;
-}
-
-#home > a > .container-laptop {
+#home > .container-portfolio {
   height: 500px;
   width: 500px;
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index: 2;
+  z-index: 20;
   filter: grayscale(100%);
   transition: filter 1s ease;
   transform: rotate(0deg) translateY(100px) translateX(700px);
 }
 
-#home > a > .container-laptop:hover {
+#home > .container-portfolio:hover {
   filter: grayscale(0%);
 }
 
-#home > a > .container-papers {
+#home > .container-about {
   height: 350px;
   width: 350px;
   position: absolute;
   top: 0;
   right: -2%;
-  z-index: 2;
+  z-index: 20;
   filter: grayscale(100%);
   transition: filter 1s ease;
   transform: rotate(50deg) translateY(-300px) translateX(500px);
 }
 
-#home > a > .container-papers:hover {
+#home > .container-about:hover {
   filter: grayscale(0%);
 }
 
-#home > a > .container-smartphone {
+#home > .container-contact {
   height: 200px;
   width: 200px;
   position: absolute;
   bottom: 5%;
   right: 30%;
-  z-index: 2;
+  z-index: 20;
   filter: grayscale(100%);
   transition: filter 1s ease;
   transform: rotate(-30deg) translateY(500px) translateX(300px);
 }
 
-#home > a > .container-smartphone:hover {
+#home > .container-contact:hover {
   filter: grayscale(0%);
 }
 
-#home > a > .container-calendar {
-  height: 200px;
-  width: 200px;
-  position: absolute;
-  top: 10%;
-  right: 17%;
-  z-index: 2;
-  filter: grayscale(100%);
-  transition: filter 1s ease;
-  transform: rotate(30deg) translateY(-400px) translateX(-00px);
-}
-
-#home > a > .container-calendar:hover {
-  filter: grayscale(0%);
-}
-
-#home > a > .container-coffee {
+#home > .container-donations {
   height: 170px;
   width: 170px;
   position: absolute;
   bottom: 30%;
   right: 30%;
-  z-index: 2;
+  z-index: 20;
   filter: grayscale(100%);
   transition: filter 1s ease;
   transform: rotate(30deg) translateY(500px) translateX(100px);
 }
 
-#home > a > .container-coffee:hover {
+#home > .container-donations:hover {
   filter: grayscale(0%);
 }
 
-#home > a > .container-pencils {
+#home > .container-easter {
   height: 400px;
   width: 400px;
   position: absolute;
   bottom: -10%;
   right: 40%;
-  z-index: 2;
+  z-index: 20;
   filter: grayscale(100%);
   transition: filter 1s ease;
   transform: rotate(-50deg) translateY(500px) translateX(-100px);
 }
 
-#home > a > .container-pencils:hover {
+#home > .container-easter:hover {
   filter: grayscale(0%);
 }
 
-#home > a > .container-notes {
+#home > .container-blog {
   height: 350px;
   width: 350px;
   position: absolute;
   bottom: -10%;
   right: 60%;
-  z-index: 2;
+  z-index: 20;
   filter: grayscale(100%);
   transition: filter 1s ease;
   transform: rotate(50deg) translateY(500px) translateY(100px);
 }
 
-#home > a > .container-notes:hover {
+#home > .container-blog:hover {
   filter: grayscale(0%);
 }
 
-#home > a > .container-calc {
-  height: 140px;
-  width: 140px;
+#home > .container-clients {
+  height: 250px;
+  width: 250px;
   position: absolute;
   top: 5%;
-  right: 30%;
-  z-index: 2;
+  right: 18%;
+  z-index: 20;
   filter: grayscale(100%);
   transition: filter 1s ease;
-  transform: rotate(50deg) translateY(-500px) translateX(100px);
+  transform: rotate(50deg) translateY(-600px) translateX(100px);
 }
 
-#home > a > .container-calc:hover {
+#home > .container-clients:hover {
   filter: grayscale(0%);
+}
+
+#home > .container-page-home {
+  height: 900px;
+  width: 900px;
+  position: absolute;
+  top: -45%;
+  left: 0;
+  z-index: 10;
+  transform: rotate(-40deg) translateY(-1000px) translateX(-1000px);
+}
+
+#home > .container-page-portfolio {
+  height: 900px;
+  width: 900px;
+  position: absolute;
+  top: -44%;
+  left: -0.25%;
+  z-index: 8;
+  transform: rotate(40deg) translateY(-1000px) translateX(-500px);
+}
+
+#home > .container-page-about {
+  height: 900px;
+  width: 900px;
+  position: absolute;
+  top: -43%;
+  left: -0.5%;
+  z-index: 7;
+  transform: rotate(0deg) translateY(-1000px) translateX(-200px);
+}
+
+#home > .container-page-blog {
+  height: 900px;
+  width: 900px;
+  position: absolute;
+  top: -42%;
+  left: 0;
+  z-index: 6;
+  transform: rotate(-40deg) translateY(-1500px) translateX(500px);
+}
+
+#home > .container-page-clients {
+  height: 900px;
+  width: 900px;
+  position: absolute;
+  top: -41%;
+  left: 0;
+  z-index: 5;
+  transform: rotate(50deg) translateY(-1200px) translateX(1000px);
+}
+
+#home > .container-page-contact {
+  height: 900px;
+  width: 900px;
+  position: absolute;
+  top: -40%;
+  left: 0.5%;
+  z-index: 4;
+  transform: rotate(-70deg) translateY(-2000px) translateX(700px);
+}
+
+#home > .container-page-donations {
+  height: 900px;
+  width: 900px;
+  position: absolute;
+  top: -40%;
+  left: 1%;
+  z-index: 3;
+  transform: rotate(0deg) translateY(-1700px) translateX(1500px);
+}
+
+#home > .container-page-easter {
+  height: 900px;
+  width: 900px;
+  position: absolute;
+  top: -40%;
+  left: 2%;
+  z-index: 2;
+  transform: rotate(-60deg) translateY(-1000px) translateX(1000px);
 }
 /*
 #home-heading {
