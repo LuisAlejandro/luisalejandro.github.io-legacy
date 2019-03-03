@@ -71,7 +71,7 @@
     "browserify-shim": "^3.8.14",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.0.5",
-    "del": "^3.0.0",
+    "del": "^4.0.0",
     "eslint": "^5.4.0",
     "eslint-config-standard": "^12.0.0-alpha.0",
     "eslint-plugin-import": "^2.14.0",
