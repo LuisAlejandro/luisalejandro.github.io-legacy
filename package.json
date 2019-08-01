@@ -101,7 +101,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-svgstore": "^7.0.1",
     "gulp-uglify": "^3.0.0",
-    "gulp-xml-validator": "^0.2.2",
+    "gulp-xml-validator": "^0.3.0",
     "howler": "^2.1.1",
     "jquery": "^3.3.1",
     "js-cookie": "^2.2.0",
