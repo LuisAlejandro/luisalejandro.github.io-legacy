@@ -1,9 +1,9 @@
-var config = require('../../config').lintJs;
-var helpers = require('../../util/helpers');
+const config = require('../../config').lintJs;
+const helpers = require('../../util/helpers');
 
-var gulp = require('gulp');
-var plumber = require('gulp-plumber');
-var eslint = require('gulp-eslint');
+const gulp = require('gulp');
+const plumber = require('gulp-plumber');
+const eslint = require('gulp-eslint');
 
 // Lint JavaScript
 // Executed by watch task

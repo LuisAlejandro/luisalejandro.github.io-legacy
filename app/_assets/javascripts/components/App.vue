@@ -1,26 +1,31 @@
 <template>
-  <b-container fluid>
-    <b-row>
-      <b-navbar id="top-navbar" variant="light" type="light" toggleable class="w-100">
-        <b-navbar-brand to="/">
+  <b-container fluid class="d-flex flex-column">
+    <b-row class="d-flex flex-row position-sticky sticky-top">
+      <b-navbar id="top-navbar" variant="light" type="light" toggleable class="d-flex flex-row col shadow" fluid>
+        <div class="d-flex flex-row col col-8 align-items-center justify-content-center p-0 m-auto">
           <span class="logo">
-            <svg class="container-logo">
-              <use xlink:href="#logo" />
-            </svg>
+            <b-navbar-brand to="/">
+              <svg class="container-logo">
+                <use xlink:href="#logo" />
+              </svg>
+            </b-navbar-brand>
           </span>
-        </b-navbar-brand>
-        <b-navbar-toggle target="nav_dropdown_collapse"></b-navbar-toggle>
-        <b-collapse is-nav id="nav_dropdown_collapse">
-          <b-navbar-nav>
-            <b-nav-item to="work">Work</b-nav-item>
+          <b-navbar-nav class="ml-auto">
+            <b-nav-item to="blog">Blog</b-nav-item>
+            <b-nav-item to="portfolio">Portfolio</b-nav-item>
             <b-nav-item to="about">About</b-nav-item>
             <b-nav-item to="contact">Contact</b-nav-item>
           </b-navbar-nav>
-        </b-collapse>
+        </div>
       </b-navbar>
     </b-row>
-    <b-row>
+    <b-row class="d-flex flex-row">
       <router-view></router-view>
+    </b-row>
+    <b-row class="d-flex flex-row">
+      <footer>
+        dfsdfs
+      </footer>
     </b-row>
   </b-container>
 </template>

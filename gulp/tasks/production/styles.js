@@ -25,8 +25,8 @@ gulp.task('styles:production', ['styles:sass:common'], function () {
   ];
 
   return gulp.src(config.production.src)
-    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(postcss(processors))
     .pipe(gulp.dest(config.production.dest))
-    .pipe(size({title: 'styles:production'}));
+    .pipe(size({ title: 'styles:production' }));
 });

@@ -1,7 +1,7 @@
-var config = require('../../config').browsersync.development;
+const config = require('../../config').browsersync.development;
 
-var gulp = require('gulp');
-var browsersync = require('browser-sync');
+const gulp = require('gulp');
+const browsersync = require('browser-sync');
 
 // Run build task and start a server with BrowserSync
 gulp.task('browsersync:development', ['build:development'], function (done) {

@@ -21,8 +21,8 @@ gulp.task('favicons:generate:production', function (done) {
 gulp.task('favicons:production', ['favicons:generate:production'], function () {
   const faviconHtml = JSON.parse(fs.readFileSync(config.options.markupFile)).favicon.html_code;
   return gulp.src(config.src)
-    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(favicon.injectFaviconMarkups(faviconHtml))
     .pipe(gulp.dest(config.dest))
-    .pipe(size({title: 'favicons:production'}));
+    .pipe(size({ title: 'favicons:production' }));
 });

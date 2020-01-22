@@ -1,39 +1,25 @@
 <template>
   <div id="home">
     <svg class="container-portfolio">
-      <router-link to="portfolio">
-        <use xlink:href="#portfolio" />
-      </router-link>
+      <use xlink:href="#portfolio" />
     </svg>
     <svg class="container-about">
-      <router-link to="about">
-        <use xlink:href="#about" />
-      </router-link>
+      <use xlink:href="#about" />
     </svg>
     <svg class="container-blog">
-      <router-link to="blog">
-        <use xlink:href="#blog" />
-      </router-link>
+      <use xlink:href="#blog" />
     </svg>
     <svg class="container-clients">
-      <router-link to="clients">
-        <use xlink:href="#clients" />
-      </router-link>
+      <use xlink:href="#clients" />
     </svg>
     <svg class="container-contact">
-      <router-link to="contact">
-        <use xlink:href="#contact" />
-      </router-link>
+      <use xlink:href="#contact" />
     </svg>
     <svg class="container-donations">
-      <router-link to="donations">
-        <use xlink:href="#donations" />
-      </router-link>
+      <use xlink:href="#donations" />
     </svg>
     <svg class="container-easter">
-      <router-link to="easter">
-        <use xlink:href="#easter" />
-      </router-link>
+      <use xlink:href="#easter" />
     </svg>
     <svg class="container-page-home">
       <use xlink:href="#page-home" />
@@ -63,6 +49,7 @@
 </template>
 
 <script>
+import jQuery from 'jquery';
 import objectsIntro from '../home/intro/objects';
 import clientsEvents from '../home/clients';
 import aboutEvents from '../home/about';
@@ -81,14 +68,18 @@ export default {
   },
   methods: {
     loadAnimation () {
+      const router = this.$router;
+      const todayDate = new Date().toLocaleString('en');
+      jQuery('.deployment-date').text('Deployment date: ' + todayDate);
+
       objectsIntro().finished.then(() => {
-        clientsEvents();
-        aboutEvents();
-        portfolioEvents();
-        donationsEvents();
-        contactEvents();
-        easterEvents();
-        blogEvents();
+        clientsEvents(router);
+        aboutEvents(router);
+        portfolioEvents(router);
+        donationsEvents(router);
+        contactEvents(router);
+        easterEvents(router);
+        blogEvents(router);
       });
     }
   }

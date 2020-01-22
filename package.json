@@ -12,22 +12,26 @@
     "postinstall": "gulp libraries:gems:common libraries:fonts:common"
   },
   "browser": {
-    "jQuery": "./node_modules/jquery/dist/jquery.js",
+    "jquery": "./node_modules/jquery/dist/jquery.js",
+    "jquery-bridget": "./node_modules/jquery-bridget/jquery-bridget.js",
     "anime": "./node_modules/animejs/anime.js",
     "vue": "./node_modules/vue/dist/vue.js",
     "vue-router": "./node_modules/vue-router/dist/vue-router.js",
     "bootstrap-vue": "./node_modules/bootstrap-vue/dist/bootstrap-vue.js",
     "howler": "./node_modules/howler/dist/howler.js",
-    "cookies": "./node_modules/js-cookie/src/js.cookie.js"
+    "masonry": "./node_modules/masonry-layout/masonry.js",
+    "waypoints": "./node_modules/waypoints/lib/noframework.waypoints.js"
   },
   "browserify-shim": {
-    "jQuery": "global:jQuery",
+    "jquery": "global:jQuery",
+    "jquery-bridget": "global:jQueryBridget",
     "anime": "global:anime",
     "vue": "global:Vue",
     "vue-router": "global:VueRouter",
     "bootstrap-vue": "global:BootstrapVue",
     "howler": "global:Howl",
-    "cookies": "global:Cookies"
+    "masonry": "global:Masonry",
+    "waypoints": "global:Waypoint"
   },
   "browserify": {
     "transform": [
@@ -58,7 +62,7 @@
     "compact": false
   },
   "devDependencies": {
-    "animejs": "^3.0.0",
+    "animejs": "^3.0.1",
     "audiosprite": "^0.7.1",
     "babel-core": "^6.26.3",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -79,11 +83,12 @@
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^3.1.0",
     "fancy-log": "^1.3.2",
+    "google-font-downloader": "^1.0.5",
     "gulp": "^3.9.1",
     "gulp-base64": "^0.1.3",
     "gulp-eslint": "^5.0.0",
     "gulp-filter": "^5.1.0",
-    "gulp-google-webfonts": "^2.0.0",
+    "gulp-flatten": "^0.4.0",
     "gulp-htmlmin": "^4.0.0",
     "gulp-imagemin": "^4.1.0",
     "gulp-inject": "^4.3.2",
@@ -93,6 +98,7 @@
     "gulp-postcss": "^8.0.0",
     "gulp-pretty-data": "^0.1.2",
     "gulp-real-favicon": "^0.3.0",
+    "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
     "gulp-rev": "^8.1.1",
     "gulp-rev-collector": "^1.3.1",
@@ -104,7 +110,8 @@
     "gulp-xml-validator": "^0.2.2",
     "howler": "^2.1.1",
     "jquery": "^3.3.1",
-    "js-cookie": "^2.2.0",
+    "jquery-bridget": "^2.0.1",
+    "masonry-layout": "^4.2.2",
     "normalize.css": "^8.0.0",
     "postcss": "^7.0.12",
     "postcss-advanced-variables": "^2.3.3",
@@ -125,6 +132,7 @@
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
     "vueify": "^9.4.1",
-    "watchify": "^3.11.0"
+    "watchify": "^3.11.0",
+    "waypoints": "^4.0.1"
   }
 }

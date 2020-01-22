@@ -34,38 +34,21 @@
       left: 40%;
     }
 
-    #top-navbar,
-    #cloud-small,
-    #app > .container-me,
-    #app > .container-stream,
-    #app > .container-cloud-1,
-    #app > .container-cloud-2,
-    #app > .container-glasses,
-    #app > .container-water-drop,
-    #app > .container-extinguisher,
-    #app > .container-scooter {
-      display: none;
+    #top-navbar {
+      top: -90px;
     }
 
     #svgstore {
-      width: 0;
-      height: 0;
+      position: absolute;
+      top: -200px;
     }
 
   </style>
 
-  <script type="text/javascript">
-    var audiosources = [
-      "{{ '/assets/sounds/sprite.ogg' | prepend: site.baseurl }}",
-      "{{ '/assets/sounds/sprite.mp3' | prepend: site.baseurl }}",
-      "{{ '/assets/sounds/sprite.ac3' | prepend: site.baseurl }}",
-      "{{ '/assets/sounds/sprite.m4a' | prepend: site.baseurl }}"
-    ];
-  </script>
-
-  <link rel="preload" as="audio" type="audio/ogg" href="{{ '/assets/sounds/sprite.ogg' | prepend: site.baseurl }}">
-  <link rel="preload" as="style" type="text/css" href="{{ '/assets/css/app.css' | prepend: site.baseurl }}">
-  <link rel="preload" as="script" type="text/javascript" href="{{ '/assets/js/app.js' | prepend: site.baseurl }}">
+  <link id="preload-sound-sprite" rel="preload" as="audio" type="audio/ogg" href="{{ '/assets/sounds/sprite.ogg' | prepend: site.baseurl }}">
+  <link id="preload-image-sprite" rel="preload" as="image" type="image/png" href="{{ '/assets/images/sprite.png' | prepend: site.baseurl }}">
+  <link id="preload-app-styles" rel="preload" as="style" type="text/css" href="{{ '/assets/css/app.css' | prepend: site.baseurl }}">
+  <link id="preload-app-scripts" rel="preload" as="script" type="text/javascript" href="{{ '/assets/js/app.js' | prepend: site.baseurl }}">
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}">

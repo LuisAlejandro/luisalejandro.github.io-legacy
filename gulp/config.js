@@ -23,12 +23,18 @@ var exports = module.exports = {};
 
 exports.libraries = {
   fonts: {
-    webfontslist: 'fonts.list',
-    webfontsconfig: {
-      cssFilename: 'webfonts.css',
-      relativePaths: true,
-      format: 'woff2'
-    },
+    src: [
+      path.join('google-fonts-*.css'),
+      path.join('fonts', '**', '**', '*.{eot,ttf,woff,woff2,svg}')
+    ],
+    clean: [
+      path.join('google-fonts-*.css'),
+      path.join('fonts')
+    ],
+    webfonts: [
+      'Roboto:100',
+      'Oleo+Script:400'
+    ],
     dest: path.join(nodeModules, 'webfonts')
   }
 };
@@ -68,8 +74,9 @@ exports.browsersync = {
 // Watch source files
 exports.watch = {
   jekyll: [
-    '_config.yml',
-    '_config.build.yml',
+    '_config.common.yml',
+    '_config.development.yml',
+    '_config.production.yml',
     'stopwords.txt',
     path.join(app, '_data', '**', '*.{json,yml,csv}'),
     path.join(app, '_includes', '**', '*.{html,xml}'),

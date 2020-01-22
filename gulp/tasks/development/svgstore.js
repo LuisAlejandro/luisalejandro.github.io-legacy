@@ -16,7 +16,7 @@ gulp.task('svgstore:rebuild:development', function (done) {
 });
 
 gulp.task('svgstore:development', function () {
-  var svgs = gulp.src(config.svgs)
+  const svgs = gulp.src(config.svgs)
     .pipe(svgstore({inlineSvg: true}));
 
   function fileContents (filePath, file) {

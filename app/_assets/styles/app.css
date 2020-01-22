@@ -23,6 +23,6 @@
 @import "layout/footer";
 
 /* Components */
-@import "components/intro";
+@import "components/easter";
 @import "components/home";
 @import "components/post";

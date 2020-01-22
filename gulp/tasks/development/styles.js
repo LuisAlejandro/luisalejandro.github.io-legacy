@@ -34,10 +34,10 @@ gulp.task('styles:rebuild:development', function () {
   ];
 
   return gulp.src(config.development.src)
-    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(sourcemaps.init())
     .pipe(postcss(processors))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(config.development.dest))
-    .pipe(size({title: 'styles:development'}));
+    .pipe(size({ title: 'styles:development' }));
 });

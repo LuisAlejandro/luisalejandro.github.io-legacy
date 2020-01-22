@@ -1,104 +1,122 @@
+import jQuery from 'jquery';
 import anime from 'animejs';
 
 export default function () {
-  const timeline = anime.timeline();
-  const promise = new Promise((resolve, reject) => {
-    timeline.add({
-      targets: '#home > .container-page-home',
-      duration: 2500,
-      rotate: [-40, -20],
-      translateY: [-1000, 0],
-      translateX: [-1000, 0]
-    }, 2000).add({
-      targets: '#home > .container-page-portfolio',
-      duration: 2500,
-      rotate: [40, -20],
-      translateY: [-1000, 0],
-      translateX: [-500, 0]
-    }, 2000).add({
-      targets: '#home > .container-page-about',
-      duration: 2600,
-      rotate: [0, -22],
-      translateY: [-1000, 0],
-      translateX: [-200, 0]
-    }, 2000).add({
-      targets: '#home > .container-page-blog',
-      duration: 2400,
-      rotate: [-40, -20],
-      translateY: [-1500, 0],
-      translateX: [500, 0]
-    }, 2000).add({
-      targets: '#home > .container-page-clients',
-      duration: 2700,
-      rotate: [50, -18],
-      translateY: [-1200, 0],
-      translateX: [1000, 0]
-    }, 2000).add({
-      targets: '#home > .container-page-contact',
-      duration: 2300,
-      rotate: [-70, -20],
-      translateY: [-2000, 0],
-      translateX: [700, 0]
-    }, 2000).add({
-      targets: '#home > .container-page-donations ',
-      duration: 2400,
-      rotate: [0, -16],
-      translateY: [-1700, 0],
-      translateX: [1500, 0]
-    }, 2000).add({
-      targets: '#home > .container-page-easter',
-      duration: 3000,
-      rotate: [-60, -20],
-      translateY: [-1000, 0],
-      translateX: [1000, 0]
-    }, 2000).add({
-      targets: '#home > .container-clients',
-      duration: 2500,
-      rotate: [50, -10],
-      translateY: [-600, 0],
-      translateX: [100, 0]
-    }, 2000).add({
-      targets: '#home > .container-about',
-      duration: 2500,
-      rotate: [50, 10],
-      translateY: [-300, 0],
-      translateX: [500, 0]
-    }, 2000).add({
-      targets: '#home > .container-portfolio',
-      duration: 3500,
-      rotate: [0, 30],
-      translateY: [100, 0],
-      translateX: [700, 0]
-    }, 2000).add({
-      targets: '#home > .container-contact',
-      duration: 2500,
-      rotate: [-30, -10],
-      translateY: [500, 0],
-      translateX: [300, 0]
-    }, 2000).add({
-      targets: '#home > .container-donations',
-      duration: 3000,
-      rotate: [30, 0],
-      translateY: [500, 0],
-      translateX: [100, 0]
-    }, 2000).add({
-      targets: '#home > .container-easter',
-      duration: 3500,
-      rotate: [-50, -10],
-      translateY: [500, 0],
-      translateX: [-100, 0]
-    }, 2000).add({
-      targets: '#home > .container-blog',
-      duration: 1500,
-      rotate: [50, -10],
-      translateY: [500, 0],
-      translateX: [100, 0],
-      complete: () => {
-        resolve();
-      }
-    }, 2000);
+  const timeline = anime.timeline({
+    easing: 'easeOutQuart',
+    autoplay: false
+  }).add({
+    targets: '#home > .container-page-home',
+    duration: 500,
+    rotate: [-20, -40],
+    translateY: [0, -1500],
+    translateX: [0, -1000]
+  }, 0).add({
+    targets: '#home > .container-page-portfolio',
+    duration: 500,
+    rotate: [-20, 40],
+    translateY: [0, -1500],
+    translateX: [0, -500]
+  }, 0).add({
+    targets: '#home > .container-page-about',
+    duration: 600,
+    rotate: [-22, 0],
+    translateY: [0, -1500],
+    translateX: [0, -200]
+  }, 0).add({
+    targets: '#home > .container-page-blog',
+    duration: 400,
+    rotate: [-20, -40],
+    translateY: [0, -1500],
+    translateX: [0, 500]
+  }, 0).add({
+    targets: '#home > .container-page-clients',
+    duration: 700,
+    rotate: [-18, 50],
+    translateY: [0, -1500],
+    translateX: [0, 1000]
+  }, 0).add({
+    targets: '#home > .container-page-contact',
+    duration: 300,
+    rotate: [-20, -70],
+    translateY: [0, -2000],
+    translateX: [0, 700]
+  }, 0).add({
+    targets: '#home > .container-page-donations ',
+    duration: 400,
+    rotate: [-16, 0],
+    translateY: [0, -1700],
+    translateX: [0, 1500]
+  }, 0).add({
+    targets: '#home > .container-page-easter',
+    duration: 900,
+    rotate: [-20, -60],
+    translateY: [0, -1500],
+    translateX: [0, 1000]
+  }, 0).add({
+    targets: '#home > .container-clients',
+    duration: 500,
+    rotate: [-10, 50],
+    translateY: [0, -600],
+    translateX: [0, 100]
+  }, 0).add({
+    targets: '#home > .container-about',
+    duration: 700,
+    rotate: [10, 50],
+    translateY: [0, -300],
+    translateX: [0, 500]
+  }, 0).add({
+    targets: '#home > .container-portfolio',
+    duration: 300,
+    rotate: [30, 0],
+    translateY: [0, 100],
+    translateX: [0, 700]
+  }, 0).add({
+    targets: '#home > .container-contact',
+    duration: 500,
+    rotate: [-10, -30],
+    translateY: [0, 500],
+    translateX: [0, 300]
+  }, 0).add({
+    targets: '#home > .container-donations',
+    duration: 900,
+    rotate: [0, 30],
+    translateY: [0, 500],
+    translateX: [0, 100]
+  }, 0).add({
+    targets: '#home > .container-easter',
+    duration: 700,
+    rotate: [-10, -50],
+    translateY: [0, 500],
+    translateX: [0, -100]
+  }, 0).add({
+    targets: '#home > .container-blog',
+    duration: 600,
+    rotate: [-10, 50],
+    translateY: [0, 500],
+    translateX: [0, 100]
+  }, 0);
+
+  jQuery('#home > .container-portfolio, ' +
+         '#home > .container-clients, ' +
+         '#home > .container-about, ' +
+         '#home > .container-contact, ' +
+         '#home > .container-donations, ' +
+         '#home > .container-easter, ' +
+         '#home > .container-blog').each(function () {
+    jQuery(this).off();
+    jQuery(this).off();
   });
-  timeline.finished = promise;
+
+  jQuery('#home > .container-portfolio, ' +
+         '#home > .container-clients, ' +
+         '#home > .container-about, ' +
+         '#home > .container-contact, ' +
+         '#home > .container-donations, ' +
+         '#home > .container-easter, ' +
+         '#home > .container-blog').promise().done(function () {
+    timeline.play();
+  });
 
   return timeline;
 };

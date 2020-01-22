@@ -13,6 +13,7 @@
   filter: grayscale(100%);
   transition: filter 1s ease;
   transform: rotate(0deg) translateY(100px) translateX(700px);
+  cursor: pointer;
 }
 
 #home > .container-portfolio:hover {
@@ -29,6 +30,7 @@
   filter: grayscale(100%);
   transition: filter 1s ease;
   transform: rotate(50deg) translateY(-300px) translateX(500px);
+  cursor: pointer;
 }
 
 #home > .container-about:hover {
@@ -45,6 +47,7 @@
   filter: grayscale(100%);
   transition: filter 1s ease;
   transform: rotate(-30deg) translateY(500px) translateX(300px);
+  cursor: pointer;
 }
 
 #home > .container-contact:hover {
@@ -61,6 +64,7 @@
   filter: grayscale(100%);
   transition: filter 1s ease;
   transform: rotate(30deg) translateY(500px) translateX(100px);
+  cursor: pointer;
 }
 
 #home > .container-donations:hover {
@@ -77,6 +81,7 @@
   filter: grayscale(100%);
   transition: filter 1s ease;
   transform: rotate(-50deg) translateY(500px) translateX(-100px);
+  cursor: pointer;
 }
 
 #home > .container-easter:hover {
@@ -93,6 +98,7 @@
   filter: grayscale(100%);
   transition: filter 1s ease;
   transform: rotate(50deg) translateY(500px) translateY(100px);
+  cursor: pointer;
 }
 
 #home > .container-blog:hover {
@@ -109,6 +115,7 @@
   filter: grayscale(100%);
   transition: filter 1s ease;
   transform: rotate(50deg) translateY(-600px) translateX(100px);
+  cursor: pointer;
 }
 
 #home > .container-clients:hover {
@@ -122,7 +129,7 @@
   top: -45%;
   left: 0;
   z-index: 10;
-  transform: rotate(-40deg) translateY(-1000px) translateX(-1000px);
+  transform: rotate(-40deg) translateY(-1500px) translateX(-1000px);
 }
 
 #home > .container-page-portfolio {
@@ -132,7 +139,7 @@
   top: -44%;
   left: -0.25%;
   z-index: 8;
-  transform: rotate(40deg) translateY(-1000px) translateX(-500px);
+  transform: rotate(40deg) translateY(-1500px) translateX(-500px);
 }
 
 #home > .container-page-about {
@@ -142,7 +149,7 @@
   top: -43%;
   left: -0.5%;
   z-index: 7;
-  transform: rotate(0deg) translateY(-1000px) translateX(-200px);
+  transform: rotate(0deg) translateY(-1500px) translateX(-200px);
 }
 
 #home > .container-page-blog {
@@ -192,46 +199,5 @@
   top: -40%;
   left: 2%;
   z-index: 2;
-  transform: rotate(-60deg) translateY(-1000px) translateX(1000px);
+  transform: rotate(-60deg) translateY(-1500px) translateX(1000px);
 }
-/*
-#home-heading {
-  display: inline-block;
-  width: 60%;
-  margin: 0 20%;
-  top: 0;
-}
-
-#home-heading > h1 {
-  position: relative;
-  font-size: 3.7em;
-}
-
-#home-heading > h1 > .text-wrapper {
-  display: inline-block;
-  position: relative;
-  margin: 240px 0 0 0;
-  overflow: hidden;
-}
-
-#home-heading > h1 > .text-wrapper > .letters {
-  display: inline-block;
-}
-
-#home-heading > h1 > .text-wrapper > .letters > .letter {
-  display: inline-block;
-  transform-origin: 0 100%;
-  line-height: 1em;
-  opacity: 0;
-}
-
-#home-subheading {
-  display: inline-block;
-  width: 60%;
-  margin: 50px 20%;
-  opacity: 0;
-}
-
-#home-subheading > h2 {
-  position: relative;
-}*/
