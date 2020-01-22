@@ -57,7 +57,7 @@
   },
   "babel": {
     "presets": [
-      "es2015"
+      "@babel/preset-env"
     ],
     "compact": false
   },
@@ -124,7 +124,6 @@
     "postcss-uncss": "^0.17.0",
     "request": "^2.88.0",
     "require-dir": "^1.0.0",
-    "run-sequence": "^2.2.1",
     "stylelint": "^13.0.0",
     "stylelint-config-standard": "^19.0.0",
     "uncss": "^0.17.0",

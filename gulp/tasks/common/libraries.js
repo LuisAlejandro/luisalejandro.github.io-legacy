@@ -35,7 +35,7 @@ gulp.task('libraries:fonts:common:download', function (done) {
     .on('close', done);
 });
 
-gulp.task('libraries:fonts:common', ['libraries:fonts:common:download'], function (done) {
+gulp.task('libraries:fonts:common', gulp.series('libraries:fonts:common:download', function (done) {
   const dummyJsonPath = path.join(config.dest, 'package.json');
   const dummyJson = {
     name: 'webfonts',
@@ -59,5 +59,6 @@ gulp.task('libraries:fonts:common', ['libraries:fonts:common:download'], functio
     .pipe(size({ title: 'libraries:fonts:common' }))
     .on('end', function () {
       del(config.clean);
+      done();
     });
-});
+}));

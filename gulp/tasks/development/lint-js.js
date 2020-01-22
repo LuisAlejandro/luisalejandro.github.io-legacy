@@ -9,7 +9,7 @@ const eslint = require('gulp-eslint');
 // Executed by watch task
 gulp.task('lint:js:development', function () {
   return gulp.src(config.src)
-    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(eslint())
     .pipe(eslint.format());
 });

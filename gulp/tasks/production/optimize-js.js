@@ -9,8 +9,8 @@ const size = require('gulp-size');
 // Optimize js files
 gulp.task('optimize:js', function () {
   return gulp.src(config.src)
-    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(uglify())
     .pipe(gulp.dest(config.dest))
-    .pipe(size({title: 'optimize:js'}));
+    .pipe(size({ title: 'optimize:js' }));
 });

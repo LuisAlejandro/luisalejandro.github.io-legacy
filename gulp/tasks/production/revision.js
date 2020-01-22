@@ -8,7 +8,7 @@ const plumber = require('gulp-plumber');
 // Revision all asset files and write a manifest file
 gulp.task('revision', function () {
   return gulp.src(config.src.assets, { base: config.src.base })
-    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(gulp.dest(config.dest.assets))
     .pipe(rev())
     .pipe(gulp.dest(config.dest.assets))
