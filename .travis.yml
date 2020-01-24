@@ -1,6 +1,6 @@
 sudo: required
 services: docker
-dist: trusty
+dist: bionic
 group: edge
 branches:
     only:
@@ -10,7 +10,7 @@ branches:
 env:
     global:
         # Github personal access token ${GHTOKEN}
-        - secure: "HlPlRD7aMngVSbeUMps+CPhiP6ax3tUtQGS3G6V072iF8eNS8kPo6jo+q5mH5i5zU8eV4uidkSCVwC9WSrgpxg/3edmUO+u+KOErs9gagzQ5mQ44PEDtQeNOnVGi4GespQknkTHKtsogQQ0srUJcALbdpzNtgnKW1Agfs8QxJ7g="
+        - secure: "A97kkZ50vTRDt70TMkCdZzfDsoAZZYoyMZL/ZwNXEeNfwRRClq31/SVO0wEmZBn4/RbeUCyshIHO2+mneMu73+ZDVUk4L7lJK+fciuHc9zgTT2T8pAn/WGieUXBXztQ3/1pHmUBcEje1oy96nEf2FMTz1mwRV0PbaFSy/SnFjss="
 before_script:
     - mkdir -p node_modules vendor/bundle
     - sudo chown -R 1000:1000 .
