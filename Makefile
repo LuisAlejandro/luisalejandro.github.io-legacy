@@ -10,7 +10,7 @@ dependencies:
 	@docker run -it --rm -u luisalejandro \
 		-v $(PWD):/home/luisalejandro/luisalejandro.github.io \
 		-w /home/luisalejandro/luisalejandro.github.io \
-		luisalejandro/luisalejandro.github.io:latest npm install
+		luisalejandro/luisalejandro.github.io:latest npm ci
 
 serve_development:
 
@@ -54,5 +54,6 @@ console:
 
 clean:
 
-	@rm -rf node_modules libraries build vendor .bundle package-lock.json \
-		npm-debug.log Gemfile.lock app/_assets/fonts/vendor app/_assets/styles/vendor
+	@rm -rf node_modules libraries build vendor .bundle \
+		npm-debug.log app/_assets/fonts/vendor \
+		app/_assets/styles/vendor

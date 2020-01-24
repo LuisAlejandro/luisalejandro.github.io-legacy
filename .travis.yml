@@ -21,6 +21,10 @@ script:
     - make build_production
     - sudo chown -R ${USER}:${USER} .
     - cp CNAME build/production
+cache:
+    directories:
+        - "$HOME/.npm"
+        - "vendor/bundle"
 deploy:
     provider: pages
     skip-cleanup: true
