@@ -4,7 +4,6 @@
 @import "vendor/normalize.css/normalize.css";
 @import "vendor/webfonts/webfonts";
 @import "vendor/bootswatch/theme";
-@import "vendor/bootstrap-vue/dist/bootstrap-vue";
 
 /* Configuration and helpers */
 @import "utilities/variables";

@@ -19,8 +19,8 @@ gulp.task('optimize:css', function () {
   ];
 
   return gulp.src(config.src)
-    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(postcss(processors))
     .pipe(gulp.dest(config.dest))
-    .pipe(size({title: 'optimize:css'}));
+    .pipe(size({ title: 'optimize:css' }));
 });

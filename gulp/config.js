@@ -133,7 +133,6 @@ exports.sass = {
 exports.styles = {
   vendor: {
     src: [
-      path.join(nodeModules, 'bootstrap-vue', 'dist', 'bootstrap-vue.css'),
       path.join(nodeModules, 'bootstrap', 'scss', '**', '*'),
       path.join(nodeModules, 'normalize.css', 'normalize.css'),
       path.join(nodeModules, 'webfonts', '*.css')
@@ -306,7 +305,7 @@ exports.optimize = {
       gifsicle: {
         interlaced: true
       },
-      jpegtran: {
+      mozjpeg: {
         progressive: true
       },
       optipng: {

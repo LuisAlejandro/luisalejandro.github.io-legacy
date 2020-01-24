@@ -1,7 +1,29 @@
+require('./clean');
+require('./jekyll');
+require('./images');
+require('./sounds');
+require('./fonts');
+require('./styles');
+require('./scripts');
+require('./base64');
+require('./favicons');
+require('./optimize-json');
+require('./optimize-xml');
+require('./optimize-images');
+require('./optimize-html');
+require('./optimize-css');
+require('./optimize-js');
+require('./revision');
+require('./rev-collector');
+require('./svgstore');
+require('./garbage');
+require('./lint-xml');
+require('./lint-json');
+
 const gulp = require('gulp');
 
 // Run all tasks needed for a build, in defined order
-gulp.task('build:production', function (done) {
+gulp.task('build:production',
   gulp.series(
     'clean:production',
     gulp.parallel(
@@ -29,6 +51,6 @@ gulp.task('build:production', function (done) {
     gulp.parallel(
       'lint-xml',
       'lint-json'
-    ),
-    done);
-});
+    )
+  )
+);

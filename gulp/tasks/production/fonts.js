@@ -12,7 +12,7 @@ const size = require('gulp-size');
 gulp.task('fonts:production', gulp.series('fonts:vendor:common', function () {
   browsersync.notify('Copying fonts (production)');
   return gulp.src(config.src)
-    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(gulp.dest(config.dest))
-    .pipe(size({title: 'fonts:production'}));
+    .pipe(size({ title: 'fonts:production' }));
 }));

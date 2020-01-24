@@ -1,8 +1,4 @@
 import jQuery from 'jquery';
-import Vue from 'vue';
-
-import router from './router';
-import App from './components/App.vue';
 
 var exports = module.exports = {};
 
@@ -48,12 +44,4 @@ exports.utils.calcLeftSpacePercentageDoor = () => {
   } else {
     return ['-30%', '-4%'];
   }
-};
-
-exports.utils.initVue = () => {
-  return new Vue({
-    el: '#app',
-    router: router,
-    render: component => component(App)
-  });
 };

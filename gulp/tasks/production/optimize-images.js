@@ -10,13 +10,13 @@ const size = require('gulp-size');
 gulp.task('optimize:images', function () {
   const plugins = [
     imagemin.gifsicle(config.imageminPluginOptions.gifsicle),
-    imagemin.jpegtran(config.imageminPluginOptions.jpegtran),
+    imagemin.mozjpeg(config.imageminPluginOptions.mozjpeg),
     imagemin.optipng(config.imageminPluginOptions.optipng),
     imagemin.svgo(config.imageminPluginOptions.svgo)
   ];
   return gulp.src(config.src)
-    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(imagemin(plugins, config.imageminOptions))
     .pipe(gulp.dest(config.dest))
-    .pipe(size({title: 'optimize:images'}));
+    .pipe(size({ title: 'optimize:images' }));
 });
