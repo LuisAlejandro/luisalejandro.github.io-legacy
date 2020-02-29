@@ -107,7 +107,7 @@
     "jquery-bridget": "^2.0.1",
     "normalize.css": "^8.0.0",
     "postcss": "^7.0.12",
-    "postcss-advanced-variables": "^2.3.3",
+    "postcss-advanced-variables": "^3.0.1",
     "postcss-discard-comments": "^4.0.0",
     "postcss-font-magician": "^2.2.1",
     "postcss-nested": "^4.1.1",
