@@ -9,7 +9,9 @@
     "serve_production": "export NODE_ENV=production && gulp serve:production",
     "build_development": "export NODE_ENV=development && gulp build:development",
     "build_production": "export NODE_ENV=production && gulp build:production",
-    "postinstall": "gulp libraries:gems:common libraries:fonts:common"
+    "postinstall": "gulp libraries:gems:common libraries:fonts:common",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "browser": {
     "jquery": "./node_modules/jquery/dist/jquery.js",
@@ -126,5 +128,8 @@
     "vueify": "^9.4.1",
     "watchify": "^3.11.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "snyk": "^1.305.0"
+  },
+  "snyk": true
 }
