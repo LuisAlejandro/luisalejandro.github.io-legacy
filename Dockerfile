@@ -2,7 +2,7 @@ FROM dockershelf/node:10
 LABEL maintainer "Luis Alejandro Martínez Faneyth <luis@luisalejandro.org>"
 
 RUN apt-get update
-RUN apt-get install ruby2.5 ruby2.5-dev sudo gcc libffi-dev build-essential \
+RUN apt-get install ruby2.7 ruby2.7-dev sudo gcc libffi-dev build-essential \
     zlib1g-dev git python2.7-dev python-dev autoconf automake libtool
 
 RUN npm install -g gulp
