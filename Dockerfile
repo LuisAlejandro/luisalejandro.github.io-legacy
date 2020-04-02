@@ -10,8 +10,8 @@ RUN echo "HEAD /" | nc `cat /tmp/host_ip.txt` 8000 | grep squid-deb-proxy \
     || echo "No squid-deb-proxy detected on docker host"
 
 RUN apt-get update
-RUN apt-get install ruby2.7 ruby2.7-dev sudo gcc libffi-dev build-essential \
-    zlib1g-dev git python2.7-dev python-dev autoconf automake libtool
+RUN apt-get install build-essential autoconf automake sudo gcc git \
+    libtool libffi-dev zlib1g-dev ruby2.7 ruby2.7-dev python2.7-dev
 
 RUN npm install -g gulp
 

@@ -10,7 +10,7 @@
     "build_development": "export NODE_ENV=development && gulp build:development",
     "build_production": "export NODE_ENV=production && gulp build:production",
     "postinstall": "gulp libraries:gems:common libraries:fonts:common",
-    "snyk-protect": "snyk protect",
+    "snyk-protect": "npx snyk protect",
     "prepare": "npm run snyk-protect"
   },
   "browser": {
