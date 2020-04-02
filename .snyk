@@ -1,0 +1,24 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.14.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:hawk:20160119':
+    - gulp-base64 > request > hawk:
+        patched: '2020-04-02T13:48:27.589Z'
+  'npm:http-signature:20150122':
+    - gulp-base64 > request > http-signature:
+        patched: '2020-04-02T13:48:27.589Z'
+  'npm:mime:20170907':
+    - gulp-base64 > mime:
+        patched: '2020-04-02T13:48:27.589Z'
+    - gulp-base64 > request > mime:
+        patched: '2020-04-02T13:48:27.589Z'
+    - gulp-base64 > request > form-data > mime:
+        patched: '2020-04-02T13:48:27.589Z'
+  'npm:qs:20140806-1':
+    - gulp-base64 > request > qs:
+        patched: '2020-04-02T13:48:27.589Z'
+  'npm:request:20160119':
+    - gulp-base64 > request:
+        patched: '2020-04-02T13:48:27.589Z'
