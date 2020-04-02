@@ -123,7 +123,7 @@
     "uncss": "0.17.3",
     "vinyl-buffer": "1.0.1",
     "vinyl-source-stream": "2.0.0",
-    "vue": "2.5.17",
+    "vue": "2.6.11",
     "vue-router": "3.0.1",
     "vueify": "9.4.1",
     "watchify": "3.11.1"

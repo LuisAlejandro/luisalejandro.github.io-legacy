@@ -7,6 +7,7 @@ branches:
         - staging
         - develop
         - /^snyk-fix.*$/
+        - /^dependabot/.*$/
 env:
     global:
         # Github personal access token ${GHTOKEN}
@@ -24,7 +25,8 @@ script:
 cache:
     directories:
         - "$HOME/.npm"
-        - "vendor/bundle"
+        - node_modules
+        - vendor
 deploy:
     provider: pages
     skip-cleanup: true
