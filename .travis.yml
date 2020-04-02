@@ -6,7 +6,7 @@ branches:
     only:
         - staging
         - develop
-        - /^greenkeeper/.*$/
+        - /^snyk-fix.*$/
 env:
     global:
         # Github personal access token ${GHTOKEN}
