@@ -108,6 +108,7 @@
     "jquery": "3.4.0",
     "jquery-bridget": "2.0.1",
     "normalize.css": "8.0.0",
+    "popper.js": "1.14.7",
     "postcss": "7.0.12",
     "postcss-advanced-variables": "3.0.1",
     "postcss-discard-comments": "4.0.0",
@@ -120,7 +121,7 @@
     "require-dir": "1.0.0",
     "stylelint": "13.1.0",
     "stylelint-config-standard": "20.0.0",
-    "uncss": "0.17.3",
+    "uncss": "0.16.1",
     "vinyl-buffer": "1.0.1",
     "vinyl-source-stream": "2.0.0",
     "vue": "2.6.11",
@@ -130,6 +131,6 @@
   },
   "snyk": true,
   "dependencies": {
-    "snyk": "^1.305.0"
+    "snyk": "1.305.0"
   }
 }
