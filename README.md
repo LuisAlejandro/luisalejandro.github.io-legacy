@@ -1,4 +1,4 @@
-![](https://rawcdn.githack.com/LuisAlejandro/luisalejandro.github.io/240f2145131e44937add8884aa649b3f2a1628c4/app/_assets/images/banner.svg)
+![](https://rawcdn.githack.com/LuisAlejandro/luisalejandro.github.io/1e242f59e8e721e0069dad4b8f53ae0c8b9afee3/app/_assets/images/banner.svg)
 
 ---
 
