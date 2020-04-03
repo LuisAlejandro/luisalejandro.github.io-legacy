@@ -10,4 +10,4 @@
 [![Snyk](https://snyk.io/test/github/LuisAlejandro/luisalejandro.github.io/badge.svg)](https://snyk.io/test/github/LuisAlejandro/luisalejandro.github.io)
 [![CLA Assistant](https://cla-assistant.io/readme/badge/LuisAlejandro/luisalejandro.github.io)](https://cla-assistant.io/LuisAlejandro/luisalejandro.github.io)
 
-Current version: 0.2.0
+Current version: 0.2.1

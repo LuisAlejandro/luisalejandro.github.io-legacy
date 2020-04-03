@@ -6,8 +6,8 @@ branches:
     only:
         - staging
         - develop
-        - /^snyk-fix.*$/
-        - /^dependabot/.*$/
+        - /^snyk.*$/
+        - /^dependabot.*$/
 env:
     global:
         # Github personal access token ${GHTOKEN}
