@@ -6,13 +6,50 @@
   <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
-  <link rel="stylesheet" href="{{ '/assets/css/head.css' | prepend: site.baseurl }}">
-  <script src="{{ '/assets/js/head.js' | prepend: site.baseurl }}"></script>
-<!--
-  <link rel="preload" href="{{ '/assets/css/app.css' | prepend: site.baseurl }}" as="style" type="text/css" />
-  <link rel="preload" href="{{ '/assets/js/app.js' | prepend: site.baseurl }}" as="script" type="text/javascript" />
- -->
+  <style type="text/css">
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      overflow: hidden;
+    }
+
+    #app {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 20% 0 0 0;
+    }
+
+    #app > .container-loader {
+      display: inline-block;
+      position: absolute;
+      height: 120px;
+      width: 20%;
+      top: 60%;
+      left: 40%;
+    }
+
+    #top-navbar {
+      top: -90px;
+    }
+
+    #svgstore {
+      position: absolute;
+      top: -200px;
+    }
+
+  </style>
+
+  <link id="preload-sound-sprite" rel="preload" as="audio" type="audio/ogg" href="{{ '/assets/sounds/sprite.ogg' | prepend: site.baseurl }}">
+  <link id="preload-image-sprite" rel="preload" as="image" type="image/png" href="{{ '/assets/images/sprite.png' | prepend: site.baseurl }}">
+  <link id="preload-app-styles" rel="preload" as="style" type="text/css" href="{{ '/assets/css/app.css' | prepend: site.baseurl }}">
+  <link id="preload-app-scripts" rel="preload" as="script" type="text/javascript" href="{{ '/assets/js/app.js' | prepend: site.baseurl }}">
+
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}">
 </head>

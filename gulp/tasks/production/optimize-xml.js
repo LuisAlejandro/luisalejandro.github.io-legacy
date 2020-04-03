@@ -9,8 +9,8 @@ const size = require('gulp-size');
 // Copy and minimize XML files
 gulp.task('optimize:xml', function () {
   return gulp.src(config.src)
-    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(prettydata(config.options))
     .pipe(gulp.dest(config.dest))
-    .pipe(size({title: 'optimize:xml'}));
+    .pipe(size({ title: 'optimize:xml' }));
 });

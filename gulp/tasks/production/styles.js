@@ -1,3 +1,5 @@
+require('../common/styles');
+
 const config = require('../../config').styles;
 const helpers = require('../../util/helpers');
 
@@ -13,7 +15,7 @@ const size = require('gulp-size');
 
 // Run CSS through PostCSS and it’s plugins.
 // Build sourcemaps and minimize.
-gulp.task('styles:production', ['styles:sass:common'], function () {
+gulp.task('styles:production', gulp.series('styles:sass:common', function () {
   browsersync.notify('Transforming CSS with PostCSS (production)');
 
   // PostCSS plugins
@@ -25,8 +27,8 @@ gulp.task('styles:production', ['styles:sass:common'], function () {
   ];
 
   return gulp.src(config.production.src)
-    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(postcss(processors))
     .pipe(gulp.dest(config.production.dest))
-    .pipe(size({title: 'styles:production'}));
-});
+    .pipe(size({ title: 'styles:production' }));
+}));

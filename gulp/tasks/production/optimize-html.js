@@ -10,8 +10,8 @@ const size = require('gulp-size');
 // to strip whitespace (e.g. between <li>).
 gulp.task('optimize:html', function () {
   return gulp.src(config.src)
-    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(htmlmin(config.options))
     .pipe(gulp.dest(config.dest))
-    .pipe(size({title: 'optimize:html'}));
+    .pipe(size({ title: 'optimize:html' }));
 });

@@ -1,3 +1,5 @@
+require('../common/sass');
+
 const config = require('../../config').styles;
 const helpers = require('../../util/helpers');
 
@@ -11,14 +13,9 @@ const sourcemaps = require('gulp-sourcemaps');
 const browsersync = require('browser-sync');
 const plumber = require('gulp-plumber');
 const size = require('gulp-size');
-const runSequence = require('run-sequence');
 
 // Run CSS through PostCSS and it’s plugins.
 // Build sourcemaps and minimize.
-gulp.task('styles:development', ['styles:sass:common'], function (done) {
-  runSequence('styles:rebuild:development', done);
-});
-
 gulp.task('styles:rebuild:development', function () {
   browsersync.notify('Transforming CSS with PostCSS (development)');
 
@@ -31,10 +28,17 @@ gulp.task('styles:rebuild:development', function () {
   ];
 
   return gulp.src(config.development.src)
-    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(sourcemaps.init())
     .pipe(postcss(processors))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(config.development.dest))
-    .pipe(size({title: 'styles:development'}));
+    .pipe(size({ title: 'styles:development' }));
 });
+
+gulp.task('styles:development',
+  gulp.series(
+    'styles:sass:common',
+    'styles:rebuild:development'
+  )
+);

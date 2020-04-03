@@ -17,6 +17,6 @@ gulp.task('lint:styles:development', function () {
   ];
 
   return gulp.src(config.src)
-    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(postcss(processors));
 });

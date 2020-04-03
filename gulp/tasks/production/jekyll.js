@@ -8,7 +8,7 @@ const util = require('util');
 // Build Jekyll site
 gulp.task('jekyll:production', function (done) {
   browsersync.notify('Compiling Jekyll (production)');
-  return cp.spawn(
+  cp.spawn(
     'bundle',
     [
       'exec',
@@ -17,6 +17,7 @@ gulp.task('jekyll:production', function (done) {
       util.format('--config=%s', config.config),
       config.option
     ],
-    { stdio: 'inherit' })
-    .on('close', done);
+    { stdio: 'inherit' }
+  );
+  done();
 });

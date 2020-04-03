@@ -6,21 +6,27 @@ branches:
     only:
         - staging
         - develop
-        - /^greenkeeper/.*$/
+        - /^snyk-fix.*$/
+        - /^dependabot/.*$/
 env:
     global:
         # Github personal access token ${GHTOKEN}
         - secure: "A97kkZ50vTRDt70TMkCdZzfDsoAZZYoyMZL/ZwNXEeNfwRRClq31/SVO0wEmZBn4/RbeUCyshIHO2+mneMu73+ZDVUk4L7lJK+fciuHc9zgTT2T8pAn/WGieUXBXztQ3/1pHmUBcEje1oy96nEf2FMTz1mwRV0PbaFSy/SnFjss="
 before_script:
     - mkdir -p node_modules vendor/bundle
-    - sudo chown -R 1000:1000 .
+    - sudo chown -R 1000:1000 . $HOME/.npm
     - make image
     - make dependencies
 script:
     - make build_development
     - make build_production
-    - sudo chown -R ${USER}:${USER} .
+    - sudo chown -R ${USER}:${USER} . $HOME/.npm
     - cp CNAME build/production
+cache:
+    directories:
+        - "$HOME/.npm"
+        - node_modules
+        - vendor
 deploy:
     provider: pages
     skip-cleanup: true

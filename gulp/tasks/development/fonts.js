@@ -1,3 +1,5 @@
+require('../common/fonts');
+
 const config = require('../../config').fonts.development;
 const helpers = require('../../util/helpers');
 
@@ -7,10 +9,10 @@ const plumber = require('gulp-plumber');
 const size = require('gulp-size');
 
 // Copy fonts to build folder
-gulp.task('fonts:development', ['fonts:vendor:common'], function () {
+gulp.task('fonts:development', gulp.series('fonts:vendor:common', function () {
   browsersync.notify('Copying fonts (development)');
   return gulp.src(config.src)
-    .pipe(plumber({errorHandler: helpers.onError}))
+    .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(gulp.dest(config.dest))
-    .pipe(size({title: 'fonts:development'}));
-});
+    .pipe(size({ title: 'fonts:development' }));
+}));
