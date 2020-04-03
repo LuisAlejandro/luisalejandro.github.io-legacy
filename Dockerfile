@@ -1,4 +1,4 @@
-FROM dockershelf/node:10
+FROM dockershelf/node:13
 LABEL maintainer "Luis Alejandro Martínez Faneyth <luis@luisalejandro.org>"
 
 RUN apt-get update && \
