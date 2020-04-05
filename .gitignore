@@ -6,4 +6,4 @@ vendor
 npm-debug.log
 app/_assets/fonts/vendor
 app/_assets/styles/vendor
-*.lock
+app/.jekyll-cache

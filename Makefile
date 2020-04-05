@@ -60,6 +60,6 @@ console:
 
 clean:
 
-	@rm -rf package-lock.json Gemfile.lock node_modules libraries build \
+	@rm -rf node_modules libraries build \
 		vendor .bundle npm-debug.log app/_assets/fonts/vendor \
 		app/_assets/styles/vendor
