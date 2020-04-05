@@ -11,7 +11,7 @@ dependencies:
 		-v $(HOME)/.npm:/home/luisalejandro/.npm \
 		-v $(PWD):/home/luisalejandro/luisalejandro.github.io \
 		-w /home/luisalejandro/luisalejandro.github.io \
-		luisalejandro/luisalejandro.github.io:latest npm ci
+		luisalejandro/luisalejandro.github.io:latest npm install
 
 serve_development:
 

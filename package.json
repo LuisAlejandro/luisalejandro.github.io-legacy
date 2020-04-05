@@ -3,7 +3,15 @@
   "version": "0.2.1",
   "description": "Personal site",
   "author": "Luis Alejandro Martínez Faneyth",
-  "repository": "LuisAlejandro/luisalejandro.github.io",
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisAlejandro/luisalejandro.github.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LuisAlejandro/luisalejandro.github.io/issues"
+  },
+  "homepage": "https://github.com/LuisAlejandro/luisalejandro.github.io#readme",
   "scripts": {
     "serve_development": "export NODE_ENV=development && gulp serve:development",
     "serve_production": "export NODE_ENV=production && gulp serve:production",
