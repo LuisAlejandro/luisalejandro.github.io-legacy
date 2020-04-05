@@ -102,7 +102,7 @@
     "gulp-size": "3.0.0",
     "gulp-sourcemaps": "2.6.5",
     "gulp-svgstore": "7.0.1",
-    "gulp-uglify": "3.0.0",
+    "gulp-uglify": "3.0.2",
     "gulp-xml-validator": "0.3.0",
     "howler": "2.1.1",
     "jquery": "3.4.1",
