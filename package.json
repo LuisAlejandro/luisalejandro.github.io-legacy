@@ -127,7 +127,7 @@
     "postcss-uncss": "0.17.0",
     "request": "2.88.2",
     "require-dir": "1.2.0",
-    "stylelint": "13.3.3",
+    "stylelint": "13.5.0",
     "stylelint-config-standard": "20.0.0",
     "uncss": "0.17.3",
     "vinyl-buffer": "1.0.1",
