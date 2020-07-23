@@ -1,0 +1,10 @@
+#about {
+    width: 100%
+}
+
+#about .content {
+    margin: 70px auto;
+    padding: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+}

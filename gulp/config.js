@@ -401,7 +401,7 @@ exports.favicon = {
   src: path.join(production, 'index.html'),
   dest: production,
   options: {
-    masterPicture: path.join(production, 'assets', 'images', 'logo.svg'),
+    masterPicture: path.join(production, 'assets', 'images', 'logomin.svg'),
     dest: path.join(production, 'assets', 'images', 'icons'),
     iconsPath: '/assets/images/icons/',
     design: {

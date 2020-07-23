@@ -72,15 +72,17 @@ export default {
       const todayDate = new Date().toLocaleString('en');
       jQuery('.deployment-date').text('Deployment date: ' + todayDate);
 
-      objectsIntro().finished.then(() => {
-        clientsEvents(router);
+      var timeline = objectsIntro();
+      timeline.finished.then(() => {
+        // clientsEvents(router);
         aboutEvents(router);
-        portfolioEvents(router);
-        donationsEvents(router);
+        // portfolioEvents(router);
+        // donationsEvents(router);
         contactEvents(router);
         easterEvents(router);
-        blogEvents(router);
+        // blogEvents(router);
       });
+      timeline.play();
     }
   }
 };

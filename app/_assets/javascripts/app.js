@@ -13,12 +13,12 @@ LA.intro = {};
 
 jQuery(document).ready(function () {
   LA.intro.timeline = anime.timeline();
-
   LA.intro.timeline.add({
     targets: 'body',
     easing: 'linear',
+    backgroundColor: '#f8d983',
     duration: 1000,
-    backgroundColor: '#f8d983'
+    autoplay: false,
   });
 
   LA.intro.timeline.finished.then(() => {
@@ -28,6 +28,8 @@ jQuery(document).ready(function () {
       render: component => component(App)
     });
   });
+
+  LA.intro.timeline.play();
 });
 
 export default LA;

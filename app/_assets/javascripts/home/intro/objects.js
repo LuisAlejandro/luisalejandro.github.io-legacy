@@ -1,7 +1,10 @@
 import anime from 'animejs';
 
 export default function () {
-  const timeline = anime.timeline().add({
+  const timeline = anime.timeline({
+    easing: 'easeOutElastic',
+    autoplay: false,
+  }).add({
     targets: '#home > .container-page-home',
     duration: 2500,
     rotate: [-40, -20],

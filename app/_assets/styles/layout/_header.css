@@ -1,11 +1,13 @@
 
 .logo {
   display: inline-block;
+  height: 60px;
+  width: 60px;
 }
 
-.logo > a > .container-logo {
-  height: 50px;
-  width: 150px;
+.logo > svg {
+  height: 60px;
+  width: 60px;
 }
 
 .navbar-nav > .nav-item > .nav-link {

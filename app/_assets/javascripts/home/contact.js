@@ -5,10 +5,11 @@ import objectsOutro from './outro/objects';
 
 export default function (router) {
   jQuery(() => {
-    const animation = anime.timeline({
+    var hasBeenPlayed = false;
+    const anim = anime.timeline({
       duration: 250,
       autoplay: false,
-      easing: 'linear'
+      easing: 'easeOutQuint'
     }).add({
       targets: [
         '#home > .container-page-clients', '#home > .container-page-portfolio',
@@ -45,27 +46,27 @@ export default function (router) {
       translateY: [0, 5]
     }, 0);
 
-    const mouseenterAnimation = () => {
-      animation.direction = 'normal';
-      animation.restart();
-    };
-
-    const mouseleaveAnimation = () => {
-      animation.direction = 'reverse';
-      animation.restart();
-    };
-
     const clickAnimation = () => {
       objectsOutro().finished.then(() => {
         router.push({ name: 'contact' });
       });
     };
 
-    jQuery('#home > .container-contact').on({
-      mouseenter: mouseenterAnimation,
-      mouseleave: mouseleaveAnimation
-    });
+    const toggleAnimation = () => {
+      if (hasBeenPlayed) {
+        if (anim.began) {
+          anim.reverse();
+        }
+        if (anim.paused) {
+          anim.play();
+        }
+      } else {
+        anim.play();
+        hasBeenPlayed = true;
+      }
+    };
 
+    jQuery('#home > .container-contact').hover(toggleAnimation, toggleAnimation);
     jQuery('#home > .container-contact').on('click', clickAnimation);
   });
 };
