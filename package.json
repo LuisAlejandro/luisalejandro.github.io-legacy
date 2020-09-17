@@ -134,6 +134,7 @@
     "vinyl-source-stream": "2.0.0",
     "vue": "2.6.12",
     "vue-router": "3.4.3",
+    "vue-template-compiler": "2.6.12",
     "vueify": "9.4.1",
     "watchify": "3.11.1"
   },
