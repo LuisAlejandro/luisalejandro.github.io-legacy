@@ -74,7 +74,7 @@
     "babelify": "8.0.0",
     "bootstrap": "4.5.3",
     "browser-sync": "2.26.13",
-    "browserify": "16.5.2",
+    "browserify": "17.0.0",
     "browserify-shim": "3.8.14",
     "css-mqpacker": "7.0.0",
     "cssnano": "4.1.10",
