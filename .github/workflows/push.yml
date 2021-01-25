@@ -24,6 +24,7 @@ jobs:
           make dependencies
           make build_development
           make build_production
+          sudo chown -R runner:docker .
       - name: Perform Code Analysis
         uses: github/codeql-action/analyze@v1
       - name: Deploy
