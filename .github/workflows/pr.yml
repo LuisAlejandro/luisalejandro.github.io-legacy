@@ -1,0 +1,57 @@
+name: Pull Request
+
+on:
+  pull_request:
+    types:
+      - opened
+      - ready_for_review
+    branches:
+      - develop
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Initialize Code Analysis
+        uses: github/codeql-action/init@v1
+        with:
+          languages: javascript
+      - name: Building project
+        run: |
+          make image
+          make dependencies
+          make build_development
+          make build_production
+      - name: Perform Code Analysis
+        uses: github/codeql-action/analyze@v1
+
+  approve:
+    name: Approve pull request
+    runs-on: ubuntu-20.04
+    needs: build
+    if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
+    steps:
+      - name: Approve
+        uses: hmarr/auto-approve-action@v2.0.0
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+  merge:
+    name: Merge pull request
+    runs-on: ubuntu-20.04
+    needs: approve
+    if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
+    steps:
+      - name: Merge
+        uses: actions/github-script@v3
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          script: |
+            await github.pulls.merge({
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repository.name,
+              pull_number: context.payload.pull_request.number
+            })

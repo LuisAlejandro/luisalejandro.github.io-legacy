@@ -1,0 +1,39 @@
+name: Push
+
+on:
+  push:
+    branches:
+      - staging
+      - develop
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Initialize Code Analysis
+        uses: github/codeql-action/init@v1
+        with:
+          languages: javascript
+      - name: Building project
+        run: |
+          sudo chown -R 1000:1000 .
+          make image
+          make dependencies
+          make build_development
+          make build_production
+      - name: Perform Code Analysis
+        uses: github/codeql-action/analyze@v1
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/staging'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/production
+          publish_branch: master
+          cname: luisalejandro.org
+          user_name: Luis Alejandro Martínez Faneyth
+          user_email: luis@luisalejandro.org
+          full_commit_message: ${{ github.event.head_commit.message }}
