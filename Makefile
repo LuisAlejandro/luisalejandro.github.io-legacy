@@ -32,4 +32,15 @@ build_production: start
 
 console: start
 	@docker-compose -p luisalejandro -f docker-compose.yml exec \
-		-T --user luisalejandro luisalejandro bash
+		--user luisalejandro luisalejandro bash
+
+stop:
+	@docker-compose -p luisalejandro -f docker-compose.yml stop luisalejandro
+
+down:
+	@docker-compose -p luisalejandro -f docker-compose.yml down \
+		--remove-orphans
+
+destroy:
+	@docker-compose -p luisalejandro -f docker-compose.yml down \
+		--rmi all --remove-orphans -v
