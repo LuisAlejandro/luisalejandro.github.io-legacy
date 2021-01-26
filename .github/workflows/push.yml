@@ -13,6 +13,16 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+      - name: Restoring node_modules cache
+        uses: actions/cache@v2
+        with:
+          path: 'node_modules'
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
+      - name: Restoring vendor/bundle cache
+        uses: actions/cache@v2
+        with:
+          path: 'vendor/bundle'
+          key: ${{ runner.os }}-vendor-bundle-${{ hashFiles('Gemfile.lock') }}
       - name: Initialize Code Analysis
         uses: github/codeql-action/init@v1
         with:
