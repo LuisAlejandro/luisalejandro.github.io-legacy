@@ -11,13 +11,11 @@ jobs:
     name: Build
     runs-on: ubuntu-20.04
     steps:
-    - name: Merge
-      uses: actions/github-script@v3
-      with:
-        github-token: "${{ secrets.GITHUB_TOKEN }}"
-        script: |
-          console.log(context.repo.owner)
-          console.log(context.repo.repo)
+      - name: Test
+        uses: actions/github-script@v3
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          script: console.log(context)
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: Restoring node_modules cache
