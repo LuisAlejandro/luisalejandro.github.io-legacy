@@ -16,6 +16,31 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+      - name: Merge
+        uses: actions/github-script@v3
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          script: |
+
+            //while (true) {
+              const { data: pullRequest } = await github.pulls.get({
+                owner: context.payload.repository.owner.name,
+                repo: context.payload.repository.name,
+                pull_number: context.payload.pull_request.number
+              });
+
+              console.log(data)
+              //if (issue.number === context.issue.number) {
+                //continue
+              //}
+
+
+            //}
+            //await github.pulls.merge({
+            //  owner: context.payload.repository.owner.name,
+            //  repo: context.payload.repository.name,
+            //  pull_number: context.payload.pull_request.number
+            //})
       - name: Restoring node_modules cache
         uses: actions/cache@v2
         with:
