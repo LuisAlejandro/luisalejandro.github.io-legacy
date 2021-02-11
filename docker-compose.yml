@@ -1,0 +1,12 @@
+version: "3"
+services:
+  luisalejandro:
+    image: luisalejandro/luisalejandro.github.io:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/home/luisalejandro/app
+    ports:
+      - "9999:9999"
+      - "9998:9998"

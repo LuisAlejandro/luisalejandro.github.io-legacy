@@ -1,14 +1,13 @@
 import jQuery from 'jquery';
 import anime from 'animejs';
 
-import objectsOutro from './outro/objects';
-
 export default function (router) {
   jQuery(() => {
-    const animation = anime.timeline({
+    var hasBeenPlayed = false;
+    const anim = anime.timeline({
       duration: 250,
       autoplay: false,
-      easing: 'linear'
+      easing: 'easeOutQuint'
     }).add({
       targets: [
         '#home > .container-page-blog', '#home > .container-page-portfolio',
@@ -51,27 +50,27 @@ export default function (router) {
       translateX: [0, -15]
     }, 0);
 
-    const mouseenterAnimation = () => {
-      animation.direction = 'normal';
-      animation.restart();
-    };
-
-    const mouseleaveAnimation = () => {
-      animation.direction = 'reverse';
-      animation.restart();
-    };
-
     const clickAnimation = () => {
       objectsOutro().finished.then(() => {
         router.push({ name: 'clients' });
       });
     };
 
-    jQuery('#home > .container-clients').on({
-      mouseenter: mouseenterAnimation,
-      mouseleave: mouseleaveAnimation
-    });
+    const toggleAnimation = () => {
+      if (hasBeenPlayed) {
+        if (anim.began) {
+          anim.reverse();
+        }
+        if (anim.paused) {
+          anim.play();
+        }
+      } else {
+        anim.play();
+        hasBeenPlayed = true;
+      }
+    };
 
+    jQuery('#home > .container-clients').hover(toggleAnimation, toggleAnimation);
     jQuery('#home > .container-clients').on('click', clickAnimation);
   });
 };

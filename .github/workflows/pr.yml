@@ -1,0 +1,94 @@
+name: Pull Request
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - ready_for_review
+    branches:
+      - develop
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Restoring node_modules cache
+        uses: actions/cache@v2
+        with:
+          path: 'node_modules'
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('package-lock.json') }}
+      - name: Restoring vendor/bundle cache
+        uses: actions/cache@v2
+        with:
+          path: 'vendor/bundle'
+          key: ${{ runner.os }}-vendor-bundle-${{ hashFiles('Gemfile.lock') }}
+      - name: Login to Github Docker Registry
+        run: echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u $GITHUB_ACTOR --password-stdin
+      - name: Pulling docker cache
+        run: |
+          GITHUB_REPOSITORY=$(echo $GITHUB_REPOSITORY | tr '[A-Z]' '[a-z]')
+          docker pull docker.pkg.github.com/$GITHUB_REPOSITORY/luisalejandro-build-cache || true
+      - name: Building image with cache
+        run: |
+          GITHUB_REPOSITORY=$(echo $GITHUB_REPOSITORY | tr '[A-Z]' '[a-z]')
+          docker build . -t luisalejandro/luisalejandro.github.io:latest --cache-from=docker.pkg.github.com/$GITHUB_REPOSITORY/luisalejandro-build-cache
+      - name: Building project
+        run: |
+          sudo chown -R 1000:1000 .
+          make start
+          make dependencies
+          make build_development
+          make build_production
+          sudo chown -R runner:docker .
+      - name: Pushing docker image
+        run: |
+          GITHUB_REPOSITORY=$(echo $GITHUB_REPOSITORY | tr '[A-Z]' '[a-z]')
+          docker tag luisalejandro/luisalejandro.github.io:latest docker.pkg.github.com/$GITHUB_REPOSITORY/luisalejandro-build-cache
+          docker push docker.pkg.github.com/$GITHUB_REPOSITORY/luisalejandro-build-cache || true
+
+  approve:
+    name: Approve pull request
+    runs-on: ubuntu-20.04
+    needs: build
+    if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
+    steps:
+      - name: Approve
+        uses: hmarr/auto-approve-action@v2.0.0
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+  merge:
+    name: Merge pull request
+    runs-on: ubuntu-20.04
+    needs: approve
+    if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
+    steps:
+      - name: Merge
+        uses: actions/github-script@v3
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          script: |
+
+            //while (true) {
+              const { data: pullRequest } = await github.pulls.get({
+                owner: context.payload.repository.owner.name,
+                repo: context.payload.repository.name,
+                pull_number: context.payload.pull_request.number
+              });
+
+              console.log(data)
+              //if (issue.number === context.issue.number) {
+                //continue
+              //}
+
+
+            //}
+            //await github.pulls.merge({
+            //  owner: context.payload.repository.owner.name,
+            //  repo: context.payload.repository.name,
+            //  pull_number: context.payload.pull_request.number
+            //})

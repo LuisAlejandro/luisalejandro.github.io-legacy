@@ -24,4 +24,5 @@
 /* Components */
 @import "components/easter";
 @import "components/home";
-@import "components/post";
+@import "components/about";
+@import "components/contact";

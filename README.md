@@ -4,7 +4,9 @@
 
 [![Github releases](https://img.shields.io/github/release/LuisAlejandro/luisalejandro.github.io.svg)](https://github.com/LuisAlejandro/luisalejandro.github.io/releases)
 [![Github issues](https://img.shields.io/github/issues/LuisAlejandro/luisalejandro.github.io)](https://github.com/LuisAlejandro/luisalejandro.github.io/issues?q=is%3Aopen)
-[![Travis CI](https://img.shields.io/travis/LuisAlejandro/luisalejandro.github.io.svg)](https://travis-ci.com/LuisAlejandro/luisalejandro.github.io)
+[![Push](https://github.com/LuisAlejandro/luisalejandro.github.io/workflows/Push/badge.svg)](https://github.com/LuisAlejandro/luisalejandro.github.io/actions?query=workflow%3APush)
+[![Pull Request](https://github.com/LuisAlejandro/luisalejandro.github.io/workflows/Pull%20Request/badge.svg)](https://github.com/LuisAlejandro/luisalejandro.github.io/actions?query=workflow%3A%22Pull+Request%22)
+[![Code Quality](https://github.com/LuisAlejandro/luisalejandro.github.io/workflows/Code%20Quality/badge.svg)](https://github.com/LuisAlejandro/luisalejandro.github.io/actions?query=workflow%3A%22Code+Quality%22)
 [![Codeclimate](https://codeclimate.com/github/LuisAlejandro/luisalejandro.github.io/badges/gpa.svg)](https://codeclimate.com/github/LuisAlejandro/luisalejandro.github.io)
 [![David](https://david-dm.org/LuisAlejandro/luisalejandro.github.io/dev-status.svg)](https://david-dm.org/LuisAlejandro/luisalejandro.github.io)
 [![Snyk](https://snyk.io/test/github/LuisAlejandro/luisalejandro.github.io/badge.svg)](https://snyk.io/test/github/LuisAlejandro/luisalejandro.github.io)
