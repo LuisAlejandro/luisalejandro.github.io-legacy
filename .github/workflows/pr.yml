@@ -1,6 +1,7 @@
 name: Pull Request
 
 on:
+  workflow_dispatch:
   pull_request:
     types:
       - opened
@@ -71,8 +72,23 @@ jobs:
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           script: |
-            await github.pulls.merge({
-              owner: context.payload.repository.owner.name,
-              repo: context.payload.repository.name,
-              pull_number: context.payload.pull_request.number
-            })
+
+            //while (true) {
+              const { data: pullRequest } = await github.pulls.get({
+                owner: context.payload.repository.owner.name,
+                repo: context.payload.repository.name,
+                pull_number: context.payload.pull_request.number
+              });
+
+              console.log(data)
+              //if (issue.number === context.issue.number) {
+                //continue
+              //}
+
+
+            //}
+            //await github.pulls.merge({
+            //  owner: context.payload.repository.owner.name,
+            //  repo: context.payload.repository.name,
+            //  pull_number: context.payload.pull_request.number
+            //})
