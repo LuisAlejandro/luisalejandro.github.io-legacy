@@ -15,7 +15,7 @@ jobs:
         uses: actions/github-script@v3
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
-          script: console.log(context)
+          script: console.log(context.payload.repository.owner)
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: Restoring node_modules cache
