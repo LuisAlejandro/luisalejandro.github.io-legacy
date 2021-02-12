@@ -15,9 +15,7 @@ jobs:
         uses: github/codeql-action/init@v1
         with:
           languages: javascript
-          paths-ignore: build
-          paths-ignore: vendor
-          paths-ignore: node_modules
+          config-file: ./.github/codeql-config.yml
       - name: Restoring node_modules cache
         uses: actions/cache@v2
         with:
