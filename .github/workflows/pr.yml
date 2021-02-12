@@ -80,7 +80,7 @@ jobs:
             while (count < 10) {
               const response = await github.pulls.get(params);
               if (response.data.mergeable) {
-                await github.pulls.merge(params});
+                await github.pulls.merge(params);
                 break;
               } else {
                 count += 1;
