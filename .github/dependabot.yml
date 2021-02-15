@@ -16,6 +16,10 @@ updates:
     interval: weekly
     time: "01:00"
   open-pull-requests-limit: 99
+  ignore:
+  - dependency-name: dockershelf/node
+    versions:
+    - "> 14"
 - package-ecosystem: bundler
   directory: "/"
   schedule:
