@@ -113,7 +113,7 @@
     "gulp-uglify": "3.0.2",
     "gulp-xml-validator": "1.0.0",
     "howler": "2.2.1",
-    "jquery": "3.5.1",
+    "jquery": "3.6.0",
     "jquery-bridget": "3.0.0",
     "normalize.css": "8.0.1",
     "popper.js": "1.16.1",
