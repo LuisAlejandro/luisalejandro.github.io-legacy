@@ -111,7 +111,7 @@
     "gulp-sourcemaps": "3.0.0",
     "gulp-svgstore": "7.0.1",
     "gulp-uglify": "3.0.2",
-    "gulp-xml-validator": "1.0.0",
+    "gulp-xml-validator": "1.1.0",
     "howler": "2.2.1",
     "jquery": "3.6.0",
     "jquery-bridget": "3.0.0",
