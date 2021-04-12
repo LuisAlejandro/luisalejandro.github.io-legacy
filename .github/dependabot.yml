@@ -10,6 +10,9 @@ updates:
   - dependency-name: babelify
     versions:
     - ">= 0"
+  - dependency-name: gulp-xml-validator
+    versions:
+    - ">= 1.0.0"
 - package-ecosystem: docker
   directory: "/"
   schedule:
