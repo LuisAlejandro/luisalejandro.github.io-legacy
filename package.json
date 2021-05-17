@@ -81,7 +81,7 @@
     "del": "6.0.0",
     "eslint": "7.26.0",
     "eslint-config-standard": "16.0.2",
-    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-import": "2.23.2",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-promise": "4.3.1",
     "eslint-plugin-standard": "5.0.0",
@@ -117,7 +117,7 @@
     "jquery-bridget": "3.0.0",
     "normalize.css": "8.0.1",
     "popper.js": "1.16.1",
-    "postcss": "8.2.14",
+    "postcss": "8.2.15",
     "postcss-advanced-variables": "3.0.1",
     "postcss-discard-comments": "5.0.0",
     "postcss-font-magician": "3.0.0",
@@ -140,6 +140,6 @@
   },
   "snyk": true,
   "dependencies": {
-    "snyk": "^1.587.0"
+    "snyk": "^1.595.0"
   }
 }
