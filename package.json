@@ -117,7 +117,7 @@
     "jquery-bridget": "3.0.0",
     "normalize.css": "8.0.1",
     "popper.js": "1.16.1",
-    "postcss": "8.3.0",
+    "postcss": "8.3.2",
     "postcss-advanced-variables": "3.0.1",
     "postcss-discard-comments": "5.0.1",
     "postcss-font-magician": "3.0.0",
