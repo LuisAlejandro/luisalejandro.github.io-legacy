@@ -9,7 +9,7 @@ const util = require('util');
 
 gulp.task('jekyll:development', function (done) {
   browsersync.notify('Compiling Jekyll (development)');
-  cp.spawn(
+  cp.spawnSync(
     'bundle',
     [
       'exec',
