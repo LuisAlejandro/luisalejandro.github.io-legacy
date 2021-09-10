@@ -12,7 +12,10 @@ updates:
     - ">= 0"
   - dependency-name: gulp-xml-validator
     versions:
-    - ">= 1.0.0"
+    - "> 1.0.0"
+  - dependency-name: gulp-imagemin
+    versions:
+    - "> v7.1.0"
 - package-ecosystem: docker
   directory: "/"
   schedule:
