@@ -4,6 +4,7 @@ updates:
   directory: "/"
   schedule:
     interval: weekly
+    day: wednesday
     time: "01:00"
   open-pull-requests-limit: 99
   ignore:
@@ -20,6 +21,7 @@ updates:
   directory: "/"
   schedule:
     interval: weekly
+    day: wednesday
     time: "01:00"
   open-pull-requests-limit: 99
   ignore:
@@ -30,5 +32,6 @@ updates:
   directory: "/"
   schedule:
     interval: weekly
+    day: wednesday
     time: "01:00"
   open-pull-requests-limit: 99
