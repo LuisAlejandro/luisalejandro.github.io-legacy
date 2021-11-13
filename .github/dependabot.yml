@@ -35,3 +35,11 @@ updates:
     day: wednesday
     time: "01:00"
   open-pull-requests-limit: 99
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: wednesday
+    time: "01:00"
+  open-pull-requests-limit: 99
+
