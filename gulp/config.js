@@ -153,6 +153,9 @@ exports.styles = {
     presetEnv: {
       autoprefixer: {
         cascade: true
+      },
+      features: {
+        "double-position-gradients": false
       }
     },
     nested: {},
