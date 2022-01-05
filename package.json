@@ -127,7 +127,7 @@
     "postcss-uncss": "0.17.0",
     "request": "2.88.2",
     "require-dir": "1.2.0",
-    "sass": "1.43.4",
+    "sass": "1.45.2",
     "stylelint": "13.13.1",
     "stylelint-config-standard": "22.0.0",
     "uncss": "0.17.3",
