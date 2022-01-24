@@ -109,7 +109,7 @@
     "gulp-sass": "5.0.0",
     "gulp-size": "4.0.1",
     "gulp-sourcemaps": "3.0.0",
-    "gulp-svgstore": "8.0.0",
+    "gulp-svgstore": "9.0.0",
     "gulp-uglify": "3.0.2",
     "gulp-xml-validator": "1.0.0",
     "howler": "2.2.3",
