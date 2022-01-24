@@ -18,7 +18,7 @@ gulp.task('optimize:css', function () {
     cssnano(config.options.cssnano)
   ];
 
-  return gulp.src(config.src)
+  return gulp.src(config.src, { allowEmpty: true })
     .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(postcss(processors))
     .pipe(gulp.dest(config.dest))

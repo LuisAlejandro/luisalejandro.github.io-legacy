@@ -20,7 +20,7 @@ gulp.task('favicons:generate:production', function (done) {
 // as is or refactor your existing HTML pipeline.
 gulp.task('favicons:production', gulp.series('favicons:generate:production', function () {
   const faviconHtml = JSON.parse(fs.readFileSync(config.options.markupFile)).favicon.html_code;
-  return gulp.src(config.src)
+  return gulp.src(config.src, { allowEmpty: true })
     .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(favicon.injectFaviconMarkups(faviconHtml))
     .pipe(gulp.dest(config.dest))

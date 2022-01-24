@@ -5,6 +5,6 @@ const xmllint = require('gulp-xml-validator');
 
 // Lint optimized JSON files
 gulp.task('lint-xml', function () {
-  return gulp.src(config.src)
+  return gulp.src(config.src, { allowEmpty: true })
     .pipe(xmllint());
 });

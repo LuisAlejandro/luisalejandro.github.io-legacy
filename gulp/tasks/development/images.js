@@ -7,7 +7,7 @@ const size = require('gulp-size');
 
 // Copy images to build folder
 gulp.task('images:development', function () {
-  return gulp.src(config.src)
+  return gulp.src(config.src, { allowEmpty: true })
     .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(gulp.dest(config.dest))
     .pipe(size({ title: 'images:development' }));

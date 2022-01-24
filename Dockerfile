@@ -5,8 +5,6 @@ RUN apt-get update
 RUN apt-get install build-essential autoconf automake sudo gcc git \
     libtool libffi-dev zlib1g-dev ruby2.7 ruby2.7-dev python2.7-dev
 
-RUN echo "Set disable_coredump false" >> /etc/sudo.conf
-
 RUN npm install -g gulp
 
 RUN gem install bundler

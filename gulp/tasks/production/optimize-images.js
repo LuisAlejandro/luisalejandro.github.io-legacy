@@ -14,7 +14,7 @@ gulp.task('optimize:images', function () {
     imagemin.optipng(config.imageminPluginOptions.optipng),
     imagemin.svgo(config.imageminPluginOptions.svgo)
   ];
-  return gulp.src(config.src)
+  return gulp.src(config.src, { allowEmpty: true })
     .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(imagemin(plugins, config.imageminOptions))
     .pipe(gulp.dest(config.dest))

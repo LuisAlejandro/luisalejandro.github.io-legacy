@@ -26,7 +26,7 @@ gulp.task('styles:production', gulp.series('styles:sass:common', function () {
     mqpacker(config.options.mqpacker)
   ];
 
-  return gulp.src(config.production.src)
+  return gulp.src(config.production.src, { allowEmpty: true })
     .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(postcss(processors))
     .pipe(gulp.dest(config.production.dest))

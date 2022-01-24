@@ -8,7 +8,7 @@ const size = require('gulp-size');
 
 // Optimize js files
 gulp.task('optimize:js', function () {
-  return gulp.src(config.src)
+  return gulp.src(config.src, { allowEmpty: true })
     .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(uglify())
     .pipe(gulp.dest(config.dest))

@@ -16,7 +16,7 @@ gulp.task('lint:styles:development', function () {
     reporter(config.options.reporter)
   ];
 
-  return gulp.src(config.src)
+  return gulp.src(config.src, { allowEmpty: true })
     .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(postcss(processors));
 });

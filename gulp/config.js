@@ -155,7 +155,7 @@ exports.styles = {
         cascade: true
       },
       features: {
-        "double-position-gradients": false
+        'double-position-gradients': false
       }
     },
     nested: {},
@@ -474,12 +474,12 @@ exports.svgstore = {
   development: {
     src: path.join(development, 'index.html'),
     dest: development,
-    svgs: path.join(devAssets, 'images', '**', '*.svg')
+    svgs: path.join(devAssets, 'images', '*.svg')
   },
   production: {
     src: path.join(production, 'index.html'),
     dest: production,
-    svgs: path.join(prodAssets, 'images', '**', '*.svg')
+    svgs: path.join(prodAssets, 'images', '*.svg')
   }
 };
 

@@ -2,7 +2,7 @@ import jQuery from 'jquery';
 import anime from 'animejs';
 
 export default function () {
-  var timeline = anime.timeline();
+  const timeline = anime.timeline();
   timeline.add({
     targets: '#torso-plus-head-arms',
     duration: 1,
@@ -46,8 +46,8 @@ export default function () {
     left: ['-30%', '-15%'],
     easing: 'easeInQuint',
     begin: () => {
-      jQuery('#app > .container-me, #left-foot-2, #right-foot-2').css({ 'display': 'block' });
-      jQuery('#left-foot, #right-foot').css({ 'display': 'none' });
+      jQuery('#app > .container-me, #left-foot-2, #right-foot-2').css({ display: 'block' });
+      jQuery('#left-foot, #right-foot').css({ display: 'none' });
     }
   }, 1).add({
     targets: '#head-side',
@@ -131,8 +131,8 @@ export default function () {
     left: ['-15%', '-5%'],
     easing: 'easeInOutQuint',
     complete: () => {
-      jQuery('#left-foot,#right-foot').css({ 'display': 'block' });
-      jQuery('#left-foot-2,#right-foot-2').css({ 'display': 'none' });
+      jQuery('#left-foot,#right-foot').css({ display: 'block' });
+      jQuery('#left-foot-2,#right-foot-2').css({ display: 'none' });
     }
   }, 2000).add({
     targets: '#home > .container-clients',
@@ -228,15 +228,15 @@ export default function () {
     targets: '#right-foot-2',
     duration: 1500,
     complete: () => {
-      jQuery('#right-foot-2').css({ 'display': 'block' });
-      jQuery('#right-foot').css({ 'display': 'none' });
+      jQuery('#right-foot-2').css({ display: 'block' });
+      jQuery('#right-foot').css({ display: 'none' });
     }
   }, 3000).add({
     targets: '#head-side',
     duration: 1000,
     complete: () => {
-      jQuery('#head-front').css({ 'display': 'block' });
-      jQuery('#head-side').css({ 'display': 'none' });
+      jQuery('#head-front').css({ display: 'block' });
+      jQuery('#head-side').css({ display: 'none' });
     }
   }, 5000);
   return timeline;

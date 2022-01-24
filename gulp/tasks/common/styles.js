@@ -10,7 +10,7 @@ const rename = require('gulp-rename');
 
 gulp.task('styles:vendor:common', function () {
   const webfontsfilter = filter(['*/webfonts/**'], { restore: true });
-  return gulp.src(config.src, { base: config.base })
+  return gulp.src(config.src, { base: config.base, allowEmpty: true })
     .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(webfontsfilter)
     .pipe(replace('fonts/roboto/v18/', '../fonts/'))

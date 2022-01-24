@@ -8,7 +8,7 @@ const size = require('gulp-size');
 
 // Copy and minimize JSON files
 gulp.task('optimize:json', function () {
-  return gulp.src(config.src)
+  return gulp.src(config.src, { allowEmpty: true })
     .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(jsonminify())
     .pipe(gulp.dest(config.dest))

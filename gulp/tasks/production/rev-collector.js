@@ -7,7 +7,7 @@ const plumber = require('gulp-plumber');
 
 // Replace all links to asset files via a manifest file
 gulp.task('rev:collect', function () {
-  return gulp.src(config.src)
+  return gulp.src(config.src, { allowEmpty: true })
     .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(collect())
     .pipe(gulp.dest(config.dest));

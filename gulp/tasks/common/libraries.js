@@ -52,7 +52,7 @@ gulp.task('libraries:fonts:common', gulp.series('libraries:fonts:common:download
 
   fs.writeFileSync(dummyJsonPath, JSON.stringify(dummyJson));
 
-  return gulp.src(config.src)
+  return gulp.src(config.src, { allowEmpty: true })
     .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(flatten())
     .pipe(gulp.dest(config.dest))

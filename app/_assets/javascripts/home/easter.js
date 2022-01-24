@@ -5,7 +5,7 @@ import objectsOutro from './outro/objects';
 
 export default function (router) {
   jQuery(() => {
-    // var hasBeenPlayed = false;
+    // let hasBeenPlayed = false;
     // const anim = anime.timeline({
     //   duration: 250,
     //   autoplay: false,

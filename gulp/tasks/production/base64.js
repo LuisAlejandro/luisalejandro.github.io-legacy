@@ -8,7 +8,7 @@ const size = require('gulp-size');
 
 // Replace URLs in CSS files with base64 encoded data
 gulp.task('base64:production', function () {
-  return gulp.src(config.src)
+  return gulp.src(config.src, { allowEmpty: true })
     .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(base64(config.options))
     .pipe(gulp.dest(config.dest))

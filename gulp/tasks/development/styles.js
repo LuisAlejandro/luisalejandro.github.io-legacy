@@ -27,7 +27,7 @@ gulp.task('styles:rebuild:development', function () {
     mqpacker(config.options.mqpacker)
   ];
 
-  return gulp.src(config.development.src)
+  return gulp.src(config.development.src, { allowEmpty: true })
     .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(sourcemaps.init())
     .pipe(postcss(processors))

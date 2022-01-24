@@ -11,7 +11,7 @@ const size = require('gulp-size');
 // Copy fonts to build folder
 gulp.task('fonts:production', gulp.series('fonts:vendor:common', function () {
   browsersync.notify('Copying fonts (production)');
-  return gulp.src(config.src)
+  return gulp.src(config.src, { allowEmpty: true })
     .pipe(plumber({ errorHandler: helpers.onError }))
     .pipe(gulp.dest(config.dest))
     .pipe(size({ title: 'fonts:production' }));
