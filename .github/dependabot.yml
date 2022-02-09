@@ -17,6 +17,9 @@ updates:
   - dependency-name: gulp-imagemin
     versions:
     - "> v7.1.0"
+  - dependency-name: vue
+    versions:
+    - "> 2.6.14"
 - package-ecosystem: docker
   directory: "/"
   schedule:

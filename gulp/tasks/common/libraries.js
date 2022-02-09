@@ -15,11 +15,19 @@ gulp.task('libraries:gems:common', function (done) {
   return cp.spawn(
     'bundle',
     [
-      'install',
-      '--path=vendor/bundle'
+      'config', 'set', '--local', 'path', 'vendor/bundle'
     ],
-    { stdio: 'inherit' })
-    .on('close', done);
+    {
+      stdio: 'inherit'
+    })
+    .on('close', function () {
+      cp.spawn(
+        'bundle', ['install'],
+        {
+          stdio: 'inherit'
+        })
+        .on('close', done);
+    });
 });
 
 // Download fonts
