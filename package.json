@@ -122,7 +122,7 @@
     "postcss-discard-comments": "5.0.3",
     "postcss-font-magician": "3.0.0",
     "postcss-nested": "5.0.6",
-    "postcss-preset-env": "7.3.3",
+    "postcss-preset-env": "7.4.1",
     "postcss-reporter": "7.0.5",
     "postcss-uncss": "0.17.0",
     "request": "2.88.2",
