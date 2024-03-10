@@ -121,7 +121,7 @@
     "postcss-advanced-variables": "3.0.1",
     "postcss-discard-comments": "5.1.1",
     "postcss-font-magician": "3.0.0",
-    "postcss-nested": "5.0.6",
+    "postcss-nested": "6.0.1",
     "postcss-preset-env": "7.4.2",
     "postcss-reporter": "7.0.5",
     "postcss-uncss": "0.17.0",
